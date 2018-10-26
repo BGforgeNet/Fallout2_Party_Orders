@@ -10,7 +10,7 @@ It was originally written by [pelicano](http://www.nma-fallout.com/members/pelic
 then expanded by [phobos2077](https://github.com/phobos2077/),
 finally this version includes some [further fixes](doc/version_history.md).
 
-Also see [mod thread](http://www.nma-fallout.com/threads/fallout-2-party-orders-add-on.192323/) on NMA
+Also see [mod thread](http://www.nma-fallout.com/threads/party-orders-add-on-and-npcs-loot-bodies-mod.190599/page-6#post-4052983) on NMA
 and its [wiki page](https://falloutmods.fandom.com/wiki/Party_Orders_add-on).
 Notes for modders are [here](doc/modder_notes.md).
 
