@@ -89,4 +89,47 @@
 #define DIK_F11             87
 #define DIK_F12             88
 
+#define DIK_NUMPADEQUALS    0x8D    /* = on numeric keypad (NEC PC98) */
+#define DIK_AT              0x91    /*                     (NEC PC98) */
+#define DIK_COLON           0x92    /*                     (NEC PC98) */
+#define DIK_UNDERLINE       0x93    /*                     (NEC PC98) */
+#define DIK_STOP            0x95    /*                     (NEC PC98) */
+#define DIK_AX              0x96    /*                     (Japan AX) */
+#define DIK_UNLABELED       0x97    /*                        (J3100) */
+#define DIK_NUMPADENTER     0x9C    /* Enter on numeric keypad */
+#define DIK_RCONTROL        0x9D
+#define DIK_NUMPADCOMMA     0xB3    /* , on numeric keypad (NEC PC98) */
+#define DIK_DIVIDE          0xB5    /* / on numeric keypad */
+#define DIK_SYSRQ           0xB7
+#define DIK_RMENU           0xB8    /* right Alt */
+#define DIK_HOME            0xC7    /* Home on arrow keypad */
+#define DIK_UP              0xC8    /* UpArrow on arrow keypad */
+#define DIK_PRIOR           0xC9    /* PgUp on arrow keypad */
+#define DIK_LEFT            0xCB    /* LeftArrow on arrow keypad */
+#define DIK_RIGHT           0xCD    /* RightArrow on arrow keypad */
+#define DIK_END             0xCF    /* End on arrow keypad */
+#define DIK_DOWN            0xD0    /* DownArrow on arrow keypad */
+#define DIK_NEXT            0xD1    /* PgDn on arrow keypad */
+#define DIK_INSERT          0xD2    /* Insert on arrow keypad */
+#define DIK_DELETE          0xD3    /* Delete on arrow keypad */
+#define DIK_LWIN            0xDB    /* Left Windows key */
+#define DIK_RWIN            0xDC    /* Right Windows key */
+#define DIK_APPS            0xDD    /* AppMenu key */
+
+#define DIK_BACKSPACE       DIK_BACK            /* backspace */
+#define DIK_NUMPADSTAR      DIK_MULTIPLY        /* * on numeric keypad */
+#define DIK_LALT            DIK_LMENU           /* left Alt */
+#define DIK_CAPSLOCK        DIK_CAPITAL         /* CapsLock */
+#define DIK_NUMPADMINUS     DIK_SUBTRACT        /* - on numeric keypad */
+#define DIK_NUMPADPLUS      DIK_ADD             /* + on numeric keypad */
+#define DIK_NUMPADPERIOD    DIK_DECIMAL         /* . on numeric keypad */
+#define DIK_NUMPADSLASH     DIK_DIVIDE          /* / on numeric keypad */
+#define DIK_RALT            DIK_RMENU           /* right Alt */
+#define DIK_UPARROW         DIK_UP              /* UpArrow on arrow keypad */
+#define DIK_PGUP            DIK_PRIOR           /* PgUp on arrow keypad */
+#define DIK_LEFTARROW       DIK_LEFT            /* LeftArrow on arrow keypad */
+#define DIK_RIGHTARROW      DIK_RIGHT           /* RightArrow on arrow keypad */
+#define DIK_DOWNARROW       DIK_DOWN            /* DownArrow on arrow keypad */
+#define DIK_PGDN            DIK_NEXT            /* PgDn on arrow keypad */
+
 #endif
