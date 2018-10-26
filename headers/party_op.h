@@ -53,4 +53,4 @@
 #define PRODATA_CR_CRITTER_FLAGS  (32)
 #define PRODATA_CR_KILL_EXP   (392)
 #define PRODATA_CR_KILL_TYPE  (396)
-
+

@@ -15,7 +15,11 @@ procedure start;
 #include "..\headers\sfall\lib.misc.h"
 #include "..\headers\sfall\lib.inven.h"
 
+#define script_name "gl_ptyop"
+#define ndebug(message) debug_msg(script_name + ": " + message + "\n")
+
 #define ini_file					"party_op.ini|"
+#define ini_filename			"party_op.ini"
 #define sec_SETTINGS			(ini_file + "SETTINGS|")
 #define sec_NPC				    (ini_file + "NPC|")
 #define sec_NPC_NAME			(ini_file + "N_NPC|")
@@ -23,6 +27,8 @@ procedure start;
 #define sec_LOOTER_NAME		(ini_file + "N_LOOTER|")
 #define sec_MESSAGE				(ini_file + "MESSAGE|")
 #define sec_AMMO_AP				(ini_file + "AMMO_AP|")
+#define sec_LOOT_FORCE	  "LOOT_FORCE"
+#define sec_PICKUP_SKIP   "PICKUP_SKIP"
 
 #define m_str(x)				get_ini_string(sec_MESSAGE + (x))
 
@@ -99,6 +105,8 @@ variable begin
 	cant_carry_all;
 	dude_picking_up; dude_pickup_delay;
 	ap_ammo_list;
+	force_loot_list;
+	pickup_skip_list;
 end
 
 // Main Order procedures
@@ -123,13 +131,21 @@ procedure temp_array_from_ini(variable iniSec) begin
 	variable i := 0;
 	variable ar;
 	ar := temp_array(200, 4);
-	debug_msg("create temp array!");
+	ndebug("create temp array!");
 	while (get_ini_setting(iniSec + i) != -1) do begin
 		ar[i] := get_ini_setting(iniSec + i);
 		i += 1;
 	end
 	resize_array(ar, i);
 	return ar;
+end
+
+procedure get_ini_section_int(variable file, variable section) begin
+  variable k, v, ar := get_ini_section(file, section);
+  foreach k: v in ar begin
+    ar[k] := atoi(v);
+  end
+  return ar;
 end
 
 procedure start begin
@@ -147,7 +163,11 @@ end
 		switch_key := parse_hotkey(get_ini_string(sec_SETTINGS + "SwitchKey"));
 		ammotype_key := parse_hotkey(get_ini_string(sec_SETTINGS + "AmmoTypeOrderKey"));
 		loot_items := parse_hotkey(get_ini_string(sec_SETTINGS + "PLootNearbyItems"));
-		#define _check_key(key, default)	if((key < 0))then key := default
+		force_loot_list := get_ini_section_int(ini_filename, sec_LOOT_FORCE);
+		fix_array(force_loot_list);
+		pickup_skip_list := get_ini_section_int(ini_filename, sec_PICKUP_SKIP);
+		fix_array(pickup_skip_list);
+		#define _check_key(key, default)	if (key < 0) then key := default
 		_check_key(holster_key, DIK_H);
 		_check_key(healing_key, DIK_F);
 		_check_key(looting_key, DIK_G);
@@ -181,8 +201,8 @@ end
 		// NPC Looter system here //
 		if(oLooter)then begin
 			if((looting_stage == ls_STOP) and (tLooting_time <= game_time))then begin // Looting done
-				if(not_party_member(oLooter))then party_add(oLooter);
-				if(oLooter == dude_obj)then
+				if not_party_member(oLooter) then party_add(oLooter);
+				if oLooter == dude_obj then
 					temp := FLOAT_MSG_BLUE;
 				else
 					temp := FLOAT_MSG_YELLOW;
@@ -573,12 +593,12 @@ procedure loot_nearby_corpses(variable oC) begin
 	L_list := list_begin(LIST_CRITTERS);
 	while(L_list != 0) do begin
 		oCorpse := list_next(L_list);
-		if (oCorpse) then begin
-			if((is_critter_dead(oCorpse)))then begin
-				if(is_lootable(oCorpse))then begin
-					if(LOOT_COND1(dude_obj, oCorpse))then begin
+		if oCorpse then begin
+			if is_critter_dead(oCorpse) then begin
+				if is_lootable(oCorpse) or is_in_array(obj_pid(oCorpse), force_loot_list) then begin
+					if LOOT_COND1(dude_obj, oCorpse) then begin
 						oGItem := get_ground_item_near_critter(oC, oCorpse);
-						if((oGItem) or (LOOT_COND2(oCorpse)))then begin
+						if oGItem or LOOT_COND2(oCorpse) then begin
 							set_sfall_global(SGVAR_LOOTER, oLooter);
 							set_sfall_global(SGVAR_CORPSE, oCorpse);
 							iNum_npcs += 1;
@@ -700,11 +720,11 @@ end
 			caliber := get_proto_data(obj_pid(weapon), PRODATA_IT_WP_CALIBER);
 			magsize := get_proto_data(obj_pid(weapon), PRODATA_IT_WP_MAG_SIZE);
 			ammopid := get_weapon_ammo_pid(weapon);
-			debug_msg("found weapon with caliber " + caliber+", ammo pid " + ammopid);
+			ndebug("found weapon with caliber " + caliber + ", ammo pid " + ammopid);
 			// switch only if not already suited ammo type
 			if (caliber and magsize > 0) then if not(is_ammo_type(ammopid, ammo_type)) then begin
 				// try to find better ammo for this weapon
-				debug_msg("search best ammo...");
+				ndebug("search best ammo...");
 				bestammo := 0;
 				list := inven_as_array(oC);
 				foreach item in list begin
@@ -713,7 +733,7 @@ end
 							bestammo := item;
 				end
 				if (bestammo) then begin
-					debug_msg("found best ammo type " + obj_pid(bestammo));
+					ndebug("found best ammo type " + obj_pid(bestammo));
 					// first, unload existing ammo
 					call inc_ammo_count(oC, ammopid, get_weapon_ammo_count(weapon));
 					// then, load new ammo
@@ -724,7 +744,7 @@ end
 					reg_anim_clear(oC);
 					animate_stand_obj(oC);
 				end else
-					debug_msg("not found :(");
+					ndebug("not found :(");
 			end
 		end
 		i++;
@@ -744,7 +764,7 @@ variable c;
 		c := list_next(L_list);
 		if(c)then begin
 			if((is_critter_dead(c)))then begin
-				if(is_lootable(c))then begin
+				if is_lootable(c) or is_in_array(obj_pid(c), force_loot_list) then begin
 					if(LOOT_COND1_1(oLooter, c))then begin
 						oGItem := get_ground_item_near_critter(oLooter, c);
 						if((oGItem) or (LOOT_COND2(c)))then begin
@@ -795,11 +815,15 @@ end
 		l_gitems := list_begin(LIST_GROUNDITEMS);
 		while(l_gitems != 0) do begin
 			gitem := list_next(l_gitems);
-			if(gitem)then begin
+			if gitem then begin
 				//float_msg(gitem,obj_name(gitem)+": "+obj_item_subtype(gitem)+" Weight: "+(iItem_weight),0);
-				if(LOOT_COND3(gitem) and LOOT_COND4(oC, gitem))then begin
+				if (LOOT_COND3(gitem)
+				  and LOOT_COND4(oC, gitem)
+				  and not is_in_array(obj_pid(gitem), pickup_skip_list)
+				  )
+			  then begin
 					iItem_weight := proto_data(obj_pid(gitem), it_weight);
-					if(is_weapon(gitem))then begin
+					if is_weapon(gitem) then begin
 						iAmmo_count := get_weapon_ammo_count(gitem);
 						if(iAmmo_count > 0)then begin
 							iAmmo_weight := proto_data(get_weapon_ammo_pid(gitem), it_weight);
@@ -840,7 +864,7 @@ end
 	c := inven_count(oC);
 	while((inven_count(oC) - 1) >= 0)do begin
 		i := (inven_count(oC) - 1);
-		display_msg((i + 1)+" / ");
+		display_msg((i + 1) + " / ");
 		item := inven_ptr(oC, i);
 		n := obj_is_carrying_obj_pid(oC, obj_pid(item));
 		if((proto_data(obj_pid(item), 13) * n) <= inven_free_amt(oL))then begin

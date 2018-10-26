@@ -270,3 +270,4 @@
 #define calc_sneak_damage_perc(x)	floor((hth_skill(x)* 0.5)+(has_skill(x,SKILL_SNEAK)* 1.5))
 
 #endif
+
