@@ -4,6 +4,7 @@
 /* Contact: PM at http://www.nma-fallout.com/forum */
 procedure start;
 
+#include "..\headers\define.h"
 #include "..\headers\sfall\sfall.h"
 #include "..\headers\animcomd.h"
 #include "..\headers\itempid.h"
@@ -29,6 +30,7 @@ procedure start;
 #define sec_AMMO_AP				(ini_file + "AMMO_AP|")
 #define sec_LOOT_FORCE	  "LOOT_FORCE"
 #define sec_PICKUP_SKIP   "PICKUP_SKIP"
+#define sec_burst_control (ini_file + "BURST_CONTROL|")
 
 #define m_str(x)				get_ini_string(sec_MESSAGE + (x))
 
@@ -96,6 +98,7 @@ procedure start;
 #define SGVAR_GITEM0	"p_gitem0"
 #define SGVAR_AMMO_TYPE	"p_ammtyp"
 #define SGVAR_OPTI01 "p_opti01"
+#define SGVAR_BURST "p_burst8"
 
 variable begin
 	down;
@@ -115,6 +118,13 @@ variable begin
 	ap_ammo_list;
 	force_loot_list;
 	pickup_skip_list;
+
+	msg_burst_float;
+  msg_noburst_float;
+  msg_burst_display;
+  msg_noburst_display;
+  burst_key;
+  burst_mode;
 end
 
 // Main Order procedures
@@ -134,6 +144,59 @@ procedure get_ground_item_near_critter(variable oL, variable oC);	// ** TEST ** 
 // test old procedures
 procedure loot_n_drop(variable oL, variable oC);
 procedure test_(variable item, variable n);
+
+procedure gamemode_hook_handler;
+procedure toggle_burst;
+procedure set_burst;
+
+procedure set_burst begin
+  variable who;
+  variable burst_disable;
+  burst_mode := get_sfall_global_int(SGVAR_BURST);
+
+  if (true_party_size > 0) then begin
+    ndebug("setting burst mode to " + burst_mode);
+
+    if burst_mode == 1 then begin
+      burst_disable := 0;
+    end else begin
+      burst_disable := 1;
+    end
+
+    foreach who in party_member_list_critters begin
+      if (who != dude_obj) then begin
+        set_critter_burst_disable(who, burst_disable);
+      end
+    end
+
+  end
+end
+
+procedure toggle_burst begin
+  variable msg_float, msg_display;
+  burst_mode := get_sfall_global_int(SGVAR_BURST);
+  ndebug("old burst mode is " + burst_mode);
+  if burst_mode == 0 then begin
+    msg_float := msg_burst_float;
+    msg_display := msg_burst_display;
+    burst_mode := 1;
+  end else begin
+    msg_float := msg_noburst_float;
+    msg_display := msg_noburst_display;
+    burst_mode := 0;
+  end
+  float_msg(dude_obj, msg_float, FLOAT_MSG_BLUE);
+  display_msg(msg_display);
+  set_sfall_global(SGVAR_BURST, burst_mode);
+  call set_burst;
+  ndebug("new burst mode is " + burst_mode);
+end
+
+procedure gamemode_hook_handler begin
+  if combat_is_initialized then begin
+    call set_burst;
+  end
+end
 
 procedure temp_array_from_ini(variable iniSec) begin
 	variable i := 0;
@@ -160,7 +223,7 @@ procedure start begin
 variable begin
 	temp;
 end
-	if (game_loaded) then begin
+	if game_loaded then begin
 		set_global_script_repeat(30);
 		holster_key := parse_hotkey(get_ini_string(sec_SETTINGS + "HolsterOrderKey"));
 		healing_key := parse_hotkey(get_ini_string(sec_SETTINGS + "HealingOrderKey"));
@@ -175,6 +238,15 @@ end
 		fix_array(force_loot_list);
 		pickup_skip_list := get_ini_section_int(ini_filename, sec_PICKUP_SKIP);
 		fix_array(pickup_skip_list);
+
+    msg_burst_float := get_ini_string(sec_burst_control + "float_on");
+    msg_noburst_float := get_ini_string(sec_burst_control + "float_off");
+    msg_burst_display := get_ini_string(sec_burst_control + "display_on");
+    msg_noburst_display := get_ini_string(sec_burst_control + "display_off");
+    burst_key := parse_hotkey(get_ini_string(sec_burst_control + "burst_key"));
+    register_hook_proc(HOOK_GAMEMODECHANGE, gamemode_hook_handler);
+    burst_mode := get_sfall_global_int(SGVAR_BURST);
+
 		#define _check_key(key, default)	if (key < 0) then key := default
 		_check_key(holster_key, DIK_H);
 		_check_key(healing_key, DIK_F);
@@ -198,6 +270,7 @@ end
 		set_sfall_global(SGVAR_GITEM0, 0);
 
 		register_hook_proc(HOOK_KEYPRESS, keypress_hook);
+		ndebug("initialized, current burst mode: " + burst_mode);
 	end
 
    /*end else if (get_sfall_global_int("p_ordbtn") > 0) then begin // commands from UI
@@ -205,7 +278,7 @@ end
       call check_party_orders;
       set_sfall_global("p_ordbtn", 0); */
 
-	if(not combat_is_initialized)then begin
+	if not combat_is_initialized then begin
 		// NPC Looter system here //
 		if(oLooter)then begin
 			if((looting_stage == ls_STOP) and (tLooting_time <= game_time))then begin // Looting done
@@ -300,11 +373,16 @@ end
 #define isHotkeyPressed(x)	(hotkey_pressed_now(x, key))
 
 procedure keypress_hook begin
-   variable iParty_members,
-            pressed := get_sfall_arg,
-            key := get_sfall_arg;
+  variable iParty_members,
+           pressed := get_sfall_arg,
+           key := get_sfall_arg;
 
-   if invalid_game_mode then return;
+  if invalid_game_mode then return;
+
+  if key_pressed(burst_key) then begin
+    call toggle_burst;
+    return;
+  end
 
    if (pressed) then begin
       iParty_members := metarule(16, 0) -1;
