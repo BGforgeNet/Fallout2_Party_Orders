@@ -4,21 +4,23 @@
 /* Contact: PM at http://www.nma-fallout.com/forum */
 procedure start;
 
-#include "..\HEADERS\sfall.h"
-#include "..\HEADERS\ANIMCOMD.H"
-#include "..\HEADERS\Zcustom.H"
-#include "..\HEADERS\dik.h"
-#include "..\HEADERS\define_extra.h"
-#include "lib.math.h"
-#include "lib.misc.h"
-#include "lib.inven.h"
+#include "..\headers\sfall\sfall.h"
+#include "..\headers\animcomd.h"
+#include "..\headers\itempid.h"
+#include "..\headers\party_op\zcustom.h"
+#include "..\headers\party_op\party_op.h"
+#include "..\headers\sfall\dik.h"
+#include "..\headers\sfall\define_extra.h"
+#include "..\headers\sfall\lib.math.h"
+#include "..\headers\sfall\lib.misc.h"
+#include "..\headers\sfall\lib.inven.h"
 
 #define ini_file					"party_op.ini|"
-#define sec_SETTINGS				(ini_file+"SETTINGS|")
-#define sec_NPC					(ini_file+"NPC|")
-#define sec_NPC_NAME				(ini_file+"N_NPC|")
+#define sec_SETTINGS			(ini_file+"SETTINGS|")
+#define sec_NPC				    (ini_file+"NPC|")
+#define sec_NPC_NAME			(ini_file+"N_NPC|")
 #define sec_LOOTER				(ini_file+"LOOTER|")
-#define sec_LOOTER_NAME			(ini_file+"N_LOOTER|")
+#define sec_LOOTER_NAME		(ini_file+"N_LOOTER|")
 #define sec_MESSAGE				(ini_file+"MESSAGE|")
 #define sec_AMMO_AP				(ini_file+"AMMO_AP|")
 
@@ -28,21 +30,21 @@ procedure start;
 #define SPREAD_DIS	(5)	// Maximum distance at which the NPCs must be to spread out
 
 // Dude valid orders (current_order)
-#define co_NONE					(0)
-#define co_HOLSTER_WEAPON		(1)
-#define co_HEAL_YOURSELF		(2)
+#define co_NONE					  (0)
+#define co_HOLSTER_WEAPON	(1)
+#define co_HEAL_YOURSELF	(2)
 #define co_HEAL_ME				(3) // ** UNIMPLEMENTED ** //
-#define co_LOOT_CORPSES			(4)
+#define co_LOOT_CORPSES		(4)
 #define co_REGROUP				(5)
-#define co_SPREAD				(6)
-#define co_AMMO_TYPE			(9)
+#define co_SPREAD				  (6)
+#define co_AMMO_TYPE		  (9)
 
 // Looting System stages
 #define ls_STOP					(0)
 #define ls_SEEK					(1)
 #define ls_MOVE					(2)
 #define ls_LOOT					(3)
-#define ls_PICKUP					(4)
+#define ls_PICKUP				(4)
 
 // ** Main conditions for the looting system ** //
 // * Cond1: looter x can "reach" the corpse y <--- This condition needs to be better implemented...
@@ -158,7 +160,7 @@ end
 		if((loot_items<0)or(loot_items>1)) then loot_items := 1;
 		tWaiting_time := game_time;
 		iNum_npcs := 0;
-		oWho := 0;	
+		oWho := 0;
 		oLooter := 0;
 		tLooting_time := game_time;
 		looting_stage := ls_STOP;
@@ -166,15 +168,15 @@ end
 		set_sfall_global(SGVAR_LOOTER, 0);
 		set_sfall_global(SGVAR_CORPSE, 0);
 		set_sfall_global(SGVAR_GITEM0, 0);
-		
+
 		register_hook_proc(HOOK_KEYPRESS, keypress_hook);
 	end
-	
+
    /*end else if (get_sfall_global_int("p_ordbtn") > 0) then begin // commands from UI
       current_order := get_sfall_global_int("p_ordbtn");
       call check_party_orders;
       set_sfall_global("p_ordbtn", 0);*/
-      
+
 	if(not combat_is_initialized)then begin
 		// NPC Looter system here //
 		if(oLooter)then begin
@@ -504,7 +506,7 @@ end
 		end
 	end
 	if (weapon) then begin
-		
+
 	end
 	iNum_npcs += 1;
 	oWho := oC;
@@ -570,7 +572,7 @@ procedure loot_nearby_corpses(variable oC) begin
 	oLooter := oC;
 	L_list:=list_begin(LIST_CRITTERS);
 	while(L_list != 0) do begin
-		oCorpse:=list_next(L_list);		
+		oCorpse:=list_next(L_list);
 		if (oCorpse) then begin
 			if((is_critter_dead(oCorpse)))then begin
 				if(is_lootable(oCorpse))then begin
@@ -656,7 +658,7 @@ procedure set_actual_ammo_count(variable invenobj, variable item, variable newco
 begin
 	variable count;
 	variable packsize;
-	
+
 	if (newcount < 0) then newcount := 0;
 	packsize := get_proto_data(obj_pid(item), PRODATA_IT_AM_PACK_SIZE);
 	call set_item_count(invenobj, item, ceil(1.0*newcount / packsize));
@@ -721,7 +723,7 @@ end
 					call inc_ammo_count(oC, obj_pid(bestammo), -magsize);
 					reg_anim_clear(oC);
 					animate_stand_obj(oC);
-				end else 
+				end else
 					debug_msg("not found :(");
 			end
 		end
