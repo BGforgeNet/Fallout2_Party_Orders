@@ -9,12 +9,12 @@
 ### Scripts included:
 * gl_ptyop.ssl -> Party Orders Add-on global script (2)
 
-### sfall Global Variables used (4):
+### Sfall global variables used (5):
 * "p_looter"
 * "p_corpse"
 * "p_gitem0"
 * "p_opti01"
-
+* "p_burst8"
 
 Feel free to do whatever you want with this code.
 Contact info: PM to pelicano at No Mutants Allowed.

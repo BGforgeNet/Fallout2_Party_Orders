@@ -24,6 +24,9 @@ Hotkeys are configured in party_op.ini. Default keys:
 * T: (Dude) Pick up items or auto-loot bodies
 * 0: Switch behavior of T key between pick up items and loot bodies
 * Ctrl-B: Switch ammo type (AP/JHP)
+* D: Allow/forbid party members to use burst attacks. Forbidden by default.
+When allowed, it doesn't mean that they will always use burst, only that they *may*.
+However, if equipped with a weapon which has only burst mode, such as a minigun, this order will be ignored by this particular party member.
 
 ## Instalation
 * Download [latest release](https://github.com/BGforgeNet/fallout2-party-orders/releases/latest), unzip into Fallout 2 directory.
