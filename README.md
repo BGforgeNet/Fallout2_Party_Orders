@@ -4,16 +4,15 @@
  | [__Support__](https://github.com/BGforgeNet/fallout2-party-orders/issues)
  | [__Usage__](#usage)
  | [__Installation__](#installation)
- | [__Version history__](doc/version_history.md)
- | [__Modder notes__](doc/modder_notes.md)
 
 This mod allows to give orders to the companions using hotkeys.
 It was originally written by [pelicano](http://www.nma-fallout.com/members/pelicano.55013/),
 then expanded by [phobos2077](https://github.com/phobos2077/),
-finally this version includes some further fixes.
+finally this version includes some [further fixes](doc/version_history.md).
 
 Also see [mod thread](http://www.nma-fallout.com/threads/fallout-2-party-orders-add-on.192323/) on NMA
 and its [wiki page](https://falloutmods.fandom.com/wiki/Party_Orders_add-on).
+Notes for modders are [here](doc/modder_notes.md).
 
 ## Usage
 Hotkeys are configured in party_op.ini. Default keys:
