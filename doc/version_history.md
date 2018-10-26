@@ -1,10 +1,10 @@
 ### Version History
 * v1.1
-  - Scorpion tais and gecko skins now also get looted automatically
-  - Pickup routine no longer tries to pick up bookshelves
+  - Scorpion tais and gecko skins now also get looted automatically.
+  - Pickup routine no longer tries to pick up bookshelves.
   - Orders will only be sent when in valid game mode. For example, saving game under name "save0" will not trigger dude loot behaviour switch.
 * v1.0d + [EcCo 0.6.2](http://www.nma-fallout.com/threads/economy-and-combat-rebalance-mod.193578/) update
-  - Added Switch Ammo hotkey
+  - Added Switch Ammo hotkey.
 * v1.0d
   - Added Scatter Order [X]. Party members within 5 hexes from the PC will run 4-6 tiles away.
   - Added the option for the PC to auto-loot bodies [T]. Can be turned on/off pressing "0".
