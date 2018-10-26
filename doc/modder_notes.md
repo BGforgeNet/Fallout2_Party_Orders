@@ -19,8 +19,7 @@
 Feel free to do whatever you want with this code.
 Contact info: PM to pelicano at No Mutants Allowed.
 
-(1) sfall Modders pack downloadable from http://sourceforge.net/projects/sfall/files/
-(2) Compiled with sfall Modders Pack v2.8
-
+# sfall Modders pack downloadable from http://sourceforge.net/projects/sfall/files/
+# Compiled with sfall Modders Pack v2.8
 
 pelicano
