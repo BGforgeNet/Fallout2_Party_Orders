@@ -32,6 +32,14 @@ procedure start;
 
 #define m_str(x)				get_ini_string(sec_MESSAGE + (x))
 
+#define invalid_game_mode ( \
+  get_game_mode bwand \
+  ( WORLDMAP bwor DIALOG bwor ESCMENU bwor SAVEGAME bwor LOADGAME \
+  bwor OPTIONS bwor HELP bwor CHARSCREEN bwor PIPBOY bwor INVENTORY \
+  bwor AUTOMAP bwor INTFACEUSE bwor INTFACELOOT bwor BARTER \
+  bwor HEROWIN bwor DIALOGVIEW) \
+)
+
 #define REGROUP_DIS	(3)	// Minimum distance at which the NPCs must be to regroup
 #define SPREAD_DIS	(5)	// Maximum distance at which the NPCs must be to spread out
 
@@ -295,6 +303,9 @@ procedure keypress_hook begin
    variable iParty_members,
             pressed := get_sfall_arg,
             key := get_sfall_arg;
+
+   if invalid_game_mode then return;
+
    if (pressed) then begin
       iParty_members := metarule(16, 0) -1;
    	if (isHotkeyPressed(holster_key)) then begin	// H: Holster weapons
