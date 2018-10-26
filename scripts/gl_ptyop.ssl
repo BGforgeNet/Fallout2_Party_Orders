@@ -1,0 +1,701 @@
+/* PARTY ORDERS ADD ON SCRIPT v1.0d. */
+/* Author: pelicano */
+/* Contact: PM at http://www.nma-fallout.com/forum */
+procedure start;
+
+#include "..\HEADERS\sfall.h"
+#include "..\HEADERS\ANIMCOMD.H"
+#include "..\HEADERS\Zcustom.H"
+#include "..\HEADERS\dik.h"
+
+#define ini_file					"party_op.ini|"
+#define sec_SETTINGS				(ini_file+"SETTINGS|")
+#define sec_NPC					(ini_file+"NPC|")
+#define sec_NPC_NAME				(ini_file+"N_NPC|")
+#define sec_LOOTER				(ini_file+"LOOTER|")
+#define sec_LOOTER_NAME			(ini_file+"N_LOOTER|")
+#define sec_MESSAGE				(ini_file+"MESSAGE|")
+
+#define m_str(x)				get_ini_string(sec_MESSAGE+(x))
+
+#define REGROUP_DIS	(3)	// Minimum distance at which the NPCs must be to regroup
+#define SPREAD_DIS	(5)	// Maximum distance at which the NPCs must be to spread out
+
+// Dude valid orders (current_order)
+#define co_NONE					(0)
+#define co_HOLSTER_WEAPON		(1)
+#define co_HEAL_YOURSELF		(2)
+#define co_HEAL_ME				(3) // ** UNIMPLEMENTED ** //
+#define co_LOOT_CORPSES			(4)
+#define co_REGROUP				(5)
+#define co_SPREAD					(6)
+
+// Looting System stages
+#define ls_STOP					(0)
+#define ls_SEEK					(1)
+#define ls_MOVE					(2)
+#define ls_LOOT					(3)
+#define ls_PICKUP					(4)
+
+// ** Main conditions for the looting system ** //
+// * Cond1: looter x can "reach" the corpse y <--- This condition needs to be better implemented...
+// * Cond2: corpse y has items to loot
+// * Cond3: item z is not a container and is not active (i.e. dynamite ticking)
+// * Cond4: item z is within LOOT_ITEM_DISTANCE hexes from corpse y
+// * x: looter, y: corpse, z: item
+#define LOOT_MAX_DISTANCE		24
+#define LOOT_ITEM_DISTANCE		3
+#define LOOT_COND1(x,y)			(tile_distance_objs(x,y) <= LOOT_MAX_DISTANCE)
+#define LOOT_COND2(y)			(inven_count(y) != 0)
+// conditions for item looting
+#define LOOT_COND3(z)			(obj_item_subtype(z) != item_type_container) and (item_not_active(z))
+#define LOOT_COND4(y,z)			(tile_distance_objs(y,z)<=LOOT_ITEM_DISTANCE)
+// sec. cond.
+#define LOOT_COND1_1(x,y)		(LOOT_COND1(x,y) or LOOT_COND1(dude_obj,y))
+
+//#define def_looting_delay		(1 * ONE_GAME_SECOND)
+
+#define CTR_PID					(16777216)
+// get npc i from list l
+#define get_npc(i,l)				get_ini_setting((l)+(i))
+#define get_name(i,l)			get_ini_string((l)+(i))
+#define npc_ptr(x)				party_member_obj(x)
+
+variable begin
+	down;
+	holster_key; healing_key; looting_key; regroup_key; spread_key; pickup_key; switch_key;
+	loot_items;
+	current_order;
+	tWaiting_time;
+	oWho; iNum_npcs; sWho_name;
+	L_list;
+	oLooter;
+	oCorpse;
+	oGItem;
+	tLooting_time;
+	looting_stage;
+	cant_carry_all;
+	dude_picking_up; dude_pickup_delay;
+end
+
+// Main Order procedures
+procedure check_party_orders;
+procedure put_away_weapon(variable oC);
+procedure npc_heal_yourself(variable oC);
+procedure loot_nearby_corpses(variable oC);
+procedure npc_regroup(variable oC);
+procedure npc_spread(variable oC);
+// aux procedures
+procedure find_next_corpse;
+procedure cancel_looting;
+procedure get_ground_item_near_critter(variable oL, variable oC);	// ** TEST ** //
+// test old procedures
+procedure loot_n_drop(variable oL, variable oC);
+procedure test_(variable item, variable n);
+
+procedure start begin
+variable begin
+	iParty_members;
+	temp;
+end
+	if (game_loaded) then begin
+		set_global_script_repeat(1);
+		down := 0;
+		holster_key := get_ini_setting(sec_SETTINGS+"HolsterOrderKey");
+		healing_key := get_ini_setting(sec_SETTINGS+"HealingOrderKey");
+		looting_key := get_ini_setting(sec_SETTINGS+"LootingOrderKey");
+		regroup_key := get_ini_setting(sec_SETTINGS+"RegroupOrderKey");
+		spread_key :=  get_ini_setting(sec_SETTINGS+"SpreadOrderKey");
+		pickup_key := get_ini_setting(sec_SETTINGS+"PickUpKey");
+		switch_key := get_ini_setting(sec_SETTINGS+"SwitchKey");
+		loot_items := get_ini_setting(sec_SETTINGS+"PLootNearbyItems");
+		if((holster_key<0)or(holster_key>88))then holster_key := DIK_H;
+		if((healing_key<0)or(healing_key>88))then healing_key := DIK_F;
+		if((looting_key<0)or(looting_key>88))then looting_key := DIK_G;
+		if((regroup_key<0)or(regroup_key>88))then regroup_key := DIK_R;
+		if((spread_key<0)or(spread_key>88))then spread_key := DIK_X;
+		if((pickup_key<0)or(pickup_key>88))then pickup_key := DIK_T;
+		if((switch_key<0)or(switch_key>88))then switch_key := DIK_0;
+		if((loot_items<0)or(loot_items>1)) then loot_items := 1;
+		tWaiting_time := game_time;
+		iNum_npcs := 0;
+		oWho := 0;	
+		oLooter := 0;
+		tLooting_time := game_time;
+		looting_stage := ls_STOP;
+		cant_carry_all := 0;
+		set_sfall_global("p_looter", 0);
+		set_sfall_global("p_corpse", 0);
+		set_sfall_global("p_gitem0", 0);
+	end
+	iParty_members := metarule(16,0) -1;
+	if(key_pressed(holster_key)) then begin	// H: Holster weapons
+		if((not down) and (tWaiting_time <= game_time)) then begin
+			down:=1;
+			if(iParty_members)then begin
+				if(not combat_is_initialized)then begin
+					current_order := co_HOLSTER_WEAPON;
+					call check_party_orders;
+					tWaiting_time := game_time + 1 * ONE_GAME_SECOND;
+				end
+			end
+		end
+	end else if(key_pressed(healing_key)) then begin	// F: Heal yourself
+		if((not down) and (tWaiting_time <= game_time)) then begin
+			down:=1;
+			if(iParty_members)then begin
+				if(not combat_is_initialized)then begin
+					tWaiting_time := game_time + 5 * ONE_GAME_SECOND;
+				end else begin
+					tWaiting_time := game_time + 1 * ONE_GAME_SECOND;
+				end
+				current_order := co_HEAL_YOURSELF;
+				call check_party_orders;
+			end
+		end
+	end else if(key_pressed(looting_key)) then begin	// G: Loot bodies/items - WIP -
+		if(not down)then begin
+			down:=1;
+			if((looting_stage == ls_STOP) or (oLooter == dude_obj))then begin
+				if(tWaiting_time <= game_time)then begin
+					if(iParty_members)then begin
+						if(not combat_is_initialized)then begin
+							current_order := co_LOOT_CORPSES;
+							call check_party_orders;
+							tWaiting_time := game_time + 3 * ONE_GAME_SECOND;
+						end
+					end
+				end
+			end else begin
+				call cancel_looting;
+			end
+		end
+	end else if(key_pressed(regroup_key)) then begin	// R: regroup party
+		if((not down) and (tWaiting_time <= game_time)) then begin
+			down:=1;
+			if(iParty_members)then begin
+				if(not combat_is_initialized)then begin
+					current_order := co_REGROUP;
+					call check_party_orders;
+					tWaiting_time := game_time + 5 * ONE_GAME_SECOND;
+				end
+			end
+		end
+	end else if(key_pressed(spread_key)) then begin	// X: Spread out party
+		if((not down) and (tWaiting_time <= game_time)) then begin
+			down:=1;
+			if(iParty_members)then begin
+				if(not combat_is_initialized)then begin
+					current_order := co_SPREAD;
+					call check_party_orders;
+					tWaiting_time := game_time + 3 * ONE_GAME_SECOND;
+				end
+			end
+		end
+	end else if(key_pressed(pickup_key)) then begin	// T: Pick up items or Loot bodies
+		if(not down)then begin
+			down:=1;
+			if(not combat_is_initialized)then begin
+				if (oLooter == dude_obj) then begin
+					call cancel_looting;
+				end else if(get_sfall_global_int("p_opti01") == 1)then begin
+					if (oLooter) then call cancel_looting;
+					call loot_nearby_corpses(dude_obj);
+				end else begin
+					dude_picking_up := 1;
+					dude_pickup_delay := game_time;
+				end
+			end
+			//call test_(obj_carrying_pid_obj(dude_obj,41),obj_is_carrying_obj_pid(dude_obj,41));
+			/*temp := get_ground_item_near_critter(dude_obj, dude_obj);
+			if(temp)then begin
+				set_self(dude_obj);
+				pickup_obj(temp);
+			end*/
+		end
+	end else if(key_pressed(switch_key)) then begin	// 0: Turn dude loot bodies on/off
+		if(not down)then begin
+			down:=1;
+
+			temp := get_sfall_global_int("p_opti01");
+			if(temp == 1)then begin
+				temp := 0;
+				set_sfall_global("p_opti01", temp);
+				float_msg(dude_obj,m_str(0),FLOAT_MSG_RED);
+			end else begin
+				temp := 1;
+				set_sfall_global("p_opti01", temp);
+				float_msg(dude_obj,m_str(1),FLOAT_MSG_GREEN);
+			end
+			//display_msg("p_opt1: "+get_sfall_global_int("p_opti01"));
+		end
+	end else begin // always running...
+		down := 0;
+		if(not combat_is_initialized)then begin
+			// NPC Looter system here //
+			if(oLooter)then begin
+				if((looting_stage == ls_STOP) and (tLooting_time <= game_time))then begin // Looting done
+					if(not_party_member(oLooter))then party_add(oLooter);
+					if(oLooter == dude_obj)then
+						temp := FLOAT_MSG_BLUE;
+					else
+						temp := FLOAT_MSG_YELLOW;
+					if(cant_carry_all == 1)then
+						float_msg(oLooter,m_str((10+co_LOOT_CORPSES)*100 +15),temp);
+					else if(cant_carry_all == 2)then
+						float_msg(oLooter,m_str((10+co_LOOT_CORPSES)*100 +random(20,24)),temp);
+					oLooter := 0;
+					set_sfall_global("p_looter", 0);
+					cant_carry_all := 0;
+				end else if((looting_stage == ls_SEEK) and (tLooting_time <= game_time))then begin
+					//float_msg(oLooter,"Stage Seek",0);
+					//float_msg(oCorpse,"Seek Here",0);
+					looting_stage += 1;
+					tLooting_time := game_time; // + 1 * ONE_GAME_SECOND; // time to begin to run to a corpse
+				end else if((looting_stage == ls_MOVE) and (tLooting_time <= game_time))then begin
+					//float_msg(oLooter,"Stage Move",0);
+					//float_msg(oCorpse,"Move Here",0);
+
+					// Remove looter from party, to remove distance bounds
+					if(is_party_member(oLooter))then party_remove(oLooter);
+					// Anim run to corpse
+					reg_anim_begin();
+					  reg_anim_obj_run_to_obj(oLooter, oCorpse, -1);
+					reg_anim_end();
+
+					tLooting_time := game_time; // + 2 * ONE_GAME_SECOND; // time between run checks
+
+					if(tile_distance_objs(oLooter, oCorpse) <= 1)then begin
+						looting_stage += 1;
+						tLooting_time := game_time; // time to begin to loot the corpse
+					end
+					tLooting_time := game_time; // time to begin to look for the next corpse
+				end else if((looting_stage == ls_LOOT) and (tLooting_time <= game_time))then begin
+					//float_msg(oLooter,"Stage Loot!",0);
+					//float_msg(oCorpse,"Loot Here",0);
+
+					if(inven_count(oCorpse)>0)then begin
+						// Anim pick up stuff
+						reg_anim_clear(oLooter);
+						reg_anim_begin();
+							reg_anim_animate (oLooter, ANIM_magic_hands_ground, -1);
+						reg_anim_end();
+						// Inventory checks and item grabbing stuff here //
+						if((loot_items) and (inven_free_amt(oLooter)<carry_amount(oCorpse)))then begin
+							obj_drop_everything(oCorpse);
+							cant_carry_all := 1;
+						end else begin
+							if (cant_carry_all == 0) then cant_carry_all := 2;
+							move_obj_inven_to_obj(oCorpse,oLooter);
+						end
+					end
+
+					tLooting_time := game_time; // + 1 * ONE_GAME_SECOND; // time to grab nearby items
+
+					oGItem := get_ground_item_near_critter(oLooter, oCorpse); // checks nearby items on the ground
+					looting_stage += 1;
+				end else if((looting_stage == ls_PICKUP) and (tLooting_time <= game_time))then begin
+					if(oGItem)then begin
+						set_self(oLooter);
+						pickup_obj(oGItem);
+						looting_stage -= 1; // come back one step and check for more items to pick up
+					end else begin
+						oCorpse := find_next_corpse;
+					end
+					tLooting_time := game_time + 1 * ONE_GAME_SECOND; // time to begin to look for the next corpse
+				end
+			end // end Loot System
+			// Dude picking stuff up -->
+			if(dude_picking_up == 1) and (dude_pickup_delay <= game_time) then begin
+				temp := get_ground_item_near_critter(dude_obj, dude_obj);
+				if temp then begin
+					set_self(dude_obj);
+					pickup_obj(temp);
+					dude_pickup_delay := game_time + 1 * ONE_GAME_SECOND;
+				end else begin
+					dude_picking_up := 0;
+				end
+			end
+		end else begin	//if combat mode then cancel looting (if active)
+			if(oLooter)then call cancel_looting;
+			//cancels dude picking stuff up
+			if dude_picking_up then dude_picking_up := 0;
+		end
+		//float_msg(dude_obj,game_time+" : "+tWaiting_time,0);
+	end
+end
+
+procedure check_party_orders begin
+variable begin
+	i; sList; sList_names; npc_pid;
+	oAux; iAux;
+	string;
+end
+	string := "";
+	iNum_npcs := 0;
+	oWho := 0;
+	sWho_name := "";
+	oAux := 0;
+	iAux := -1;
+	i := 0;
+	npc_pid := 0;
+	if(current_order == co_LOOT_CORPSES)then begin
+		sList := sec_LOOTER;
+		sList_names := sec_LOOTER_NAME;
+	end else begin
+		sList := sec_NPC;
+		sList_names := sec_NPC_NAME;
+	end
+	while(get_npc(i,sList) != -1)do begin
+		npc_pid := get_npc(i,sList);
+		//display_msg("ptr: "+npc_ptr(npc_pid)+" pid: "+npc_pid);
+		if(npc_ptr(npc_pid))then begin
+			if(current_order == co_HOLSTER_WEAPON)then begin
+				if(is_armed(npc_ptr(npc_pid)))then begin
+					if(get_name(i,sList_names) != "")then begin
+						sWho_name := get_name(i,sList_names);
+					end else begin
+						sWho_name := obj_name(npc_ptr(npc_pid));
+					end
+					call put_away_weapon(npc_ptr(npc_pid));
+				end
+			end else if(current_order == co_HEAL_YOURSELF)then begin
+				if((injured_how_much(npc_ptr(npc_pid))>=10) and (proto_data(npc_pid,11) == 0))then begin
+					if(get_name(i,sList_names) != "")then begin
+						sWho_name := get_name(i,sList_names);
+					end else begin
+						sWho_name := obj_name(npc_ptr(npc_pid));
+					end
+					call npc_heal_yourself(npc_ptr(npc_pid));
+				end
+			end else if(current_order == co_LOOT_CORPSES)then begin
+				//check who has the most carry capacity
+				if(inven_free_amt(npc_ptr(npc_pid))>iAux)then begin
+					iAux := inven_free_amt(npc_ptr(npc_pid));
+					oAux := npc_ptr(npc_pid);
+					if(get_name(i,sList_names) != "")then begin
+						sWho_name := get_name(i,sList_names);
+					end else begin
+						sWho_name := obj_name(npc_ptr(npc_pid));
+					end
+				end
+			end else if(current_order == co_REGROUP)then begin
+				if(tile_distance(tile_num(dude_obj),tile_num(npc_ptr(npc_pid)))>REGROUP_DIS)then begin
+					if(get_name(i,sList_names) != "")then begin
+						sWho_name := get_name(i,sList_names);
+					end else begin
+						sWho_name := obj_name(npc_ptr(npc_pid));
+					end
+					call npc_regroup(npc_ptr(npc_pid));
+				end
+			end else if(current_order == co_SPREAD)then begin
+				if(tile_distance(tile_num(dude_obj),tile_num(npc_ptr(npc_pid)))<SPREAD_DIS)then begin
+					if(get_name(i,sList_names) != "")then begin
+						sWho_name := get_name(i,sList_names);
+					end else begin
+						sWho_name := obj_name(npc_ptr(npc_pid));
+					end
+					call npc_spread(npc_ptr(npc_pid));
+				end
+			end
+		end
+		i += 1;
+	end
+	if(current_order==co_LOOT_CORPSES)then begin
+		if(oAux)then begin
+			if (oLooter == dude_obj) then call cancel_looting;
+			call loot_nearby_corpses(oAux);
+		end else begin
+			display_msg(m_str((10+current_order)*100 + 99));
+		end
+	end
+
+	// Dude Order floats
+	if((iNum_npcs) or (cant_carry_all))then begin
+		if(iNum_npcs>1)then begin
+			string := m_str((10+current_order)*100 +1);
+		end else begin
+			string := m_str((10+current_order)*100)+" " + sWho_name; // + obj_name(oWho);
+			if(current_order == co_REGROUP)then string := string + "!";
+			if(not cant_carry_all)then float_msg(oWho, m_str(random(100,105)), FLOAT_MSG_YELLOW);
+		end
+		float_msg(dude_obj, string, FLOAT_MSG_BLUE);
+	end else begin
+		//if(current_order==co_HEAL_YOURSELF)then display_msg("All party members are already healed.");
+		//if(current_order==co_HOLSTER_WEAPON)then display_msg("No party member holds any weapon.");
+	end
+
+	current_order := co_NONE;
+end
+
+procedure put_away_weapon(variable oC) begin
+
+	inven_unwield(oC);	// unwields without animation
+	reg_anim_clear(oC);
+	/*reg_anim_begin();
+	  reg_anim_animate (oC, ANIM_put_away, -1);
+	reg_anim_end();*/
+	//anim(oC, ANIM_put_away, 0);
+	//inven_unwield(oC);	//unwields with animation but weapon anim stays (not good)
+
+	iNum_npcs += 1;
+	oWho := oC;
+end
+procedure npc_heal_yourself(variable oC) begin
+variable begin
+	roll_result;
+	roll_check;
+	amount_healed;
+	oHealing_item;
+	oDummy;
+end
+	reg_anim_clear(oC);
+	reg_anim_begin();
+
+	if((injured_how_much(oC)>=60)and(obj_is_carrying_obj_pid(oC,144)))then begin
+		oHealing_item := obj_carrying_pid_obj(oC,144);
+		//set_self(oC);
+		//use_obj_on_obj(oHealing_item,oC);
+		rm_obj_from_inven(oC, oHealing_item);
+		destroy_object(oHealing_item);
+		amount_healed := 75;
+		critter_heal(oC,amount_healed);
+		critter_dmg(oC,9,(DMG_normal_dam BWOR DMG_BYPASS_ARMOR BWOR DMG_NOANIMATE));
+		reg_anim_animate (oC, ANIM_magic_hands_middle, -1);
+		display_msg(obj_name(oC)+" " + m_str((10+current_order)*100 +10));
+	end else if((current_hp_per(oC)<=75) and (not combat_is_initialized))then begin
+		roll_result := random(0,100) + medic_skill(oC);
+		roll_check := random(0,100);
+		//display_msg(obj_name(oC)+" rolls "+roll_result+" vs "+roll_check);
+		if (roll_result>=roll_check) then begin
+			amount_healed := floor(20 * roll_result / 100);
+			critter_heal(oC,amount_healed);
+			display_msg(obj_name(oC) + " "+m_str((10+current_order)*100 +12)
+				+" "+amount_healed+" "+m_str((10+current_order)*100 +13));
+		end else begin
+			display_msg(obj_name(oC) + " "+m_str((10+current_order)*100 +14));
+		end
+		reg_anim_animate (oC, ANIM_magic_hands_middle, -1);
+	end else if(obj_is_carrying_obj_pid(oC,40))then begin
+		oHealing_item := obj_carrying_pid_obj(oC,40);
+		//oDummy:=create_object_sid((16777216+52),tile_num(oC)+1,elevation(oC),3);
+		//set_self(oDummy);
+		//use_obj_on_obj(oHealing_item,dude_obj);
+		//destroy_object(oDummy);
+		rm_obj_from_inven(oC, oHealing_item);
+		destroy_object(oHealing_item);
+		amount_healed := random(10,20);
+		critter_heal(oC,amount_healed);
+		reg_anim_animate (oC, ANIM_magic_hands_middle, -1);
+		display_msg(obj_name(oC) + " "+m_str((10+current_order)*100 +11));
+	end else begin
+		display_msg(obj_name(oC) + " "+m_str((10+current_order)*100 +15));
+	end
+	reg_anim_end();
+
+	iNum_npcs += 1;
+	oWho := oC;
+end
+
+procedure loot_nearby_corpses(variable oC) begin
+	oLooter := oC;
+	L_list:=list_begin(LIST_CRITTERS);
+	while(L_list != 0) do begin
+		oCorpse:=list_next(L_list);		
+		if (oCorpse) then begin
+			if((is_critter_dead(oCorpse)))then begin
+				if(is_lootable(oCorpse))then begin
+					if(LOOT_COND1(dude_obj,oCorpse))then begin
+						oGItem := get_ground_item_near_critter(oC,oCorpse);
+						if((oGItem) or (LOOT_COND2(oCorpse)))then begin
+							set_sfall_global("p_looter", oLooter);
+							set_sfall_global("p_corpse", oCorpse);
+							iNum_npcs += 1;
+							oWho := oC;
+							looting_stage := ls_SEEK;
+							list_end(L_list);
+							L_list:=0;
+							return;
+						end
+					end
+				end
+			end
+		end else begin
+			set_sfall_global("p_corpse", 0);
+			looting_stage := ls_STOP;
+			list_end(L_list);
+			L_list:=0;
+			return;
+		end
+	end // end while
+end
+
+procedure npc_regroup(variable oC) begin
+variable begin
+	tile1;
+end
+	tile1 := tile_num_in_direction(tile_num(dude_obj),(random(0,5)),(2+random(0,1)));
+	reg_anim_clear(oC);
+	reg_anim_begin();
+	  reg_anim_obj_run_to_tile(oC, tile1, -1);
+	reg_anim_end();
+
+	iNum_npcs += 1;
+	oWho := oC;
+end
+
+procedure npc_spread(variable oC) begin
+variable begin
+	tile1; dir1;
+end
+	dir1 := rotation_to_tile(tile_num(dude_obj),tile_num(oC));
+	/*dir1 += random(-1,1);
+	if dir1 < 0 then dir1 := 5;
+	if dir1 > 5 then dir1 := 0;*/
+	tile1 := tile_num_in_direction(tile_num(oC), dir1, random(4, 6));
+	reg_anim_clear(oC);
+	reg_anim_begin();
+	  reg_anim_obj_run_to_tile(oC, tile1, -1);
+	reg_anim_end();
+
+	iNum_npcs += 1;
+	oWho := oC;
+end
+
+procedure find_next_corpse begin
+variable c;
+	L_list:=list_begin(LIST_CRITTERS);
+	while(L_list != 0) do begin
+		c:=list_next(L_list);
+		if(c)then begin
+			if((is_critter_dead(c)))then begin
+				if(is_lootable(c))then begin
+					if(LOOT_COND1_1(oLooter,c))then begin
+						oGItem := get_ground_item_near_critter(oLooter,c);
+						if((oGItem) or (LOOT_COND2(c)))then begin
+							set_sfall_global("p_corpse", c);
+							looting_stage := ls_SEEK;
+							list_end(L_list);
+							L_list:=0;
+							return (c);
+						end
+					end
+				end
+			end
+		end else begin
+			set_sfall_global("p_corpse", 0);
+			looting_stage := ls_STOP;
+			list_end(L_list);
+			L_list:=0;
+			return (0);
+		end
+	end // end while
+end
+procedure cancel_looting begin
+	if(oLooter)then begin
+		reg_anim_clear(oLooter);
+		if(not_party_member(oLooter))then party_add(oLooter);
+		looting_stage := ls_STOP;
+		if((iNum_npcs) and (oLooter != dude_obj))then begin
+			float_msg(dude_obj, m_str((10+co_LOOT_CORPSES)*100 +10)+" "+ sWho_name,FLOAT_MSG_BLUE);
+			float_msg(oLooter, m_str(random(100,105)),FLOAT_MSG_YELLOW);
+		end
+		oLooter := 0;
+		oCorpse := 0;
+		set_sfall_global("p_looter", 0);
+		set_sfall_global("p_corpse", 0);
+	end
+	if(L_list)then begin
+		list_end(L_list);
+		L_list:=0;
+	end
+end
+procedure get_ground_item_near_critter(variable oL, variable oC) begin
+variable begin
+	l_gitems; gitem;
+	iAmmo_count; iAmmo_weight; iClip_size;  num_clips;
+	iItem_weight;
+end
+	if(loot_items)then begin
+		l_gitems:=list_begin(LIST_GROUNDITEMS);
+		while(l_gitems != 0) do begin
+			gitem:=list_next(l_gitems);
+			if(gitem)then begin
+				//float_msg(gitem,obj_name(gitem)+": "+obj_item_subtype(gitem)+" Weight: "+(iItem_weight),0);
+				if(LOOT_COND3(gitem) and LOOT_COND4(oC,gitem))then begin
+					iItem_weight := proto_data(obj_pid(gitem),it_weight);
+					if(is_weapon(gitem))then begin
+						iAmmo_count := get_weapon_ammo_count(gitem);
+						if(iAmmo_count > 0)then begin
+							iAmmo_weight := proto_data(get_weapon_ammo_pid(gitem),it_weight);
+							iClip_size := get_proto_data(get_weapon_ammo_pid(gitem),40);
+							num_clips := floor(iAmmo_count/iClip_size);
+							if(iAmmo_count % iClip_size != 0) then num_clips += 1;
+							iItem_weight := iItem_weight + (iAmmo_weight * num_clips);
+						end
+					end
+					if(inven_free_amt(oL)>=iItem_weight)then begin
+						list_end(l_gitems);
+						l_gitems := 0;
+						set_sfall_global("p_gitem0", gitem);
+						if (cant_carry_all == 0) then cant_carry_all := 2;
+						return gitem;
+					end else begin
+						cant_carry_all := 1;
+					end
+				end
+			end else begin
+				list_end(l_gitems);
+				l_gitems := 0;
+				set_sfall_global("p_gitem0", 0);
+				return 0;
+			end
+		end // end while
+	end else begin
+		return 0;
+	end
+end
+// xxx BUGGY xxx //
+procedure loot_n_drop(variable oL, variable oC) begin
+/*
+variable begin
+	i; c; n; item; junk;
+end
+	display_msg("------------");
+	c := inven_count(oC);
+	while((inven_count(oC)-1) >= 0)do begin
+		i := (inven_count(oC)-1);
+		display_msg((i+1)+"/ ");
+		item := inven_ptr(oC,i);
+		n := obj_is_carrying_obj_pid(oC,obj_pid(item));
+		if((proto_data(obj_pid(item),13)*n) <= inven_free_amt(oL))then begin
+			display_msg(obj_name(oL)+" loots "+obj_name(item)+" ("+n+")");
+			add_mult_objs_to_inven(oL,item,n);
+			junk := rm_mult_objs_from_inven(oC,item,n);
+		end else begin
+			display_msg(obj_name(oL)+" drops "+obj_name(item)+" ("+n+")");
+			junk := rm_mult_objs_from_inven(oC, item, n);
+			move_to(item,tile_num(oL),elevation(oL));
+		end
+		//i += 1;
+	end
+	item := 0;
+	i := 0;
+	c := 0;
+	n := 0;
+	junk := 0;
+*/
+end
+procedure test_(variable item, variable n) begin
+variable begin
+	i; temp;
+end
+	display_msg(obj_name(item));
+	display_msg("----------------");
+	i:=0;
+	while(i <= 69) do begin
+		temp := get_proto_data(obj_pid(item),i);
+		if(temp != 0)then display_msg(i+": "+(temp));
+		i += 1;
+	end // end while
+end
