@@ -204,7 +204,6 @@
 #define is_weapon(x)				(obj_item_subtype(x) == item_type_weapon)
 // added by phobos2077:
 #define is_ammo(x)						(obj_item_subtype(x) == item_type_ammo)
-#define actual_ammo_count(crit, obj)   ((obj_is_carrying_obj_pid(crit, obj_pid(obj)) - 1)*get_proto_data(obj_pid(obj), PRODATA_IT_AM_PACK_SIZE) + get_weapon_ammo_count(obj))
 // end;
 
 #define is_lootable(x)			not(get_proto_data(obj_pid(x),ce_cflag) BWAND CFLG_DROP) //(CFLG_STEAL+CFLG_DROP)?
