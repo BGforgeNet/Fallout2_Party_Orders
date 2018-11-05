@@ -16,6 +16,7 @@ procedure start;
 #include "..\headers\sfall\lib.misc.h"
 #include "..\headers\sfall\lib.inven.h"
 #include "..\headers\sfall\lib.arrays.h"
+#include "..\headers\fo2tweaks\fo2tweaks.h"
 
 #define script_name "gl_ptyop"
 #define ndebug(message) debug_msg(script_name + ": " + message + "\n")
@@ -78,7 +79,7 @@ procedure start;
 #define LOOT_COND4(y, z)			(tile_distance_objs(y, z) <= LOOT_ITEM_DISTANCE)
 // sec. cond.
 #define LOOT_COND1_1(x, y)		(can_reach(x, y) or can_reach(dude_obj, y))
-
+#define within_loot_distance(x,y) (tile_distance_objs(x, y) <= LOOT_MAX_DISTANCE)
 //#define def_looting_delay		(1 * ONE_GAME_SECOND)
 
 #define CTR_PID					(16777216)
@@ -134,6 +135,7 @@ procedure check_party_orders;
 procedure put_away_weapon(variable oC);
 procedure npc_heal_yourself(variable oC);
 procedure loot_nearby_corpses(variable oC);
+procedure loot_nearby_containers(variable oC);
 procedure npc_regroup(variable oC);
 procedure npc_spread(variable oC);
 procedure npc_switch_ammo(variable oC, variable ammo_type);
@@ -157,9 +159,6 @@ procedure set_burst begin
   variable burst_disable;
   burst_mode := get_sfall_global_int(SGVAR_BURST);
 
-  if (true_party_size > 0) then begin
-    ndebug("setting burst mode to " + burst_mode);
-
     if burst_mode == 1 then begin
       burst_disable := 0;
     end else begin
@@ -169,10 +168,9 @@ procedure set_burst begin
     foreach who in party_member_list_critters begin
       if (who != dude_obj) then begin
         set_critter_burst_disable(who, burst_disable);
+        ndebug("set burst mode to " + burst_mode + " for " + obj_name(who));
       end
     end
-
-  end
 end
 
 procedure toggle_burst begin
@@ -225,12 +223,12 @@ procedure can_reach(variable source, variable target) begin
   //clear path
   if (tile_num(source) == tile_num(target)
   or len_array(path_find_to(source, tile_num(target), BLOCKING_TYPE_BLOCK)) != 0)
-  then return true;
+  then return tile_num(target);
 
   //adjacent tiles
   foreach direction in [0,1,2,3,4,5] begin
     tile_near := tile_num_in_direction(tile_num(target), direction, 1);
-    if len_array(path_find_to(source, tile_near, BLOCKING_TYPE_BLOCK)) != 0 then return true;
+    if len_array(path_find_to(source, tile_near, BLOCKING_TYPE_BLOCK)) != 0 then return tile_near;
   end
 
   //no path found
@@ -476,6 +474,7 @@ procedure keypress_hook begin
 				end else if (get_sfall_global_int(SGVAR_OPTI01) == 1) then begin
 					if (oLooter) then call cancel_looting;
 					call loot_nearby_corpses(dude_obj);
+					call loot_nearby_containers(dude_obj);
 				end else begin
 					dude_picking_up := 1;
 					dude_pickup_delay := game_time;
@@ -579,6 +578,7 @@ end
 		if(oAux)then begin
 			if (oLooter == dude_obj) then call cancel_looting;
 			call loot_nearby_corpses(oAux);
+			call loot_nearby_containers(oAux);
 		end else begin
 			display_msg(m_str((10 + current_order) * 100 + 99));
 		end
@@ -702,6 +702,47 @@ end
 
 	iNum_npcs += 1;
 	oWho := oC;
+end
+
+procedure run_to_tile(variable who, variable tile) begin
+  ndebug("running to container");
+//	reg_anim_clear(who);
+//	reg_anim_begin();
+//	  reg_anim_obj_run_to_tile(who, tile, -1);
+//	reg_anim_end();
+end
+
+procedure loot_container(variable who, variable cont, variable good_tile) begin
+  ndebug("looting a container");
+	reg_anim_clear(who);
+//	set_self(who);
+//	animate_run_to_tile(good_tile);
+///	set_self(who);
+//	animate_rotation( rotation_to_tile(tile_num(who), tile_num(cont)) );
+	reg_anim_begin();
+	  reg_anim_obj_run_to_tile(who, good_tile, -1);
+	  reg_anim_animate(who, ANIM_magic_hands_middle, -1);
+	reg_anim_end();
+end
+
+procedure loot_nearby_containers(variable looter) begin
+  variable good_tile, i, items := list_as_array(LIST_GROUNDITEMS);
+  ndebug("looting containers");
+  foreach i in items begin
+    ndebug("item is " + obj_name(i) + ", pid " + obj_pid(i) + ", is_container is " + is_container(i)
+      + " is_empty is " + is_empty(i) + ", can_reach is " + can_reach(looter, i) + ", looter is " + obj_name(looter));
+    good_tile := can_reach(looter, i);
+    if is_container(i)
+      and not is_empty(i)
+      and good_tile
+    then begin
+      ndebug("trying to loot " + obj_name(i));
+//      call run_to_tile(looter, good_tile);
+//      animate_rotation( rotation_to_tile(tile_num(looter), tile_num(i)) );
+//      animate_run_to_tile(good_tile);
+      call loot_container(looter, i, good_tile);
+    end
+  end
 end
 
 procedure loot_nearby_corpses(variable oC) begin
