@@ -2,6 +2,7 @@
 * v1.11
   - Added burst hotkey (merged from FO2tweaks).
   - Better search, looters will no longer try to pick up items path to which is blocked.
+  - Fixed looting for RP NPCs
 * v1.1
   - Scorpion tais and gecko skins now also get looted automatically.
   - Pickup routine no longer tries to pick up bookshelves.
