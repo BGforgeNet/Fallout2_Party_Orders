@@ -54,3 +54,46 @@
 #define PRODATA_CR_KILL_EXP   (392)
 #define PRODATA_CR_KILL_TYPE  (396)
 
+#define actual_ammo_count(crit, obj)   ((obj_is_carrying_obj_pid(crit, obj_pid(obj)) - 1)*get_proto_data(obj_pid(obj), PRODATA_IT_AM_PACK_SIZE) + get_weapon_ammo_count(obj))
+
+procedure set_item_count(variable invenobj, variable item, variable newcount)
+begin
+	variable begin
+		count;
+		newitem;
+	end
+	count := obj_is_carrying_obj_pid(invenobj, obj_pid(item));
+	if (newcount > count) then begin
+		newitem := create_object_sid(obj_pid(item), 0, 0, -1);
+		add_mult_objs_to_inven(invenobj, newitem, newcount - count);
+	end else if (newcount < count) then begin
+		count := rm_mult_objs_from_inven(invenobj, item, count - newcount);
+		destroy_object(item);
+	end
+end
+
+procedure set_actual_ammo_count(variable invenobj, variable item, variable newcount)
+begin
+	variable count;
+	variable packsize;
+
+	if (newcount < 0) then newcount := 0;
+	packsize := get_proto_data(obj_pid(item), PRODATA_IT_AM_PACK_SIZE);
+	call set_item_count(invenobj, item, ceil(1.0 * newcount / packsize));
+	// if number of items reduced, object reference will be different
+	item := obj_carrying_pid_obj(invenobj, obj_pid(item));
+	if (item and newcount % packsize > 0) then set_weapon_ammo_count(item, newcount % packsize);
+end
+
+// change ammo amount by certain value
+procedure inc_ammo_count(variable invenobj, variable ammopid, variable inc)
+begin
+	variable item;
+	item := obj_carrying_pid_obj(invenobj, ammopid);
+	if (item == 0) then begin
+		item := create_object_sid(ammopid, 0, 0, -1);
+    	add_obj_to_inven(invenobj, item);
+    end
+    call set_actual_ammo_count(invenobj, item, actual_ammo_count(invenobj, item) + inc);
+end
+
