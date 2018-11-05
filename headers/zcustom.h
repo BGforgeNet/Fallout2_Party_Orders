@@ -200,8 +200,7 @@
 #define injured_how_much(x)	(get_critter_stat(x, STAT_max_hit_points) - get_critter_stat(x, STAT_current_hp))
 #define current_hp_per(x)		\
 	floor(get_critter_stat(x, STAT_current_hp) * 100/get_critter_stat(x, STAT_max_hit_points))
-#define is_critter_dead(x)		(critter_state(x) bwand CRITTER_IS_DEAD)
-#define is_critter_prone(x)	(critter_state(x) bwand CRITTER_IS_PRONE)
+
 #define is_weapon(x)				(obj_item_subtype(x) == item_type_weapon)
 // added by phobos2077:
 #define is_ammo(x)						(obj_item_subtype(x) == item_type_ammo)
@@ -216,10 +215,6 @@
 #define max_carry(x)					get_critter_stat(x,STAT_carry_amt)
 #define carry_amount(x)				has_trait(TRAIT_OBJECT, x, OBJECT_CUR_WEIGHT)
 #define inven_free_amt(x)			(max_carry(x) - carry_amount(x))
-#define obj_drop_everything(x)	metarule(42, x)
-#define inven_unwield(x)			metarule(43, x)
-#define inven_ptr(obj,pos)			inven_cmds(obj,13,pos)
-#define inven_count(x)				critter_inven_obj(x, -2)
 
 // not an active item
 #define item_not_active_pid(x)	not((x>=205)and(x<=210))

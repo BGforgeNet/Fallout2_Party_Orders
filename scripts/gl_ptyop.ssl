@@ -199,6 +199,16 @@ procedure gamemode_hook_handler begin
   end
 end
 
+/*
+procedure can_loot(variable who) begin
+  variable kill_type := get_proto_data(obj_pid(who), PRODATA_CR_KILL_TYPE);
+  variable allowed_types := [KILL_TYPE_children_kills, KILL_TYPE_ghoul_kills,
+    KILL_TYPE_men_kills, KILL_TYPE_super_mutant_kills, KILL_TYPE_women_kills];
+  if is_in_array(kill_type, allowed_types) then return true;
+  return false;
+end
+*/
+
 procedure temp_array_from_ini(variable iniSec) begin
 	variable i := 0;
 	variable ar;
