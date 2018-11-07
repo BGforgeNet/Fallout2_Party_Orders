@@ -414,7 +414,7 @@ procedure keypress_hook begin
 
   if invalid_game_mode then return;
 
-  if key_pressed(burst_key) then begin
+  if pressed and hotkey_pressed_now(burst_key, key) then begin
     call toggle_burst;
     return;
   end
