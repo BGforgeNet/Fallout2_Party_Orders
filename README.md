@@ -30,6 +30,6 @@ However, if equipped with a weapon which has only burst mode, such as a minigun,
 
 ## Instalation
 * Download [latest release](https://github.com/BGforgeNet/fallout2-party-orders/releases/latest), unzip into Fallout 2 directory.
-Party_op.ini should go right into Fallout 2 root, gl_ptyop.int into data/scripts.
+Party_op.ini goes right into Fallout 2 root, gl_ptyop.int into data/scripts.
 * The script requires [Sfall](https://github.com/phobos2077/sfall/releases) to function. That's ddraw.dll in Fallout 2 root directory.
 If you use killap's Unofficial Patch or Restoration Project, you should already have it.
