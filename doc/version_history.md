@@ -1,6 +1,6 @@
 ### Version History
 * v1.2
-  - Added burst hotkey (merged from FO2tweaks).
+  - Added burst hotkey (merged from [FO2tweaks](https://github.com/BGforgeNet/fo2tweaks)).
   - Better search, looters will no longer try to pick up items path to which is blocked.
   - Fixed looting for RP NPCs
 * v1.1
