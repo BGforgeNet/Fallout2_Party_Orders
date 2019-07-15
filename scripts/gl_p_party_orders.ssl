@@ -5,17 +5,20 @@
 procedure start;
 
 #include "..\headers\define.h"
-#include "..\headers\sfall\sfall.h"
 #include "..\headers\animcomd.h"
 #include "..\headers\itempid.h"
-#include "..\headers\party_op\zcustom.h"
-#include "..\headers\party_op\party_op.h"
+
+#include "..\headers\party_orders\zcustom.h"
+#include "..\headers\party_orders\party_op.h"
+
+#include "..\headers\sfall\sfall.h"
 #include "..\headers\sfall\dik.h"
 #include "..\headers\sfall\define_extra.h"
 #include "..\headers\sfall\lib.math.h"
 #include "..\headers\sfall\lib.misc.h"
 #include "..\headers\sfall\lib.inven.h"
 #include "..\headers\sfall\lib.arrays.h"
+
 #include "..\headers\fo2tweaks\fo2tweaks.h"
 
 #define script_name "gl_ptyop"
