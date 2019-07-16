@@ -1,5 +1,7 @@
 ## Party Orders addon for Fallout 2
 
+[![Build Status](https://travis-ci.org/BGforgeNet/fallout2-party-orders.svg?branch=master)](https://travis-ci.org/BGforgeNet/fallout2-party-orders)
+
 [__Download__](https://github.com/BGforgeNet/fallout2-party-orders/releases/latest)
  | [__Installation__](#installation)
  | [__Usage__](#usage)
@@ -17,8 +19,8 @@ Notes for modders are [here](doc/modder_notes.md).
 ## Instalation
 * Download [latest release](https://github.com/BGforgeNet/fallout2-party-orders/releases/latest), unzip into Fallout 2 directory.
 Party_op.ini goes right into Fallout 2 root, gl_ptyop.int into data/scripts.
-* The script requires [Sfall](https://github.com/phobos2077/sfall/releases) to function. That's ddraw.dll in Fallout 2 root directory.
-If you use killap's Unofficial Patch or Restoration Project, you should already have it.
+* The script requires [sfall](https://github.com/phobos2077/sfall/releases) to function. That's `ddraw.dll` in Fallout 2 root directory.
+If you use killap's [Unofficial Patch](https://github.com/BGforgeNet/Fallout2_Unofficial_Patch) or [Restoration Project](https://github.com/BGforgeNet/Fallout2_Restoration_Project), you should already have it.
 
 ## Usage
 Hotkeys are configured in party_op.ini. Default keys:
