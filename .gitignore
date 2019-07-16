@@ -1,0 +1,8 @@
+*.tmp
+*.err
+*.int
+external
+extra/bin
+*.rar
+*.7z
+data
