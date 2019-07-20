@@ -1,4 +1,7 @@
 ### Version History
+* v1.3
+  - Packaged as a .dat.
+  - Updated sfall to 4.1.9.1.
 * v1.2
   - Added burst hotkey (merged from [FO2tweaks](https://github.com/BGforgeNet/fo2tweaks)).
   - Better search, looters will no longer try to pick up items path to which is blocked.
