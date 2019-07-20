@@ -15,10 +15,11 @@ script:
 
 env:
   global:
-    - sfall_version=4.1.9
-    - mpack_version=4.1.9
-    - mods_dir=mods
+    - sfall_version=4.1.9.1
+    - mpack_version=4.1.9.1
     - mod_name=party_orders
+    - mods_dir=mods
+    - extra_dir=extra
     - bin_dir=extra/bin
 
 deploy:
@@ -30,4 +31,3 @@ deploy:
   on:
     tags: true
     branch: master
-  draft: true
