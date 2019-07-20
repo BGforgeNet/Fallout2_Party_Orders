@@ -18,12 +18,10 @@ Notes for modders are [here](doc/modder_notes.md).
 
 ## Instalation
 * Download [latest release](https://github.com/BGforgeNet/fallout2-party-orders/releases/latest), unzip into Fallout 2 directory.
-Party_op.ini goes right into Fallout 2 root, gl_ptyop.int into data/scripts.
-* The script requires [sfall](https://github.com/phobos2077/sfall/releases) to function. That's `ddraw.dll` in Fallout 2 root directory.
-If you use killap's [Unofficial Patch](https://github.com/BGforgeNet/Fallout2_Unofficial_Patch) or [Restoration Project](https://github.com/BGforgeNet/Fallout2_Restoration_Project), you should already have it.
+  Overwriting `ddraw.dll` is not necessary.
 
 ## Usage
-Hotkeys are configured in party_op.ini. Default keys:
+Hotkeys are configured in `mods/party_orders.ini`. Default keys:
 * F: Heal
 * G: Loot
 * H: Holster weapon
