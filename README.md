@@ -17,7 +17,7 @@ and its [wiki page](https://falloutmods.fandom.com/wiki/Party_Orders_add-on).
 Notes for modders are [here](doc/modder_notes.md).
 
 ## Instalation
-* Download [latest release](https://github.com/BGforgeNet/fallout2-party-orders/releases/latest), unzip into Fallout 2 directory.
+* Download the [latest release](https://github.com/BGforgeNet/fallout2-party-orders/releases/latest), unzip into Fallout 2 directory.
   Overwriting `ddraw.dll` is not necessary.
 
 ## Usage
