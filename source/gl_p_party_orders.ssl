@@ -24,13 +24,13 @@ procedure start;
 #define script_name "gl_p_party_orders"
 #define ndebug(message) debug_msg(script_name + ": " + message + "\n")
 
-#define ini_file					"party_op.ini|"
-#define ini_filename			"party_op.ini"
+#define ini_file			"mods\\party_orders.ini|"
+#define ini_filename			"mods\\party_orders.ini"
 #define sec_SETTINGS			(ini_file + "SETTINGS|")
-#define sec_NPC				    (ini_file + "NPC|")
+#define sec_NPC				(ini_file + "NPC|")
 #define sec_NPC_NAME			(ini_file + "N_NPC|")
-#define sec_LOOTER				(ini_file + "LOOTER|")
-#define sec_LOOTER_NAME		(ini_file + "N_LOOTER|")
+#define sec_LOOTER			(ini_file + "LOOTER|")
+#define sec_LOOTER_NAME			(ini_file + "N_LOOTER|")
 #define sec_MESSAGE				(ini_file + "MESSAGE|")
 #define sec_AMMO_AP				(ini_file + "AMMO_AP|")
 #define sec_LOOT_FORCE	  "LOOT_FORCE"
