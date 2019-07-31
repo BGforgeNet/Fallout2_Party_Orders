@@ -1,4 +1,6 @@
 ### Version History
+* v1.4
+  - Fixed script to look for new ini `mods\party_orders.ini`.
 * v1.3
   - Packaged as a .dat.
   - Updated sfall to 4.1.9.1.
