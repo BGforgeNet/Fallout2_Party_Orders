@@ -96,4 +96,3 @@ begin
     end
     call set_actual_ammo_count(invenobj, item, actual_ammo_count(invenobj, item) + inc);
 end
-
