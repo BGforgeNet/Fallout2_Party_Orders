@@ -201,11 +201,6 @@
 #define current_hp_per(x)		\
 	floor(get_critter_stat(x, STAT_current_hp) * 100/get_critter_stat(x, STAT_max_hit_points))
 
-#define is_weapon(x)				(obj_item_subtype(x) == item_type_weapon)
-// added by phobos2077:
-#define is_ammo(x)						(obj_item_subtype(x) == item_type_ammo)
-// end;
-
 #define is_lootable(x)			not(get_proto_data(obj_pid(x),ce_cflag) BWAND CFLG_DROP) //(CFLG_STEAL+CFLG_DROP)?
 #define set_non_lootable(x)		\
 	set_proto_data(obj_pid(x),ce_cflag,(get_proto_data(obj_pid(x),ce_cflag) BWOR CFLG_DROP))
@@ -246,9 +241,6 @@
 
 #define attacker_behind_target(oA, oT)																			\
 		((tile_distance(tile_num(oA),tile_behind_obj_rng(oT, 2))<=2) and (tile_distance_objs(oA,oT)<=2))
-#define tile_behind_obj_rng(who, rng)																			\
-		(tile_num_in_direction(tile_num(who),((has_trait(1,who,10) + 3) % 6), rng))
-
 
 #define doctor_skill_higher(x)	(has_skill(x,SKILL_DOCTOR)>has_skill(x,SKILL_FIRST_AID))
 #define medic_skill(x)			(has_skill(x,SKILL_FIRST_AID+doctor_skill_higher(x)))
