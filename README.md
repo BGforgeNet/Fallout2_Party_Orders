@@ -1,12 +1,12 @@
 ## Party Orders addon for Fallout 2
 
 [![Translation status](https://tra.bgforge.net/widgets/fallout/-/party-orders/svg-badge.svg)](https://tra.bgforge.net/projects/fallout/party-orders/)
-[![Build Status](https://travis-ci.org/BGforgeNet/fallout2-party-orders.svg?branch=master)](https://travis-ci.org/BGforgeNet/fallout2-party-orders)
+[![Build Status](https://travis-ci.org/BGforgeNet/Fallout2_Party_Orders.svg?branch=master)](https://travis-ci.org/BGforgeNet/Fallout2_Party_Orders)
 
-[__Download__](https://github.com/BGforgeNet/fallout2-party-orders/releases/latest)
+[__Download__](https://github.com/BGforgeNet/Fallout2_Party_Orders/releases/latest)
  | [__Installation__](#installation)
  | [__Usage__](#usage)
- | [__Report issues__](https://github.com/BGforgeNet/fallout2-party-orders/issues)
+ | [__Report issues__](https://github.com/BGforgeNet/Fallout2_Party_Orders/issues)
 
 This mod allows to give orders to the companions using hotkeys.
 It was originally written by [pelicano](http://www.nma-fallout.com/members/pelicano.55013/),
