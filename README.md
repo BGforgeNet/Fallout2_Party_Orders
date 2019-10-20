@@ -1,5 +1,6 @@
 ## Party Orders addon for Fallout 2
 
+[![Translation status](https://tra.bgforge.net/widgets/fallout/-/party-orders/svg-badge.svg)](https://tra.bgforge.net/projects/fallout/party-orders/)
 [![Build Status](https://travis-ci.org/BGforgeNet/fallout2-party-orders.svg?branch=master)](https://travis-ci.org/BGforgeNet/fallout2-party-orders)
 
 [__Download__](https://github.com/BGforgeNet/fallout2-party-orders/releases/latest)
