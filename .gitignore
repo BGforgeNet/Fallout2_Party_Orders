@@ -3,6 +3,8 @@
 *.int
 external
 extra/bin
+!extra/bin/dat2.exe
 *.rar
 *.7z
-data
+data/*
+!data/text

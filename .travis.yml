@@ -2,6 +2,14 @@ language: minimal
 dist: bionic
 sudo: false
 
+addons:
+  apt:
+    update: true
+    packages:
+      - p7zip
+      - wine-stable
+      - wine32
+
 cache:
   directories:
     - $HOME/.cache/build
