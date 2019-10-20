@@ -1,4 +1,5 @@
 #define SCRIPT_REALNAME "gl_p_party_orders"
+#define msg_file "p_party_orders.msg"
 
 procedure start;
 
@@ -24,7 +25,7 @@ procedure start;
 #define sec_PICKUP_SKIP   "PICKUP_SKIP"
 #define sec_burst_control (ini_file + "BURST_CONTROL|")
 
-#define m_str(x)				get_ini_string(sec_MESSAGE + (x))
+#define m_str(x)	message_str_game(msg, x)
 
 #define invalid_game_mode ( \
   get_game_mode bwand \
@@ -92,6 +93,11 @@ procedure start;
 #define SGVAR_OPTI01 "p_opti01"
 #define SGVAR_BURST "p_burst8"
 
+#define msg_burst_float 2000
+#define msg_noburst_float 2001
+#define msg_burst_display 2002
+#define msg_noburst_display 2003
+
 variable begin
 	down;
 	holster_key; healing_key; looting_key; regroup_key; spread_key; pickup_key; switch_key; ammotype_key;
@@ -110,11 +116,7 @@ variable begin
 	ap_ammo_list;
 	force_loot_list;
 	pickup_skip_list;
-
-	msg_burst_float;
-  msg_noburst_float;
-  msg_burst_display;
-  msg_noburst_display;
+	msg;
   burst_key;
   burst_mode;
 end
@@ -167,12 +169,12 @@ procedure toggle_burst begin
   burst_mode := get_sfall_global_int(SGVAR_BURST);
   ndebug("old burst mode is " + burst_mode);
   if burst_mode == 0 then begin
-    msg_float := msg_burst_float;
-    msg_display := msg_burst_display;
+    msg_float := m_str(msg_burst_float);
+    msg_display := m_str(msg_burst_display);
     burst_mode := 1;
   end else begin
-    msg_float := msg_noburst_float;
-    msg_display := msg_noburst_display;
+    msg_float := m_str(msg_noburst_float);
+    msg_display := m_str(msg_noburst_display);
     burst_mode := 0;
   end
   float_msg(dude_obj, msg_float, FLOAT_MSG_BLUE);
@@ -253,10 +255,6 @@ end
 		pickup_skip_list := get_ini_section_int(ini_filename, sec_PICKUP_SKIP);
 		fix_array(pickup_skip_list);
 
-    msg_burst_float := get_ini_string(sec_burst_control + "float_on");
-    msg_noburst_float := get_ini_string(sec_burst_control + "float_off");
-    msg_burst_display := get_ini_string(sec_burst_control + "display_on");
-    msg_noburst_display := get_ini_string(sec_burst_control + "display_off");
     burst_key := parse_hotkey(get_ini_string(sec_burst_control + "burst_key"));
     register_hook_proc(HOOK_GAMEMODECHANGE, gamemode_hook_handler);
     burst_mode := get_sfall_global_int(SGVAR_BURST);
@@ -284,6 +282,7 @@ end
 		set_sfall_global(SGVAR_GITEM0, 0);
 
 		register_hook_proc(HOOK_KEYPRESS, keypress_hook);
+		msg := add_extra_msg_file(msg_file);
 		ndebug("initialized, current burst mode: " + burst_mode);
 	end
 
