@@ -4,14 +4,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-12-16 14:12+0000\n"
+"Last-Translator: Magus <magus@bgforge.net>\n"
+"Language-Team: Spanish <https://tra.bgforge.net/projects/fallout/"
+"party-orders/es/>\n"
+"Language: spanish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: bgforge_po v.1.0.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.1.1\n"
 
 #: game/p_party_orders.msg:0
 msgid "** PC auto-loot OFF **"
@@ -23,7 +25,7 @@ msgstr ""
 
 #: game/p_party_orders.msg:100
 msgid "As you wish."
-msgstr ""
+msgstr "Como quieras."
 
 #: game/p_party_orders.msg:101
 msgid "Right away."
@@ -39,7 +41,7 @@ msgstr ""
 
 #: game/p_party_orders.msg:104
 msgid "You got it."
-msgstr ""
+msgstr "Me parece bien."
 
 #: game/p_party_orders.msg:105
 msgid "At once."
@@ -99,7 +101,7 @@ msgstr ""
 
 #: game/p_party_orders.msg:1420
 msgid "Done."
-msgstr ""
+msgstr "Hecho."
 
 #: game/p_party_orders.msg:1421
 msgid "I've finished."
