@@ -1,10 +1,10 @@
 {0}{}{** PC auto-loot OFF **}
 {1}{}{** PC auto-loot ON **}
-{100}{}{As you wish.}
+{100}{}{Como quieras.}
 {101}{}{Right away.}
 {102}{}{Okey.}
 {103}{}{At your orders.}
-{104}{}{You got it.}
+{104}{}{Me parece bien.}
 {105}{}{At once.}
 {1100}{}{Put your weapon away, }
 {1101}{}{Holster all your weapons, people.}
@@ -19,7 +19,7 @@
 {1400}{}{Loot the remains, }
 {1410}{}{That's enough. Come back, }
 {1415}{}{I don't have enough room for that stuff.}
-{1420}{}{Done.}
+{1420}{}{Hecho.}
 {1421}{}{I've finished.}
 {1422}{}{Done and done.}
 {1423}{}{That was all.}
