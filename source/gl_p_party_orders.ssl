@@ -20,7 +20,7 @@ procedure start;
 #define sec_MESSAGE				(ini_file + "MESSAGE|")
 #define sec_AMMO_AP				(ini_file + "AMMO_AP|")
 #define sec_LOOT_FORCE	  "LOOT_FORCE"
-#define sec_PICKUP_SKIP   "PICKUP_SKIP"
+#define sec_LOOT_SKIP   "LOOT_SKIP"
 #define sec_burst_control (ini_file + "BURST_CONTROL|")
 
 #define m_str(x)	message_str_game(msg, x)
@@ -112,8 +112,8 @@ variable begin
   cant_carry_all;
   dude_picking_up; dude_pickup_delay;
   ap_ammo_list;
-  force_loot_list;
-  pickup_skip_list;
+  loot_force_list;
+  loot_skip_list;
   msg;
   burst_key;
   burst_mode;
@@ -248,10 +248,10 @@ end
     switch_key := parse_hotkey(get_ini_string(sec_SETTINGS + "SwitchKey"));
     ammotype_key := parse_hotkey(get_ini_string(sec_SETTINGS + "AmmoTypeOrderKey"));
     loot_items := parse_hotkey(get_ini_string(sec_SETTINGS + "PLootNearbyItems"));
-    force_loot_list := get_ini_section_int(ini_filename, sec_LOOT_FORCE);
-    fix_array(force_loot_list);
-    pickup_skip_list := get_ini_section_int(ini_filename, sec_PICKUP_SKIP);
-    fix_array(pickup_skip_list);
+    loot_force_list := get_ini_section_int(ini_filename, sec_LOOT_FORCE);
+    fix_array(loot_force_list);
+    loot_skip_list := get_ini_section_int(ini_filename, sec_LOOT_SKIP);
+    fix_array(loot_skip_list);
 
     burst_key := parse_hotkey(get_ini_string(sec_burst_control + "burst_key"));
     register_hook_proc(HOOK_GAMEMODECHANGE, gamemode_hook_handler);
@@ -692,7 +692,7 @@ procedure loot_nearby_corpses(variable oC) begin
     oCorpse := list_next(L_list);
     if oCorpse then begin
       if is_critter_dead(oCorpse) then begin
-        if is_lootable(oCorpse) or is_in_array(obj_pid(oCorpse), force_loot_list) then begin
+        if is_lootable(oCorpse) or is_in_array(obj_pid(oCorpse), loot_force_list) then begin
           if can_reach(dude_obj, oCorpse) then begin
             oGItem := get_ground_item_near_critter(oC, oCorpse);
             if oGItem or LOOT_COND2(oCorpse) then begin
@@ -816,7 +816,7 @@ variable c;
     c := list_next(L_list);
     if(c)then begin
       if((is_critter_dead(c)))then begin
-        if is_lootable(c) or is_in_array(obj_pid(c), force_loot_list) then begin
+        if is_lootable(c) or is_in_array(obj_pid(c), loot_force_list) then begin
           if(LOOT_COND1_1(oLooter, c))then begin
             oGItem := get_ground_item_near_critter(oLooter, c);
             if((oGItem) or (LOOT_COND2(c)))then begin
@@ -870,7 +870,7 @@ end
       if gitem then begin
         if (LOOT_COND3(gitem)
           and LOOT_COND4(oC, gitem)
-          and not is_in_array(obj_pid(gitem), pickup_skip_list)
+          and not is_in_array(obj_pid(gitem), loot_skip_list)
           )
         then begin
           if not can_reach(oL, gitem) then continue;
