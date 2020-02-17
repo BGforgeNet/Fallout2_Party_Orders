@@ -153,10 +153,9 @@ procedure set_burst begin
     end
 
     foreach who in party_member_list_critters begin
-      if (who != dude_obj) then begin
-        set_critter_burst_disable(who, burst_disable);
-        ndebug("set burst mode to " + burst_mode + " for " + obj_name(who));
-      end
+      if who == dude_obj then continue;
+      set_critter_burst_disable(who, burst_disable);
+      ndebug("set burst mode to " + burst_mode + " for " + obj_name(who));
     end
 end
 
@@ -481,13 +480,13 @@ procedure keypress_hook begin
 end
 
 
-#define _setWhoName	sWho_name := obj_name(npc_ptr(npc_pid));
+#define _setWhoName	sWho_name := obj_name(who);
 
 procedure check_party_orders begin
 variable begin
-  i; sList; npc_pid;
+  i; npc_pid;
   oAux; iAux;
-  string;
+  string, who;
 end
   string := "";
   iNum_npcs := 0;
@@ -497,52 +496,46 @@ end
   iAux := -1;
   i := 0;
   npc_pid := 0;
-  if(current_order == co_LOOT_CORPSES)then begin
-    sList := sec_LOOTER;
-  end else begin
-    sList := sec_NPC;
-  end
-  while(get_npc(i, sList) != -1)do begin
-    npc_pid := get_npc(i, sList);
-    if(npc_ptr(npc_pid))then begin
-      if(current_order == co_HOLSTER_WEAPON)then begin
-        if(is_armed(npc_ptr(npc_pid)))then begin
-          _setWhoName
-          call put_away_weapon(npc_ptr(npc_pid));
-        end
-      end else if(current_order == co_HEAL_YOURSELF)then begin
-        // call npc_use_best_weapon(npc_ptr(npc_pid)); -- testing
-        if((injured_how_much(npc_ptr(npc_pid)) >= 10) and (proto_data(npc_pid, 11) == 0))then begin
-          _setWhoName
-          call npc_heal_yourself(npc_ptr(npc_pid));
-        end
-      end else if(current_order == co_LOOT_CORPSES)then begin
-        //check who has the most carry capacity
-        if(inven_free_amt(npc_ptr(npc_pid)) > iAux)then begin
-          iAux := inven_free_amt(npc_ptr(npc_pid));
-          oAux := npc_ptr(npc_pid);
-          _setWhoName
-        end
-      end else if(current_order == co_REGROUP)then begin
-        if(tile_distance(tile_num(dude_obj), tile_num(npc_ptr(npc_pid))) > REGROUP_DIS)then begin
-          _setWhoName
-          call npc_regroup(npc_ptr(npc_pid));
-        end
-      end else if(current_order == co_SPREAD)then begin
-        if(tile_distance(tile_num(dude_obj), tile_num(npc_ptr(npc_pid))) < SPREAD_DIS)then begin
-          _setWhoName
-          call npc_spread(npc_ptr(npc_pid));
-        end
-      end else if(current_order == co_AMMO_TYPE)then begin
+
+  foreach who in party_member_list_critters begin
+    if who == dude_obj then continue;
+    npc_pid := obj_pid(who);
+    if current_order == co_HOLSTER_WEAPON then begin
+      if is_armed(who) then begin
         _setWhoName
-        call npc_switch_ammo(npc_ptr(npc_pid), cur_ammo_type);
+        call put_away_weapon(who);
       end
+    end else if current_order == co_HEAL_YOURSELF then begin
+      if injured_how_much(who) >= 10 and proto_data(npc_pid, 11) == 0 then begin
+        _setWhoName
+        call npc_heal_yourself(who);
+      end
+    end else if current_order == co_LOOT_CORPSES then begin
+      //check who has the most carry capacity
+      if inven_free_amt(who) > iAux then begin
+        iAux := inven_free_amt(who);
+        oAux := who;
+        _setWhoName
+      end
+    end else if current_order == co_REGROUP then begin
+      if tile_distance(tile_num(dude_obj), tile_num(who)) > REGROUP_DIS then begin
+        _setWhoName
+        call npc_regroup(who);
+      end
+    end else if(current_order == co_SPREAD)then begin
+      if tile_distance(tile_num(dude_obj), tile_num(who)) < SPREAD_DIS then begin
+        _setWhoName
+        call npc_spread(who);
+      end
+    end else if current_order == co_AMMO_TYPE then begin
+      _setWhoName
+      call npc_switch_ammo(who, cur_ammo_type);
     end
-    i += 1;
   end
-  if(current_order == co_LOOT_CORPSES)then begin
-    if(oAux)then begin
-      if (oLooter == dude_obj) then call cancel_looting;
+
+  if current_order == co_LOOT_CORPSES then begin
+    if oAux then begin
+      if oLooter == dude_obj then call cancel_looting;
       call loot_nearby_corpses(oAux);
       call loot_nearby_containers(oAux);
     end else begin
@@ -551,7 +544,7 @@ end
   end
 
   // Dude Order floats
-  if((iNum_npcs) or (cant_carry_all))then begin
+  if (iNum_npcs) or (cant_carry_all) then begin
     i := (10 + current_order) * 100;
     if (current_order == co_AMMO_TYPE and cur_ammo_type == AMMO_TYPE_AP) then i += 10;
     if(iNum_npcs > 1)then begin
@@ -567,7 +560,6 @@ end
 end
 
 procedure put_away_weapon(variable oC) begin
-
   inven_unwield(oC);	// unwields without animation
   reg_anim_clear(oC);
   iNum_npcs += 1;
