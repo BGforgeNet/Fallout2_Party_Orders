@@ -67,7 +67,6 @@ procedure start;
 // sec. cond.
 #define LOOT_COND1_1(x, y)		(can_reach(x, y) or can_reach(dude_obj, y))
 #define within_loot_distance(x,y) (tile_distance_objs(x, y) <= LOOT_MAX_DISTANCE)
-//#define def_looting_delay		(1 * ONE_GAME_SECOND)
 
 // get npc i from list l
 #define get_npc(i, l)				get_ini_setting((l) + (i))
@@ -76,9 +75,9 @@ procedure start;
 #define AMMO_TYPE_JHP	0
 #define AMMO_TYPE_AP	1
 
-#define cur_ammo_type	get_sfall_global_int(SGVAR_AMMO_TYPE)
+#define cur_ammo_type  get_sfall_global_int(SGVAR_AMMO_TYPE)
 
-#define get_ammopid(i)				get_ini_setting(sec_AMMO_AP + (i))
+#define get_ammopid(i)  get_ini_setting(sec_AMMO_AP + (i))
 
 #define SGVAR_LOOTER	"p_looter"
 #define SGVAR_CORPSE	"p_corpse"
@@ -91,6 +90,12 @@ procedure start;
 #define msg_noburst_float 2001
 #define msg_burst_display 2002
 #define msg_noburst_display 2003
+
+#define acknowledge_order(who) \
+  if critter_kill_type(who) == KILL_TYPE_dog_kills then \
+    float_msg(who, m_str(random(110, 111)), FLOAT_MSG_YELLOW); \
+  else  \
+    float_msg(who, m_str(random(100, 105)), FLOAT_MSG_YELLOW);
 
 variable begin
   down;
@@ -127,6 +132,8 @@ procedure npc_spread(variable oC);
 procedure npc_switch_ammo(variable oC, variable ammo_type);
 procedure npc_use_best_weapon(variable oC);
 procedure can_reach(variable source, variable target);
+procedure can_loot(variable who);
+procedure party_has_looters;
 // aux procedures
 procedure find_next_corpse;
 procedure cancel_looting;
@@ -196,19 +203,43 @@ procedure temp_array_from_ini(variable iniSec) begin
   return ar;
 end
 
+// checks if there's at least someone who can loot
+procedure party_has_looters begin
+  variable who;
+  foreach who in party_member_list_critters begin
+    if who == dude_obj then continue;
+    if can_loot(who) then return true;
+  end
+  return false;
+end
+
 procedure can_loot(variable who) begin
   variable kill_type = critter_kill_type(who);
-  variable i_can_loot;
+  variable i_can;
   switch kill_type begin
-    case KILL_TYPE_children_kills: i_can_loot = true;
-    case KILL_TYPE_ghoul_kills: i_can_loot = true;
-    case KILL_TYPE_men_kills: i_can_loot = true;
-    case KILL_TYPE_robot_kills: i_can_loot = true; // Robobrain does store weapons and ammo somewhere, right?
-    case KILL_TYPE_super_mutant_kills: i_can_loot = true;
-    case KILL_TYPE_women_kills: i_can_loot = true;
-    default: i_can_loot = false;
+    case KILL_TYPE_children_kills: i_can = true;
+    case KILL_TYPE_ghoul_kills: i_can = true;
+    case KILL_TYPE_men_kills: i_can = true;
+    case KILL_TYPE_robot_kills: i_can = true; // Robobrain does store weapons and ammo somewhere, right?
+    case KILL_TYPE_super_mutant_kills: i_can = true;
+    case KILL_TYPE_women_kills: i_can = true;
+    default: i_can = false;
   end
-  return i_can_loot;
+  return i_can;
+end
+
+procedure can_heal(variable who) begin
+  variable kill_type = critter_kill_type(who);
+  variable i_can;
+  switch kill_type begin
+    case KILL_TYPE_children_kills: i_can = true;
+    case KILL_TYPE_ghoul_kills: i_can = true;
+    case KILL_TYPE_men_kills: i_can = true;
+    case KILL_TYPE_super_mutant_kills: i_can = true;
+    case KILL_TYPE_women_kills: i_can = true;
+    default: i_can = false;
+  end
+  return i_can;
 end
 
 procedure can_reach(variable source, variable target) begin
@@ -519,7 +550,10 @@ end
         call put_away_weapon(who);
       end
     end else if current_order == co_HEAL_YOURSELF then begin
-      if injured_how_much(who) >= 10 and proto_data(npc_pid, 11) == 0 then begin
+      if injured_how_much(who) >= 10
+        and proto_data(npc_pid, cr_body_type) == CR_BODY_BIPED
+        and can_heal(who)
+      then begin
         _setWhoName
         call npc_heal_yourself(who);
       end
@@ -552,7 +586,7 @@ end
       call loot_nearby_corpses(oAux);
       call loot_nearby_containers(oAux);
     end else begin
-      display_msg(m_str((10 + current_order) * 100 + 99));
+      if party_has_looters then display_msg(m_str((10 + current_order) * 100 + 99));
     end
   end
 
@@ -564,8 +598,10 @@ end
       string := m_str(i + 1);
     end else begin
       string := m_str(i) + " " + sWho_name; // + obj_name(oWho);
-      if(current_order == co_REGROUP)then string := string + "!";
-      if(not cant_carry_all)then float_msg(oWho, m_str(random(100, 105)), FLOAT_MSG_YELLOW);
+      if current_order == co_REGROUP then string := string + "!";
+      if not cant_carry_all then begin
+        acknowledge_order(oWho)
+      end
     end
     float_msg(dude_obj, string, FLOAT_MSG_BLUE);
   end

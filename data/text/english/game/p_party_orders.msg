@@ -10,6 +10,10 @@
 {104}{}{You got it.}
 {105}{}{At once.}
 
+# dogs
+{110}{}{Woof!}
+{111}{}{Woof! Woof!}
+
 # put weapon away
 {1100}{}{Put your weapon away, }
 {1101}{}{Holster all your weapons, people.}
