@@ -23,8 +23,8 @@ script:
 
 env:
   global:
-    - sfall_version=4.1.9.1
-    - mpack_version=4.1.9.1
+    - sfall_version=4.2.3
+    - mpack_version=4.2.3
     - mod_name=party_orders
     - mods_dir=mods
     - extra_dir=extra
