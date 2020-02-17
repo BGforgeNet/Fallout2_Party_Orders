@@ -15,8 +15,6 @@ procedure start;
 #define ini_file			"mods\\party_orders.ini|"
 #define ini_filename			"mods\\party_orders.ini"
 #define sec_SETTINGS			(ini_file + "SETTINGS|")
-#define sec_NPC				(ini_file + "NPC|")
-#define sec_LOOTER			(ini_file + "LOOTER|")
 #define sec_MESSAGE				(ini_file + "MESSAGE|")
 #define sec_AMMO_AP				(ini_file + "AMMO_AP|")
 #define sec_LOOT_FORCE	  "LOOT_FORCE"
@@ -196,6 +194,21 @@ procedure temp_array_from_ini(variable iniSec) begin
   end
   resize_array(ar, i);
   return ar;
+end
+
+procedure can_loot(variable who) begin
+  variable kill_type = critter_kill_type(who);
+  variable i_can_loot;
+  switch kill_type begin
+    case KILL_TYPE_children_kills: i_can_loot = true;
+    case KILL_TYPE_ghoul_kills: i_can_loot = true;
+    case KILL_TYPE_men_kills: i_can_loot = true;
+    case KILL_TYPE_robot_kills: i_can_loot = true; // Robobrain does store weapons and ammo somewhere, right?
+    case KILL_TYPE_super_mutant_kills: i_can_loot = true;
+    case KILL_TYPE_women_kills: i_can_loot = true;
+    default: i_can_loot = false;
+  end
+  return i_can_loot;
 end
 
 procedure can_reach(variable source, variable target) begin
@@ -512,7 +525,7 @@ end
       end
     end else if current_order == co_LOOT_CORPSES then begin
       //check who has the most carry capacity
-      if inven_free_amt(who) > iAux then begin
+      if inven_free_amt(who) > iAux and can_loot(who) then begin
         iAux := inven_free_amt(who);
         oAux := who;
         _setWhoName
