@@ -71,10 +71,8 @@ procedure start;
 #define within_loot_distance(x,y) (tile_distance_objs(x, y) <= LOOT_MAX_DISTANCE)
 //#define def_looting_delay		(1 * ONE_GAME_SECOND)
 
-#define CTR_PID					(16777216)
 // get npc i from list l
 #define get_npc(i, l)				get_ini_setting((l) + (i))
-#define get_name(i, l)			get_ini_string((l) + (i))
 #define npc_ptr(x)				party_member_obj(x)
 
 #define AMMO_TYPE_JHP	0
