@@ -16,9 +16,7 @@ procedure start;
 #define ini_filename			"mods\\party_orders.ini"
 #define sec_SETTINGS			(ini_file + "SETTINGS|")
 #define sec_NPC				(ini_file + "NPC|")
-#define sec_NPC_NAME			(ini_file + "N_NPC|")
 #define sec_LOOTER			(ini_file + "LOOTER|")
-#define sec_LOOTER_NAME			(ini_file + "N_LOOTER|")
 #define sec_MESSAGE				(ini_file + "MESSAGE|")
 #define sec_AMMO_AP				(ini_file + "AMMO_AP|")
 #define sec_LOOT_FORCE	  "LOOT_FORCE"
@@ -485,15 +483,11 @@ procedure keypress_hook begin
 end
 
 
-#define _setWhoName	if(get_name(i, sList_names) != "")then begin 	\
-            sWho_name := get_name(i, sList_names);   	\
-          end else begin                              	\
-            sWho_name := obj_name(npc_ptr(npc_pid));	\
-          end
+#define _setWhoName	sWho_name := obj_name(npc_ptr(npc_pid));
 
 procedure check_party_orders begin
 variable begin
-  i; sList; sList_names; npc_pid;
+  i; sList; npc_pid;
   oAux; iAux;
   string;
 end
@@ -507,10 +501,8 @@ end
   npc_pid := 0;
   if(current_order == co_LOOT_CORPSES)then begin
     sList := sec_LOOTER;
-    sList_names := sec_LOOTER_NAME;
   end else begin
     sList := sec_NPC;
-    sList_names := sec_NPC_NAME;
   end
   while(get_npc(i, sList) != -1)do begin
     npc_pid := get_npc(i, sList);
