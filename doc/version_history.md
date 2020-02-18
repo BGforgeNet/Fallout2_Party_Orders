@@ -1,5 +1,7 @@
 ## Version History
 
+### v1.6
+Fixed v1.5 bugs: talking dogs, healing robots.
 ### v1.5
   - Removed option to set NPC names in the ini.
   - All party members will carry out orders, not a pre-selected list.
