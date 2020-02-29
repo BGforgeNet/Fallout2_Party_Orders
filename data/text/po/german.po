@@ -15,164 +15,164 @@ msgstr ""
 
 #: game/p_party_orders.msg:0
 msgid "** PC auto-loot OFF **"
-msgstr ""
+msgstr "** Spieler Plündert automatisch: AUS **"
 
 #: game/p_party_orders.msg:1
 msgid "** PC auto-loot ON **"
-msgstr ""
+msgstr "** Spieler Plündert automatisch: AN **"
 
 #: game/p_party_orders.msg:100
 msgid "As you wish."
-msgstr ""
+msgstr "Wie du willst."
 
 #: game/p_party_orders.msg:101
 msgid "Right away."
-msgstr ""
+msgstr "Sofort."
 
 #: game/p_party_orders.msg:102
 msgid "Okey."
-msgstr ""
+msgstr "Klar doch.."
 
 #: game/p_party_orders.msg:103
 msgid "At your orders."
-msgstr ""
+msgstr "Wie du wünscht."
 
 #: game/p_party_orders.msg:104
 msgid "You got it."
-msgstr ""
+msgstr "Wird gemacht."
 
 #: game/p_party_orders.msg:105
 msgid "At once."
-msgstr ""
+msgstr "Sicher doch."
 
 #: game/p_party_orders.msg:110
 msgid "Woof!"
-msgstr ""
+msgstr "Wuff!"
 
 #: game/p_party_orders.msg:111
 msgid "Woof! Woof!"
-msgstr ""
+msgstr "Wuff! Wuff!"
 
 #: game/p_party_orders.msg:1100
 msgid "Put your weapon away, "
-msgstr ""
+msgstr "Steck deine Waffe weg, "
 
 #: game/p_party_orders.msg:1101
 msgid "Holster all your weapons, people."
-msgstr ""
+msgstr "Holstert eure Waffen, Leute."
 
 #: game/p_party_orders.msg:1200
 msgid "You should heal yourself, "
-msgstr ""
+msgstr "Du solltest dich heilen, "
 
 #: game/p_party_orders.msg:1201
 msgid "You should all heal yourselves now."
-msgstr ""
+msgstr "Ihr solltet euch jetzt alle heilen."
 
 #: game/p_party_orders.msg:1210
 msgid "uses a super stimpak."
-msgstr ""
+msgstr "benutzt ein Super-Stimpak."
 
 #: game/p_party_orders.msg:1211
 msgid "uses a stimpak."
-msgstr ""
+msgstr "benutzt ein Stimpak."
 
 #: game/p_party_orders.msg:1212
 msgid "heals"
-msgstr ""
+msgstr "heilt"
 
 #: game/p_party_orders.msg:1213
 msgid "hit points."
-msgstr ""
+msgstr "Trefferpunkte."
 
 #: game/p_party_orders.msg:1214
 msgid "fails to do any healing."
-msgstr ""
+msgstr "scheitert sich zu heilen."
 
 #: game/p_party_orders.msg:1215
 msgid "is out of healing supplies."
-msgstr ""
+msgstr "hat keine Heilmittel mehr."
 
 #: game/p_party_orders.msg:1400
 msgid "Loot the remains, "
-msgstr ""
+msgstr "Plünder die Überreste, "
 
 #: game/p_party_orders.msg:1410
 msgid "That's enough. Come back, "
-msgstr ""
+msgstr "Das reicht, komm zurück, "
 
 #: game/p_party_orders.msg:1415
 msgid "I don't have enough room for that stuff."
-msgstr ""
+msgstr "Ich habe nicht genug Platz für das ganze Zeug."
 
 #: game/p_party_orders.msg:1420
 msgid "Done."
-msgstr ""
+msgstr "Fertig."
 
 #: game/p_party_orders.msg:1421
 msgid "I've finished."
-msgstr ""
+msgstr "Ich bin fertig."
 
 #: game/p_party_orders.msg:1422
 msgid "Done and done."
-msgstr ""
+msgstr "Fix und fertig!"
 
 #: game/p_party_orders.msg:1423
 msgid "That was all."
-msgstr ""
+msgstr "Das war alles."
 
 #: game/p_party_orders.msg:1424
 msgid "No more to loot."
-msgstr ""
+msgstr "Nichts mehr zu plündern."
 
 #: game/p_party_orders.msg:1499
 msgid "All party members are overloaded and can't loot."
-msgstr ""
+msgstr "Alle Gruppenmitglieder sind überladen und können nicht mehr plündern."
 
 #: game/p_party_orders.msg:1500
 msgid "Come here,"
-msgstr ""
+msgstr "Komm her, "
 
 #: game/p_party_orders.msg:1501
 msgid "Everyone regroup!"
-msgstr ""
+msgstr "Alles neu gruppieren!"
 
 #: game/p_party_orders.msg:1600
 msgid "Give me some room,"
-msgstr ""
+msgstr "Mach mir Platz, "
 
 #: game/p_party_orders.msg:1601
 msgid "Everyone spread!"
-msgstr ""
+msgstr "Verteilt euch alle etwas!"
 
 #: game/p_party_orders.msg:1900
 msgid "Switch to normal bullets,"
-msgstr ""
+msgstr "Wechsel zu normaler Munition, "
 
 #: game/p_party_orders.msg:1901
 msgid "Everyone switch to normal bullets!"
-msgstr ""
+msgstr "Wechselt alle zu normaler Munition!"
 
 #: game/p_party_orders.msg:1910
 msgid "Switch to armor piercing bullets,"
-msgstr ""
+msgstr "Wechsel zu panzerbrechender Munition, "
 
 #: game/p_party_orders.msg:1911
 msgid "Everyone switch to armor piercing bullets!"
-msgstr ""
+msgstr "Wechselt alle zu panzerbrechender Munition!"
 
 #: game/p_party_orders.msg:2000
 msgid "Burst at will!"
-msgstr ""
+msgstr "Feuert was das Zeug hält!"
 
 #: game/p_party_orders.msg:2001
 msgid "Don't use bursts!"
-msgstr ""
+msgstr "Munition sparen Leute!"
 
 #: game/p_party_orders.msg:2002
 msgid "Party orders: burst allowed."
-msgstr ""
+msgstr "Gruppe: Salvenmodus erlaubt."
 
 #: game/p_party_orders.msg:2003
 msgid "Party orders: burst forbidden."
-msgstr ""
+msgstr "Gruppe: Salvenmodus verboten."
