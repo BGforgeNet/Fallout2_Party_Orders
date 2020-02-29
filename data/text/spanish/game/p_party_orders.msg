@@ -6,6 +6,8 @@
 {103}{}{At your orders.}
 {104}{}{Me parece bien.}
 {105}{}{At once.}
+{110}{}{Woof!}
+{111}{}{Woof! Woof!}
 {1100}{}{Put your weapon away, }
 {1101}{}{Holster all your weapons, people.}
 {1200}{}{You should heal yourself, }
