@@ -45,6 +45,14 @@ msgstr ""
 msgid "At once."
 msgstr ""
 
+#: game/p_party_orders.msg:110
+msgid "Woof!"
+msgstr ""
+
+#: game/p_party_orders.msg:111
+msgid "Woof! Woof!"
+msgstr ""
+
 #: game/p_party_orders.msg:1100
 msgid "Put your weapon away, "
 msgstr ""
