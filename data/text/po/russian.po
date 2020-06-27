@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-04-29 14:13+0000\n"
-"Last-Translator: Magus <magus@bgforge.net>\n"
+"PO-Revision-Date: 2020-06-28 14:28+0000\n"
+"Last-Translator: egornovivan <egornov.ivan@gmail.com>\n"
 "Language-Team: Russian <https://tra.bgforge.net/projects/fallout/"
 "party-orders/ru/>\n"
 "Language: russian\n"
@@ -26,7 +26,7 @@ msgstr "** Автолут главным персонажем включен **"
 
 #: game/p_party_orders.msg:100
 msgid "As you wish."
-msgstr "Как пожелаете."
+msgstr "Как пожелаешь."
 
 #: game/p_party_orders.msg:101
 msgid "Right away."
@@ -38,144 +38,150 @@ msgstr "Хорошо."
 
 #: game/p_party_orders.msg:103
 msgid "At your orders."
-msgstr ""
+msgstr "Как прикажешь."
 
 #: game/p_party_orders.msg:104
 msgid "You got it."
-msgstr ""
+msgstr "Ладно, ладно."
 
 #: game/p_party_orders.msg:105
 msgid "At once."
-msgstr ""
+msgstr "Сию минуту."
 
 #: game/p_party_orders.msg:110
 msgid "Woof!"
-msgstr ""
+msgstr "Гав!"
 
 #: game/p_party_orders.msg:111
 msgid "Woof! Woof!"
-msgstr ""
+msgstr "Гав! Гав!"
 
 #: game/p_party_orders.msg:1100
 msgid "Put your weapon away, "
-msgstr ""
+msgstr "Убери своё оружие, "
 
 #: game/p_party_orders.msg:1101
+#, fuzzy
 msgid "Holster all your weapons, people."
-msgstr ""
+msgstr "Народ, уберите всё своё оружие."
 
 #: game/p_party_orders.msg:1200
 msgid "You should heal yourself, "
-msgstr ""
+msgstr "Ты должен подлечить себя, "
 
 #: game/p_party_orders.msg:1201
 msgid "You should all heal yourselves now."
-msgstr ""
+msgstr "Вы все должны подлечить себя."
 
 #: game/p_party_orders.msg:1210
 msgid "uses a super stimpak."
-msgstr ""
+msgstr "использует суперстимулятор."
 
 #: game/p_party_orders.msg:1211
 msgid "uses a stimpak."
-msgstr ""
+msgstr "использует стимулятор."
 
 #: game/p_party_orders.msg:1212
 msgid "heals"
-msgstr ""
+msgstr "лечение"
 
 #: game/p_party_orders.msg:1213
 msgid "hit points."
-msgstr ""
+msgstr "ед. здоровья."
 
 #: game/p_party_orders.msg:1214
+#, fuzzy
 msgid "fails to do any healing."
-msgstr ""
+msgstr "не получается подлечиться."
 
 #: game/p_party_orders.msg:1215
 msgid "is out of healing supplies."
-msgstr ""
+msgstr "закончились лекарства."
 
 #: game/p_party_orders.msg:1400
+#, fuzzy
 msgid "Loot the remains, "
-msgstr ""
+msgstr "Собирай добро, "
 
 #: game/p_party_orders.msg:1410
+#, fuzzy
 msgid "That's enough. Come back, "
-msgstr ""
+msgstr "Хватит. Назад, "
 
 #: game/p_party_orders.msg:1415
+#, fuzzy
 msgid "I don't have enough room for that stuff."
-msgstr ""
+msgstr "У меня не хватает места для этих вещей."
 
 #: game/p_party_orders.msg:1420
 msgid "Done."
-msgstr ""
+msgstr "Готово."
 
 #: game/p_party_orders.msg:1421
 msgid "I've finished."
-msgstr ""
+msgstr "Я закончил."
 
 #: game/p_party_orders.msg:1422
 msgid "Done and done."
-msgstr ""
+msgstr "Все готово."
 
 #: game/p_party_orders.msg:1423
+#, fuzzy
 msgid "That was all."
-msgstr ""
+msgstr "Вот и всё."
 
 #: game/p_party_orders.msg:1424
 msgid "No more to loot."
-msgstr ""
+msgstr "Больше нечего собирать."
 
 #: game/p_party_orders.msg:1499
 msgid "All party members are overloaded and can't loot."
-msgstr ""
+msgstr "Все напарники перегруженны и не могут собирать."
 
 #: game/p_party_orders.msg:1500
 msgid "Come here,"
-msgstr ""
+msgstr "Иди сюда,"
 
 #: game/p_party_orders.msg:1501
 msgid "Everyone regroup!"
-msgstr ""
+msgstr "Всем собраться!"
 
 #: game/p_party_orders.msg:1600
 msgid "Give me some room,"
-msgstr ""
+msgstr "Отойди немного,"
 
 #: game/p_party_orders.msg:1601
 msgid "Everyone spread!"
-msgstr ""
+msgstr "Всем разбежаться!"
 
 #: game/p_party_orders.msg:1900
 msgid "Switch to normal bullets,"
-msgstr ""
+msgstr "Заряди нормальные патроны,"
 
 #: game/p_party_orders.msg:1901
 msgid "Everyone switch to normal bullets!"
-msgstr ""
+msgstr "Всем зарядить нормальные патроны!"
 
 #: game/p_party_orders.msg:1910
 msgid "Switch to armor piercing bullets,"
-msgstr ""
+msgstr "Заряди бронебойные патроны,"
 
 #: game/p_party_orders.msg:1911
 msgid "Everyone switch to armor piercing bullets!"
-msgstr ""
+msgstr "Всем зарядить бронебойные патроны!"
 
 #: game/p_party_orders.msg:2000
 msgid "Burst at will!"
-msgstr ""
+msgstr "Стреляем очередями!"
 
 #: game/p_party_orders.msg:2001
 msgid "Don't use bursts!"
-msgstr ""
+msgstr "Очередями не стрелять!"
 
 #: game/p_party_orders.msg:2002
 msgid "Party orders: burst allowed."
-msgstr ""
+msgstr "Напарники: стрельба очередью разрешена."
 
 #: game/p_party_orders.msg:2003
 msgid "Party orders: burst forbidden."
-msgstr ""
+msgstr "Напарники: стрельба очередью запрещена."
