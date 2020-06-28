@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-06-28 17:23+0000\n"
+"PO-Revision-Date: 2020-06-29 14:13+0000\n"
 "Last-Translator: egornovivan <egornov.ivan@gmail.com>\n"
 "Language-Team: Russian <https://tra.bgforge.net/projects/fallout/"
 "party-orders/ru/>\n"
@@ -134,7 +134,7 @@ msgstr "Все напарники перегруженны и не могут с
 
 #: game/p_party_orders.msg:1500
 msgid "Come here,"
-msgstr "Иди сюда,"
+msgstr "Подойди ближе,"
 
 #: game/p_party_orders.msg:1501
 msgid "Everyone regroup!"
@@ -142,7 +142,7 @@ msgstr "Всем собраться!"
 
 #: game/p_party_orders.msg:1600
 msgid "Give me some room,"
-msgstr "Отойди немного,"
+msgstr "Отойди подальше,"
 
 #: game/p_party_orders.msg:1601
 msgid "Everyone spread!"
