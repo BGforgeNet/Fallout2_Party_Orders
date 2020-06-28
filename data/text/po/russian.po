@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-06-28 14:28+0000\n"
+"PO-Revision-Date: 2020-06-28 17:23+0000\n"
 "Last-Translator: egornovivan <egornov.ivan@gmail.com>\n"
 "Language-Team: Russian <https://tra.bgforge.net/projects/fallout/"
 "party-orders/ru/>\n"
@@ -61,7 +61,6 @@ msgid "Put your weapon away, "
 msgstr "Убери своё оружие, "
 
 #: game/p_party_orders.msg:1101
-#, fuzzy
 msgid "Holster all your weapons, people."
 msgstr "Народ, уберите всё своё оружие."
 
@@ -90,7 +89,6 @@ msgid "hit points."
 msgstr "ед. здоровья."
 
 #: game/p_party_orders.msg:1214
-#, fuzzy
 msgid "fails to do any healing."
 msgstr "не получается подлечиться."
 
@@ -99,17 +97,14 @@ msgid "is out of healing supplies."
 msgstr "закончились лекарства."
 
 #: game/p_party_orders.msg:1400
-#, fuzzy
 msgid "Loot the remains, "
 msgstr "Собирай добро, "
 
 #: game/p_party_orders.msg:1410
-#, fuzzy
 msgid "That's enough. Come back, "
 msgstr "Хватит. Назад, "
 
 #: game/p_party_orders.msg:1415
-#, fuzzy
 msgid "I don't have enough room for that stuff."
 msgstr "У меня не хватает места для этих вещей."
 
@@ -126,7 +121,6 @@ msgid "Done and done."
 msgstr "Все готово."
 
 #: game/p_party_orders.msg:1423
-#, fuzzy
 msgid "That was all."
 msgstr "Вот и всё."
 
