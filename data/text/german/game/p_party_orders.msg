@@ -1,6 +1,6 @@
 {0}{}{** Spieler Plündert automatisch: AUS **}
 {1}{}{** Spieler Plündert automatisch: AN **}
-{100}{}{Wie du willst.}
+{100}{}{Wie du meinst.}
 {101}{}{Sofort.}
 {102}{}{Klar doch..}
 {103}{}{Wie du wünscht.}
