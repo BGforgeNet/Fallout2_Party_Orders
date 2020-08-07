@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-06-29 14:13+0000\n"
+"PO-Revision-Date: 2020-08-08 14:13+0000\n"
 "Last-Translator: egornovivan <egornov.ivan@gmail.com>\n"
 "Language-Team: Russian <https://tra.bgforge.net/projects/fallout/"
 "party-orders/ru/>\n"
@@ -25,6 +25,7 @@ msgid "** PC auto-loot ON **"
 msgstr "** Автолут главным персонажем включен **"
 
 #: game/p_party_orders.msg:100
+#, fuzzy
 msgid "As you wish."
 msgstr "Как пожелаешь."
 
@@ -109,6 +110,7 @@ msgid "I don't have enough room for that stuff."
 msgstr "У меня не хватает места для этих вещей."
 
 #: game/p_party_orders.msg:1420
+#, fuzzy
 msgid "Done."
 msgstr "Готово."
 
