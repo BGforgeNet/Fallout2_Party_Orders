@@ -5,7 +5,7 @@
 {102}{}{¡Vale!}
 {103}{}{A sus órdenes.}
 {104}{}{Me parece bien.}
-{105}{}{A la vez.}
+{105}{}{En seguida.}
 {110}{}{¡Guau!}
 {111}{}{¡Guau Guau!}
 {1100}{}{Pon tu arma de distancia, }
