@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-07-31 12:39+0000\n"
-"Last-Translator: Rafael Cavalcante de Andrade <rafaaction@hotmail.com>\n"
+"PO-Revision-Date: 2020-08-12 14:13+0000\n"
+"Last-Translator: Joaquin Glantz <elglantzjoaquin@gmail.com>\n"
 "Language-Team: Spanish <https://tra.bgforge.net/projects/fallout/"
 "party-orders/es/>\n"
 "Language: spanish\n"
@@ -45,7 +45,7 @@ msgstr "Me parece bien."
 
 #: game/p_party_orders.msg:105
 msgid "At once."
-msgstr "A la vez."
+msgstr "En seguida."
 
 #: game/p_party_orders.msg:110
 msgid "Woof!"
