@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-08-31 14:13+0000\n"
+"PO-Revision-Date: 2020-09-04 16:10+0000\n"
 "Last-Translator: egornovivan <egornov.ivan@gmail.com>\n"
 "Language-Team: Russian <https://tra.bgforge.net/projects/fallout/"
 "party-orders/ru/>\n"
@@ -130,7 +130,7 @@ msgstr "Больше нечего собирать."
 
 #: game/p_party_orders.msg:1499
 msgid "All party members are overloaded and can't loot."
-msgstr "Все напарники перегруженны и не могут собирать."
+msgstr "Все напарники перегружены и не могут собирать."
 
 #: game/p_party_orders.msg:1500
 msgid "Come here,"
