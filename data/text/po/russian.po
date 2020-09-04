@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-09-04 16:10+0000\n"
+"PO-Revision-Date: 2020-09-05 14:13+0000\n"
 "Last-Translator: egornovivan <egornov.ivan@gmail.com>\n"
 "Language-Team: Russian <https://tra.bgforge.net/projects/fallout/"
 "party-orders/ru/>\n"
@@ -82,7 +82,7 @@ msgstr "использует стимулятор."
 
 #: game/p_party_orders.msg:1212
 msgid "heals"
-msgstr "лечение"
+msgstr "излечивает"
 
 #: game/p_party_orders.msg:1213
 msgid "hit points."
@@ -90,7 +90,7 @@ msgstr "ед. здоровья."
 
 #: game/p_party_orders.msg:1214
 msgid "fails to do any healing."
-msgstr "не получается подлечиться."
+msgstr "не получается излечение."
 
 #: game/p_party_orders.msg:1215
 msgid "is out of healing supplies."
