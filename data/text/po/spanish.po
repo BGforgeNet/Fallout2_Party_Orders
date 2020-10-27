@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-08-12 14:13+0000\n"
+"PO-Revision-Date: 2020-10-27 14:12+0000\n"
 "Last-Translator: Joaquin Glantz <elglantzjoaquin@gmail.com>\n"
 "Language-Team: Spanish <https://tra.bgforge.net/projects/fallout/"
 "party-orders/es/>\n"
@@ -33,7 +33,7 @@ msgstr "De inmediato."
 
 #: game/p_party_orders.msg:102
 msgid "Okey."
-msgstr "¡Vale!"
+msgstr "Vale."
 
 #: game/p_party_orders.msg:103
 msgid "At your orders."
