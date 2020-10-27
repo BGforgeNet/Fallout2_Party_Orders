@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-09-05 14:13+0000\n"
-"Last-Translator: egornovivan <egornov.ivan@gmail.com>\n"
+"PO-Revision-Date: 2020-10-27 14:12+0000\n"
+"Last-Translator: Magus <magus@bgforge.net>\n"
 "Language-Team: Russian <https://tra.bgforge.net/projects/fallout/"
 "party-orders/ru/>\n"
 "Language: russian\n"
@@ -58,19 +58,19 @@ msgstr "Гав! Гав!"
 
 #: game/p_party_orders.msg:1100
 msgid "Put your weapon away, "
-msgstr "Убери своё оружие, "
+msgstr "Убери оружие, "
 
 #: game/p_party_orders.msg:1101
 msgid "Holster all your weapons, people."
-msgstr "Народ, уберите всё своё оружие."
+msgstr "Народ, спрячьте оружие."
 
 #: game/p_party_orders.msg:1200
 msgid "You should heal yourself, "
-msgstr "Ты должен подлечить себя, "
+msgstr "Подлечись, "
 
 #: game/p_party_orders.msg:1201
 msgid "You should all heal yourselves now."
-msgstr "Вы все должны подлечить себя."
+msgstr "Всем быстро подлечиться!"
 
 #: game/p_party_orders.msg:1210
 msgid "uses a super stimpak."
