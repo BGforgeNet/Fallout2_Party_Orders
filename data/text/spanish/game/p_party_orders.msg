@@ -1,8 +1,8 @@
 {0}{}{** PC auto-botin OFF **}
 {1}{}{** PC auto-botin ON **}
 {100}{}{Como quieras.}
-{101}{}{De inmediato.}
-{102}{}{¡Vale!}
+{101}{}{Ahora mismo.}
+{102}{}{Vale.}
 {103}{}{A sus órdenes.}
 {104}{}{Me parece bien.}
 {105}{}{En seguida.}
