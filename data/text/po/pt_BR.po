@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2021-02-08 15:48+0000\n"
+"PO-Revision-Date: 2021-02-15 14:12+0000\n"
 "Last-Translator: Felipe <felipefplzx@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://tra.bgforge.net/projects/fallout/"
 "party-orders/pt_BR/>\n"
@@ -125,7 +125,7 @@ msgstr "Isso foi tudo."
 
 #: game/p_party_orders.msg:1424
 msgid "No more to loot."
-msgstr "Não há mais pra saquear."
+msgstr "Não há mais nada pra saquear."
 
 #: game/p_party_orders.msg:1499
 msgid "All party members are overloaded and can't loot."
