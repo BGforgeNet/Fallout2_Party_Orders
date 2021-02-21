@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-10-27 14:12+0000\n"
-"Last-Translator: Magus <magus@bgforge.net>\n"
+"PO-Revision-Date: 2021-02-22 14:12+0000\n"
+"Last-Translator: Martin Herzberg <fasciana84@gmail.com>\n"
 "Language-Team: Russian <https://tra.bgforge.net/projects/fallout/"
 "party-orders/ru/>\n"
 "Language: russian\n"
@@ -70,7 +70,7 @@ msgstr "Подлечись, "
 
 #: game/p_party_orders.msg:1201
 msgid "You should all heal yourselves now."
-msgstr "Всем быстро подлечиться!"
+msgstr "Всем быстро подлечиться."
 
 #: game/p_party_orders.msg:1210
 msgid "uses a super stimpak."
