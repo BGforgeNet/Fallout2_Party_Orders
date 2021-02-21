@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-07-01 14:12+0000\n"
-"Last-Translator: Charles Dexter Ward <graffias@quantentunnel.de>\n"
+"PO-Revision-Date: 2021-02-22 14:12+0000\n"
+"Last-Translator: Martin Herzberg <fasciana84@gmail.com>\n"
 "Language-Team: German <https://tra.bgforge.net/projects/fallout/party-orders/"
 "de/>\n"
 "Language: german\n"
@@ -17,15 +17,15 @@ msgstr ""
 
 #: game/p_party_orders.msg:0
 msgid "** PC auto-loot OFF **"
-msgstr "** Spieler Plündert automatisch: AUS **"
+msgstr "** Automatisch plündern: AUS **"
 
 #: game/p_party_orders.msg:1
 msgid "** PC auto-loot ON **"
-msgstr "** Spieler Plündert automatisch: AN **"
+msgstr "** Automatisch plündern: AN **"
 
 #: game/p_party_orders.msg:100
 msgid "As you wish."
-msgstr "Wie du meinst."
+msgstr "Wie du wünscht."
 
 #: game/p_party_orders.msg:101
 msgid "Right away."
@@ -33,19 +33,19 @@ msgstr "Sofort."
 
 #: game/p_party_orders.msg:102
 msgid "Okey."
-msgstr "Klar doch.."
+msgstr "Klaro."
 
 #: game/p_party_orders.msg:103
 msgid "At your orders."
-msgstr "Wie du wünscht."
+msgstr "Auf deinen Befehl."
 
 #: game/p_party_orders.msg:104
 msgid "You got it."
-msgstr "Wird gemacht."
+msgstr "Jetzt hast du es."
 
 #: game/p_party_orders.msg:105
 msgid "At once."
-msgstr "Sicher doch."
+msgstr "Sofort."
 
 #: game/p_party_orders.msg:110
 msgid "Woof!"
@@ -117,7 +117,7 @@ msgstr "Ich bin fertig."
 
 #: game/p_party_orders.msg:1422
 msgid "Done and done."
-msgstr "Fix und fertig!"
+msgstr "Fix und fertig."
 
 #: game/p_party_orders.msg:1423
 msgid "That was all."
@@ -133,7 +133,7 @@ msgstr "Alle Gruppenmitglieder sind überladen und können nicht mehr plündern.
 
 #: game/p_party_orders.msg:1500
 msgid "Come here,"
-msgstr "Komm her, "
+msgstr "Komm her,"
 
 #: game/p_party_orders.msg:1501
 msgid "Everyone regroup!"
@@ -141,7 +141,7 @@ msgstr "Alles neu gruppieren!"
 
 #: game/p_party_orders.msg:1600
 msgid "Give me some room,"
-msgstr "Mach mir Platz, "
+msgstr "Mach mir Platz,"
 
 #: game/p_party_orders.msg:1601
 msgid "Everyone spread!"
@@ -149,7 +149,7 @@ msgstr "Verteilt euch alle etwas!"
 
 #: game/p_party_orders.msg:1900
 msgid "Switch to normal bullets,"
-msgstr "Wechsel zu normaler Munition, "
+msgstr "Wechsel zu normaler Munition,"
 
 #: game/p_party_orders.msg:1901
 msgid "Everyone switch to normal bullets!"
@@ -157,7 +157,7 @@ msgstr "Wechselt alle zu normaler Munition!"
 
 #: game/p_party_orders.msg:1910
 msgid "Switch to armor piercing bullets,"
-msgstr "Wechsel zu panzerbrechender Munition, "
+msgstr "Wechsel zu panzerbrechender Munition,"
 
 #: game/p_party_orders.msg:1911
 msgid "Everyone switch to armor piercing bullets!"
