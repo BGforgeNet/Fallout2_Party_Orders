@@ -1,11 +1,11 @@
-{0}{}{** Spieler Plündert automatisch: AUS **}
-{1}{}{** Spieler Plündert automatisch: AN **}
-{100}{}{Wie du meinst.}
+{0}{}{** Automatisch plündern: AUS **}
+{1}{}{** Automatisch plündern: AN **}
+{100}{}{Wie du wünscht.}
 {101}{}{Sofort.}
-{102}{}{Klar doch..}
-{103}{}{Wie du wünscht.}
-{104}{}{Wird gemacht.}
-{105}{}{Sicher doch.}
+{102}{}{Klaro.}
+{103}{}{Auf deinen Befehl.}
+{104}{}{Jetzt hast du es.}
+{105}{}{Sofort.}
 {110}{}{Wuff!}
 {111}{}{Wuff! Wuff!}
 {1100}{}{Steck deine Waffe weg, }
@@ -23,17 +23,17 @@
 {1415}{}{Ich habe nicht genug Platz für das ganze Zeug.}
 {1420}{}{Fertig.}
 {1421}{}{Ich bin fertig.}
-{1422}{}{Fix und fertig!}
+{1422}{}{Fix und fertig.}
 {1423}{}{Das war alles.}
 {1424}{}{Nichts mehr zu plündern.}
 {1499}{}{Alle Gruppenmitglieder sind überladen und können nicht mehr plündern.}
-{1500}{}{Komm her, }
+{1500}{}{Komm her,}
 {1501}{}{Alles neu gruppieren!}
-{1600}{}{Mach mir Platz, }
+{1600}{}{Mach mir Platz,}
 {1601}{}{Verteilt euch alle etwas!}
-{1900}{}{Wechsel zu normaler Munition, }
+{1900}{}{Wechsel zu normaler Munition,}
 {1901}{}{Wechselt alle zu normaler Munition!}
-{1910}{}{Wechsel zu panzerbrechender Munition, }
+{1910}{}{Wechsel zu panzerbrechender Munition,}
 {1911}{}{Wechselt alle zu panzerbrechender Munition!}
 {2000}{}{Feuert was das Zeug hält!}
 {2001}{}{Munition sparen Leute!}
