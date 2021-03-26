@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2020-10-27 14:12+0000\n"
-"Last-Translator: Magus <magus@bgforge.net>\n"
+"PO-Revision-Date: 2021-03-27 14:13+0000\n"
+"Last-Translator: Handless Design <Dante_schmidt@outlook.com>\n"
 "Language-Team: Spanish <https://tra.bgforge.net/projects/fallout/"
 "party-orders/es/>\n"
 "Language: spanish\n"
@@ -37,7 +37,7 @@ msgstr "Vale."
 
 #: game/p_party_orders.msg:103
 msgid "At your orders."
-msgstr "A sus órdenes."
+msgstr "A tus órdenes."
 
 #: game/p_party_orders.msg:104
 msgid "You got it."
@@ -45,7 +45,7 @@ msgstr "Me parece bien."
 
 #: game/p_party_orders.msg:105
 msgid "At once."
-msgstr "En seguida."
+msgstr "Enseguida."
 
 #: game/p_party_orders.msg:110
 msgid "Woof!"
@@ -57,19 +57,19 @@ msgstr "¡Guau Guau!"
 
 #: game/p_party_orders.msg:1100
 msgid "Put your weapon away, "
-msgstr "Pon tu arma de distancia, "
+msgstr "Guarda tu arma, "
 
 #: game/p_party_orders.msg:1101
 msgid "Holster all your weapons, people."
-msgstr "Funda de todas sus armas, de personas."
+msgstr "Guarden sus armas, chicos."
 
 #: game/p_party_orders.msg:1200
 msgid "You should heal yourself, "
-msgstr "Usted debe curarse a sí mismo, "
+msgstr "Deberías curarte, "
 
 #: game/p_party_orders.msg:1201
 msgid "You should all heal yourselves now."
-msgstr "Todos ustedes deben sanarse a si mismos ahora."
+msgstr "Todos ustedes deberían curarse a si mismos ahora."
 
 #: game/p_party_orders.msg:1210
 msgid "uses a super stimpak."
@@ -85,27 +85,27 @@ msgstr "cura"
 
 #: game/p_party_orders.msg:1213
 msgid "hit points."
-msgstr "puntos de golpe."
+msgstr "puntos de vida."
 
 #: game/p_party_orders.msg:1214
 msgid "fails to do any healing."
-msgstr "deja de hacer cualquier curación."
+msgstr "falla al hacer cualquier curación."
 
 #: game/p_party_orders.msg:1215
 msgid "is out of healing supplies."
-msgstr "está fuera de la curación de suministros."
+msgstr "se ha quedado sin suministros curativos."
 
 #: game/p_party_orders.msg:1400
 msgid "Loot the remains, "
-msgstr "El botín de los restos, "
+msgstr "Saquea los restos, "
 
 #: game/p_party_orders.msg:1410
 msgid "That's enough. Come back, "
-msgstr "Con eso es suficiente. Volver, "
+msgstr "Con eso es suficiente. Regresa, "
 
 #: game/p_party_orders.msg:1415
 msgid "I don't have enough room for that stuff."
-msgstr "No tengo espacio suficiente para que cosas."
+msgstr "No tengo espacio suficiente para más cosas."
 
 #: game/p_party_orders.msg:1420
 msgid "Done."
@@ -125,11 +125,11 @@ msgstr "Eso fue todo."
 
 #: game/p_party_orders.msg:1424
 msgid "No more to loot."
-msgstr "No más de botín."
+msgstr "No hay más para saquear."
 
 #: game/p_party_orders.msg:1499
 msgid "All party members are overloaded and can't loot."
-msgstr "Todos los miembros del partido están sobrecargados y no puede botín."
+msgstr "Todos los miembros del grupo están sobrecargados y no pueden saquear."
 
 #: game/p_party_orders.msg:1500
 msgid "Come here,"
@@ -137,31 +137,31 @@ msgstr "Ven aquí,"
 
 #: game/p_party_orders.msg:1501
 msgid "Everyone regroup!"
-msgstr "Todos reagrupar!"
+msgstr "Todos a reagruparse!"
 
 #: game/p_party_orders.msg:1600
 msgid "Give me some room,"
-msgstr "Me dan un poco de espacio,"
+msgstr "Dame un poco de espacio,"
 
 #: game/p_party_orders.msg:1601
 msgid "Everyone spread!"
-msgstr "Todo el mundo se difunda!"
+msgstr "Todos a dispersarse!"
 
 #: game/p_party_orders.msg:1900
 msgid "Switch to normal bullets,"
-msgstr "Cambie a una de las balas,"
+msgstr "Cambia a balas normales,"
 
 #: game/p_party_orders.msg:1901
 msgid "Everyone switch to normal bullets!"
-msgstr "Todo el mundo cambie a una de las balas!"
+msgstr "Todos cambiando a balas normales!"
 
 #: game/p_party_orders.msg:1910
 msgid "Switch to armor piercing bullets,"
-msgstr "Interruptor de municiones que perforan armaduras,"
+msgstr "Cambia a municiones perforadoras,"
 
 #: game/p_party_orders.msg:1911
 msgid "Everyone switch to armor piercing bullets!"
-msgstr "Todos interruptor de municiones que perforan armaduras!"
+msgstr "Todos cambiando a municiones perforadoras!"
 
 #: game/p_party_orders.msg:2000
 msgid "Burst at will!"
@@ -169,12 +169,12 @@ msgstr "Ráfaga a voluntad!"
 
 #: game/p_party_orders.msg:2001
 msgid "Don't use bursts!"
-msgstr "No utilice ráfagas!"
+msgstr "No utilizar ráfagas!"
 
 #: game/p_party_orders.msg:2002
 msgid "Party orders: burst allowed."
-msgstr "Pedidos: ráfaga permitido."
+msgstr "Órdenes grupales: ráfaga permitida."
 
 #: game/p_party_orders.msg:2003
 msgid "Party orders: burst forbidden."
-msgstr "Pedidos: ráfaga prohibido."
+msgstr "Órdenes grupales: ráfaga prohibida."
