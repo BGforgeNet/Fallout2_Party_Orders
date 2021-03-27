@@ -3,39 +3,39 @@
 {100}{}{Como quieras.}
 {101}{}{Ahora mismo.}
 {102}{}{Vale.}
-{103}{}{A sus órdenes.}
+{103}{}{A tus órdenes.}
 {104}{}{Me parece bien.}
-{105}{}{En seguida.}
+{105}{}{Enseguida.}
 {110}{}{¡Guau!}
 {111}{}{¡Guau Guau!}
-{1100}{}{Pon tu arma de distancia, }
-{1101}{}{Funda de todas sus armas, de personas.}
-{1200}{}{Usted debe curarse a sí mismo, }
-{1201}{}{Todos ustedes deben sanarse a si mismos ahora.}
+{1100}{}{Guarda tu arma, }
+{1101}{}{Guarden sus armas, chicos.}
+{1200}{}{Deberías curarte, }
+{1201}{}{Todos ustedes deberían curarse a si mismos ahora.}
 {1210}{}{utiliza un súper estimulante.}
 {1211}{}{utiliza un estimulante.}
 {1212}{}{cura}
-{1213}{}{puntos de golpe.}
-{1214}{}{deja de hacer cualquier curación.}
-{1215}{}{está fuera de la curación de suministros.}
-{1400}{}{El botín de los restos, }
-{1410}{}{Con eso es suficiente. Volver, }
-{1415}{}{No tengo espacio suficiente para que cosas.}
+{1213}{}{puntos de vida.}
+{1214}{}{falla al hacer cualquier curación.}
+{1215}{}{se ha quedado sin suministros curativos.}
+{1400}{}{Saquea los restos, }
+{1410}{}{Con eso es suficiente. Regresa, }
+{1415}{}{No tengo espacio suficiente para más cosas.}
 {1420}{}{Hecho.}
 {1421}{}{He terminado.}
 {1422}{}{Dicho y hecho.}
 {1423}{}{Eso fue todo.}
-{1424}{}{No más de botín.}
-{1499}{}{Todos los miembros del partido están sobrecargados y no puede botín.}
+{1424}{}{No hay más para saquear.}
+{1499}{}{Todos los miembros del grupo están sobrecargados y no pueden saquear.}
 {1500}{}{Ven aquí,}
-{1501}{}{Todos reagrupar!}
-{1600}{}{Me dan un poco de espacio,}
-{1601}{}{Todo el mundo se difunda!}
-{1900}{}{Cambie a una de las balas,}
-{1901}{}{Todo el mundo cambie a una de las balas!}
-{1910}{}{Interruptor de municiones que perforan armaduras,}
-{1911}{}{Todos interruptor de municiones que perforan armaduras!}
+{1501}{}{Todos a reagruparse!}
+{1600}{}{Dame un poco de espacio,}
+{1601}{}{Todos a dispersarse!}
+{1900}{}{Cambia a balas normales,}
+{1901}{}{Todos cambiando a balas normales!}
+{1910}{}{Cambia a municiones perforadoras,}
+{1911}{}{Todos cambiando a municiones perforadoras!}
 {2000}{}{Ráfaga a voluntad!}
-{2001}{}{No utilice ráfagas!}
-{2002}{}{Pedidos: ráfaga permitido.}
-{2003}{}{Pedidos: ráfaga prohibido.}
+{2001}{}{No utilizar ráfagas!}
+{2002}{}{Órdenes grupales: ráfaga permitida.}
+{2003}{}{Órdenes grupales: ráfaga prohibida.}
