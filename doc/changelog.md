@@ -1,4 +1,8 @@
-## Version History
+## Changelog
+
+### v1.8
+- Completed Spanish, Portuguese translations.
+- Updated sfall to 4.3.
 
 ### v1.7
 - Added German translation.

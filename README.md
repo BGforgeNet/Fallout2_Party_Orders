@@ -1,7 +1,8 @@
 ## Party Orders addon for Fallout 2
 
 [![Translation status](https://tra.bgforge.net/widgets/fallout/-/party-orders/svg-badge.svg)](https://tra.bgforge.net/projects/fallout/party-orders/)
-[![Build Status](https://travis-ci.org/BGforgeNet/Fallout2_Party_Orders.svg?branch=master)](https://travis-ci.org/BGforgeNet/Fallout2_Party_Orders)
+[![Build status](https://github.com/BGforgeNet/Fallout2_Party_Orders/workflows/build/badge.svg)](https://github.com/BGforgeNet/Fallout2_Party_Orders/actions?query=workflow%3Abuild)
+[![Discord chat](https://img.shields.io/discord/420268540700917760?logo=discord)](https://discord.gg/4Yqfggm)
 
 [__Download__](https://github.com/BGforgeNet/Fallout2_Party_Orders/releases/latest)
  | [__Install__](#installation)
@@ -12,7 +13,7 @@
 This mod allows to give orders to the companions using hotkeys.
 It was originally written by [pelicano](http://www.nma-fallout.com/members/pelicano.55013/),
 then expanded by [phobos2077](https://github.com/phobos2077/),
-finally this version includes some [further fixes](doc/version_history.md).
+finally this version includes some [further fixes](doc/changelog.md).
 
 Also see [mod thread](http://www.nma-fallout.com/threads/party-orders-add-on-and-npcs-loot-bodies-mod.190599/) on NMA
 and its [wiki page](https://falloutmods.fandom.com/wiki/Party_Orders_add-on).
