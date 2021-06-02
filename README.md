@@ -13,11 +13,11 @@
 This mod allows to give orders to the companions using hotkeys.
 It was originally written by [pelicano](http://www.nma-fallout.com/members/pelicano.55013/),
 then expanded by [phobos2077](https://github.com/phobos2077/),
-finally this version includes some [further fixes](doc/changelog.md).
+finally this version includes some [further fixes](docs/changelog.md).
 
 Also see [mod thread](http://www.nma-fallout.com/threads/party-orders-add-on-and-npcs-loot-bodies-mod.190599/) on NMA
 and its [wiki page](https://falloutmods.fandom.com/wiki/Party_Orders_add-on).
-Notes for modders are [here](doc/modder_notes.md).
+Notes for modders are [here](docs/modder_notes.md).
 
 ## Instalation
 * Download the [latest release](https://github.com/BGforgeNet/Fallout2_Party_Orders/releases/latest), unzip into Fallout 2 directory.
