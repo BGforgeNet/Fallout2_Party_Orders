@@ -1,5 +1,8 @@
 ## Changelog
 
+### v1.9
+Updated sfall to 4.3.0.1.
+
 ### v1.8
 - Completed Russian, Spanish, Portuguese translations.
 - Updated sfall to 4.3.
