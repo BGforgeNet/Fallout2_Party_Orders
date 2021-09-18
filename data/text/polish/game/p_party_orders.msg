@@ -6,8 +6,8 @@
 {103}{}{Jak rozka¿esz.}
 {104}{}{Jasne.}
 {105}{}{Oczywiœcie.}
-{110}{}{Woof!}
-{111}{}{Woof! Woof!}
+{110}{}{Hau!}
+{111}{}{Hau! Hau!}
 {1100}{}{Schowaj broñ, }
 {1101}{}{Schowajcie bronie!}
 {1200}{}{Opatrz rany, }
@@ -31,11 +31,11 @@
 {1501}{}{Przegrupowaæ siê!}
 {1600}{}{Zrób mi miejsca, }
 {1601}{}{Rozproszyæ siê!}
-{1900}{}{Switch to normal bullets,}
-{1901}{}{Everyone switch to normal bullets!}
-{1910}{}{Switch to armor piercing bullets,}
-{1911}{}{Everyone switch to armor piercing bullets!}
-{2000}{}{Burst at will!}
-{2001}{}{Don't use bursts!}
-{2002}{}{Party orders: burst allowed.}
-{2003}{}{Party orders: burst forbidden.}
+{1900}{}{Prze³¹cz na normalne naboje,}
+{1901}{}{Niech wszysczy zmieni¹ naboje na normalne!}
+{1910}{}{Prze³¹cz na naboje przebijaj¹ce pancerz,}
+{1911}{}{Niech wszysczy zmieni¹ naboje na przebij¹ce pancerz!}
+{2000}{}{Strzelajcie seriami do woli!}
+{2001}{}{Nie strzelajcie seriami!}
+{2002}{}{Rozkazy dla dru¿yny: strzelanie seriami zezwolone.}
+{2003}{}{Rozkazy dla dru¿yny: strzelanie seriami zabronione.}
