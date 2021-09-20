@@ -9,9 +9,9 @@
 {110}{}{Hau!}
 {111}{}{Hau! Hau!}
 {1100}{}{Schowaj broñ, }
-{1101}{}{Schowajcie bronie!}
+{1101}{}{Schowajcie bronie.}
 {1200}{}{Opatrz rany, }
-{1201}{}{Opatrzcie rany!}
+{1201}{}{Opatrzcie rany.}
 {1210}{}{u¿ywa super stimpaka.}
 {1211}{}{u¿ywa stimpaka.}
 {1212}{}{leczy}
@@ -20,7 +20,7 @@
 {1215}{}{nie ma czym opatrzyæ ran.}
 {1400}{}{Przeszukaj zw³oki, }
 {1410}{}{Wystarczy. Wracaj, }
-{1415}{}{Nie mogê wiêcej unieœæ! }
+{1415}{}{Nie mogê wiêcej unieœæ.}
 {1420}{}{Zrobione.}
 {1421}{}{Skoñczone.}
 {1422}{}{Za³atwione.}
@@ -29,7 +29,7 @@
 {1499}{}{Wszyscy cz³onkowie dru¿yny s¹ przeci¹¿eni.}
 {1500}{}{PodejdŸ tutaj,}
 {1501}{}{Przegrupowaæ siê!}
-{1600}{}{Zrób mi miejsca, }
+{1600}{}{Zrób mi miejsca,}
 {1601}{}{Rozproszyæ siê!}
 {1900}{}{Prze³¹cz na normalne naboje,}
 {1901}{}{Niech wszysczy zmieni¹ naboje na normalne!}
