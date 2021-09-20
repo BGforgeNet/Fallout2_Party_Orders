@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 1970-1-01 00:00+0000\n"
-"PO-Revision-Date: 2021-09-17 13:25+0000\n"
+"PO-Revision-Date: 2021-09-20 12:40+0000\n"
 "Last-Translator: Full Name <jadedjade@tutanota.com>\n"
 "Language-Team: Polish <https://tra.bgforge.net/projects/fallout/party-orders/"
 "pl/>\n"
@@ -62,7 +62,7 @@ msgstr "Schowaj broń, "
 
 #: game/p_party_orders.msg:1101
 msgid "Holster all your weapons, people."
-msgstr "Schowajcie bronie!"
+msgstr "Schowajcie bronie."
 
 #: game/p_party_orders.msg:1200
 msgid "You should heal yourself, "
@@ -70,7 +70,7 @@ msgstr "Opatrz rany, "
 
 #: game/p_party_orders.msg:1201
 msgid "You should all heal yourselves now."
-msgstr "Opatrzcie rany!"
+msgstr "Opatrzcie rany."
 
 #: game/p_party_orders.msg:1210
 msgid "uses a super stimpak."
@@ -106,7 +106,7 @@ msgstr "Wystarczy. Wracaj, "
 
 #: game/p_party_orders.msg:1415
 msgid "I don't have enough room for that stuff."
-msgstr "Nie mogę więcej unieść! "
+msgstr "Nie mogę więcej unieść."
 
 #: game/p_party_orders.msg:1420
 msgid "Done."
@@ -142,7 +142,7 @@ msgstr "Przegrupować się!"
 
 #: game/p_party_orders.msg:1600
 msgid "Give me some room,"
-msgstr "Zrób mi miejsca, "
+msgstr "Zrób mi miejsca,"
 
 #: game/p_party_orders.msg:1601
 msgid "Everyone spread!"
