@@ -1,5 +1,9 @@
 ## Changelog
 
+### v1.10
+- Updated sfall to 4.3.0.2.
+- Completed French, Polish, Italian translations.
+
 ### v1.9
 Updated sfall to 4.3.0.1.
 
