@@ -35,7 +35,7 @@
 {1901}{}{Todos troquem pra balas normais!}
 {1910}{}{Troquem pra balas que perfuram armaduras,}
 {1911}{}{Todos troquem pra balas que perfuram armaduras!}
-{2000}{}{Explosivos a vontade!}
+{2000}{}{Explodam a vontade!}
 {2001}{}{Não usem explosivos!}
-{2002}{}{Ordens do grupo: explosivo permitido.}
-{2003}{}{Ordens do grupo: explosivo proibido.}
+{2002}{}{Ordens do grupo: explosivos permitidos.}
+{2003}{}{Ordens do grupo: proibido explosivos.}
