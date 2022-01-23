@@ -3,8 +3,8 @@ name: build
 on: [push]
 
 env:
-  sfall_version: 4.3.0.2
-  mpack_version: 4.3
+  sfall_version: 4.3.3
+  mpack_version: 4.3.3
 
 jobs:
   build:
@@ -13,11 +13,16 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install packages
+        # The Github's Ubuntu images since 20211122.1 are broken
+        # https://github.com/actions/virtual-environments/issues/4589
         run: |
+          set -xeu -o pipefail
           sudo dpkg --add-architecture i386
           sudo apt -qq update
-          sudo apt-get install -o=Dpkg::Use-Pty=0 -y crudini dos2unix gcc p7zip wine-stable wine32 >/dev/null 2>&1
-          wineboot >/dev/null 2>&1
+          sudo apt install -y --allow-downgrades libpcre2-8-0=10.34-7
+          sudo apt-get install -o=Dpkg::Use-Pty=0 -y crudini dos2unix gcc p7zip wine-stable wine32
+          wineboot
+
 
       - name: Build and package
         run: |
