@@ -39,3 +39,4 @@
 {2001}{}{Munition sparen Leute!}
 {2002}{}{Gruppe: Salvenmodus erlaubt.}
 {2003}{}{Gruppe: Salvenmodus verboten.}
+{3000}{}{Everybody, wait here.}

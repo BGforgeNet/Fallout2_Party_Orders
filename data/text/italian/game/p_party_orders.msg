@@ -39,3 +39,4 @@
 {2001}{}{Non usare la raffica!}
 {2002}{}{Ordini Party: raffica permessa.}
 {2003}{}{Ordini Party: raffica proibita.}
+{3000}{}{Everybody, wait here.}
