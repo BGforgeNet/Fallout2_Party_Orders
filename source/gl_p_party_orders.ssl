@@ -15,7 +15,6 @@ procedure start;
 #define ini_file			"mods\\party_orders.ini|"
 #define ini_filename			"mods\\party_orders.ini"
 #define sec_SETTINGS			(ini_file + "SETTINGS|")
-#define sec_MESSAGE				(ini_file + "MESSAGE|")
 #define sec_AMMO_AP				(ini_file + "AMMO_AP|")
 #define sec_LOOT_FORCE	  "LOOT_FORCE"
 #define sec_LOOT_SKIP   "LOOT_SKIP"
@@ -90,6 +89,7 @@ procedure start;
 #define msg_noburst_float 2001
 #define msg_burst_display 2002
 #define msg_noburst_display 2003
+#define msg_party_wait_float 3000
 
 #define acknowledge_order(who) \
   if critter_kill_type(who) == KILL_TYPE_dog_kills then \
@@ -416,8 +416,11 @@ end
 #define isHotkeyPressed(x)	(hotkey_pressed_now(x, key))
 
 procedure party_wait begin
-  variable who, party_members;
+  variable who, party_members, msg_float;
   party_members = party_member_list_critters;
+
+  msg_float = m_str(msg_party_wait_float);
+  float_msg(dude_obj, msg_float, FLOAT_MSG_BLUE);
 
   foreach who in party_members begin
     if (who != dude_obj) and (is_critter(who)) then begin // skip car trunk
