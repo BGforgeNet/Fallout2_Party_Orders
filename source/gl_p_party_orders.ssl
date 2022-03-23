@@ -99,7 +99,7 @@ procedure start;
 
 variable begin
   down;
-  holster_key; healing_key; looting_key; regroup_key; spread_key; pickup_key; switch_key; ammotype_key;
+  holster_key; healing_key; looting_key; regroup_key; spread_key; pickup_key; switch_key; ammotype_key, party_wait_key;
   loot_items;
   current_order;
   tWaiting_time;
@@ -134,6 +134,7 @@ procedure npc_use_best_weapon(variable oC);
 procedure can_reach(variable source, variable target);
 procedure can_loot(variable who);
 procedure party_has_looters;
+procedure party_wait;
 // aux procedures
 procedure find_next_corpse;
 procedure cancel_looting;
@@ -288,6 +289,7 @@ end
     pickup_key := parse_hotkey(get_ini_string(sec_SETTINGS + "PickUpKey"));
     switch_key := parse_hotkey(get_ini_string(sec_SETTINGS + "SwitchKey"));
     ammotype_key := parse_hotkey(get_ini_string(sec_SETTINGS + "AmmoTypeOrderKey"));
+    party_wait_key := parse_hotkey(get_ini_string(sec_SETTINGS + "PartyWaitKey"));
     loot_items := parse_hotkey(get_ini_string(sec_SETTINGS + "PLootNearbyItems"));
     loot_force_list := get_ini_section_int(ini_filename, sec_LOOT_FORCE);
     fix_array(loot_force_list);
@@ -413,12 +415,30 @@ end
 
 #define isHotkeyPressed(x)	(hotkey_pressed_now(x, key))
 
+procedure party_wait begin
+  variable who, party_members;
+  party_members = party_member_list_critters;
+
+  foreach who in party_members begin
+    if (who != dude_obj) and (is_critter(who)) then begin // skip car trunk
+      party_remove(who);
+      ndebug("dropped " + obj_name(who) + " from party");
+    end
+  end
+
+end
+
 procedure keypress_hook begin
   variable iParty_members,
            pressed := get_sfall_arg,
            key := get_sfall_arg;
 
   if invalid_game_mode then return;
+
+  if pressed and hotkey_pressed_now(party_wait_key, key) then begin
+    call party_wait;
+    return;
+  end
 
   if pressed and hotkey_pressed_now(burst_key, key) then begin
     call toggle_burst;
