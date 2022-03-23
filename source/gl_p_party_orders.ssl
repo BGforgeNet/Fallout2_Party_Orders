@@ -150,12 +150,12 @@ procedure set_burst;
 procedure set_burst begin
   variable who;
   variable burst_disable;
-  burst_mode := get_sfall_global_int(SGVAR_BURST);
+  burst_mode = get_sfall_global_int(SGVAR_BURST);
 
     if burst_mode == 1 then begin
-      burst_disable := 0;
+      burst_disable = 0;
     end else begin
-      burst_disable := 1;
+      burst_disable = 1;
     end
 
     foreach who in party_member_list_critters begin
@@ -167,16 +167,16 @@ end
 
 procedure toggle_burst begin
   variable msg_float, msg_display;
-  burst_mode := get_sfall_global_int(SGVAR_BURST);
+  burst_mode = get_sfall_global_int(SGVAR_BURST);
   ndebug("old burst mode is " + burst_mode);
   if burst_mode == 0 then begin
-    msg_float := m_str(msg_burst_float);
-    msg_display := m_str(msg_burst_display);
-    burst_mode := 1;
+    msg_float = m_str(msg_burst_float);
+    msg_display = m_str(msg_burst_display);
+    burst_mode = 1;
   end else begin
-    msg_float := m_str(msg_noburst_float);
-    msg_display := m_str(msg_noburst_display);
-    burst_mode := 0;
+    msg_float = m_str(msg_noburst_float);
+    msg_display = m_str(msg_noburst_display);
+    burst_mode = 0;
   end
   float_msg(dude_obj, msg_float, FLOAT_MSG_BLUE);
   display_msg(msg_display);
@@ -192,12 +192,12 @@ procedure gamemode_hook_handler begin
 end
 
 procedure temp_array_from_ini(variable iniSec) begin
-  variable i := 0;
+  variable i = 0;
   variable ar;
-  ar := temp_array(200, 4);
+  ar = temp_array(200, 4);
   ndebug("create temp array!");
   while (get_ini_setting(iniSec + i) != -1) do begin
-    ar[i] := get_ini_setting(iniSec + i);
+    ar[i] = get_ini_setting(iniSec + i);
     i += 1;
   end
   resize_array(ar, i);
@@ -258,7 +258,7 @@ procedure can_reach(variable source, variable target) begin
 
   //adjacent tiles
   foreach direction in [0,1,2,3,4,5] begin
-    tile_near := tile_num_in_direction(tile_num(target), direction, 1);
+    tile_near = tile_num_in_direction(tile_num(target), direction, 1);
     if len_array(path_find_to(source, tile_near, BLOCKING_TYPE_BLOCK)) != 0 then return tile_near;
   end
 
@@ -268,9 +268,9 @@ procedure can_reach(variable source, variable target) begin
 end
 
 procedure get_ini_section_int(variable file, variable section) begin
-  variable k, v, ar := get_ini_section(file, section);
+  variable k, v, ar = get_ini_section(file, section);
   foreach k: v in ar begin
-    ar[k] := atoi(v);
+    ar[k] = atoi(v);
   end
   return ar;
 end
@@ -281,26 +281,26 @@ variable begin
 end
   if game_loaded then begin
     set_global_script_repeat(30);
-    holster_key := parse_hotkey(get_ini_string(sec_SETTINGS + "HolsterOrderKey"));
-    healing_key := parse_hotkey(get_ini_string(sec_SETTINGS + "HealingOrderKey"));
-    looting_key := parse_hotkey(get_ini_string(sec_SETTINGS + "LootingOrderKey"));
-    regroup_key := parse_hotkey(get_ini_string(sec_SETTINGS + "RegroupOrderKey"));
-    spread_key :=  parse_hotkey(get_ini_string(sec_SETTINGS + "SpreadOrderKey"));
-    pickup_key := parse_hotkey(get_ini_string(sec_SETTINGS + "PickUpKey"));
-    switch_key := parse_hotkey(get_ini_string(sec_SETTINGS + "SwitchKey"));
-    ammotype_key := parse_hotkey(get_ini_string(sec_SETTINGS + "AmmoTypeOrderKey"));
-    party_wait_key := parse_hotkey(get_ini_string(sec_SETTINGS + "PartyWaitKey"));
-    loot_items := parse_hotkey(get_ini_string(sec_SETTINGS + "PLootNearbyItems"));
-    loot_force_list := get_ini_section_int(ini_filename, sec_LOOT_FORCE);
+    holster_key = parse_hotkey(get_ini_string(sec_SETTINGS + "HolsterOrderKey"));
+    healing_key = parse_hotkey(get_ini_string(sec_SETTINGS + "HealingOrderKey"));
+    looting_key = parse_hotkey(get_ini_string(sec_SETTINGS + "LootingOrderKey"));
+    regroup_key = parse_hotkey(get_ini_string(sec_SETTINGS + "RegroupOrderKey"));
+    spread_key =  parse_hotkey(get_ini_string(sec_SETTINGS + "SpreadOrderKey"));
+    pickup_key = parse_hotkey(get_ini_string(sec_SETTINGS + "PickUpKey"));
+    switch_key = parse_hotkey(get_ini_string(sec_SETTINGS + "SwitchKey"));
+    ammotype_key = parse_hotkey(get_ini_string(sec_SETTINGS + "AmmoTypeOrderKey"));
+    party_wait_key = parse_hotkey(get_ini_string(sec_SETTINGS + "PartyWaitKey"));
+    loot_items = parse_hotkey(get_ini_string(sec_SETTINGS + "PLootNearbyItems"));
+    loot_force_list = get_ini_section_int(ini_filename, sec_LOOT_FORCE);
     fix_array(loot_force_list);
-    loot_skip_list := get_ini_section_int(ini_filename, sec_LOOT_SKIP);
+    loot_skip_list = get_ini_section_int(ini_filename, sec_LOOT_SKIP);
     fix_array(loot_skip_list);
 
-    burst_key := parse_hotkey(get_ini_string(sec_burst_control + "burst_key"));
+    burst_key = parse_hotkey(get_ini_string(sec_burst_control + "burst_key"));
     register_hook_proc(HOOK_GAMEMODECHANGE, gamemode_hook_handler);
-    burst_mode := get_sfall_global_int(SGVAR_BURST);
+    burst_mode = get_sfall_global_int(SGVAR_BURST);
 
-    #define _check_key(key, default)	if (key < 0) then key := default
+    #define _check_key(key, default)	if (key < 0) then key = default
     _check_key(holster_key, DIK_H);
     _check_key(healing_key, DIK_F);
     _check_key(looting_key, DIK_G);
@@ -310,20 +310,20 @@ end
     _check_key(switch_key, DIK_0);
     _check_key(ammotype_key, DIK_B + DIK_LCONTROL * 0x10000);
     #undef _check_key
-    if((loot_items < 0)or(loot_items > 1)) then loot_items := 1;
-    tWaiting_time := game_time;
-    iNum_npcs := 0;
-    oWho := 0;
-    oLooter := 0;
-    tLooting_time := game_time;
-    looting_stage := ls_STOP;
-    cant_carry_all := 0;
+    if((loot_items < 0)or(loot_items > 1)) then loot_items = 1;
+    tWaiting_time = game_time;
+    iNum_npcs = 0;
+    oWho = 0;
+    oLooter = 0;
+    tLooting_time = game_time;
+    looting_stage = ls_STOP;
+    cant_carry_all = 0;
     set_sfall_global(SGVAR_LOOTER, 0);
     set_sfall_global(SGVAR_CORPSE, 0);
     set_sfall_global(SGVAR_GITEM0, 0);
 
     register_hook_proc(HOOK_KEYPRESS, keypress_hook);
-    msg := add_extra_msg_file(msg_file);
+    msg = add_extra_msg_file(msg_file);
     ndebug("initialized, current burst mode: " + burst_mode);
   end
 
@@ -333,19 +333,19 @@ end
       if((looting_stage == ls_STOP) and (tLooting_time <= game_time))then begin // Looting done
         if not_party_member(oLooter) then party_add(oLooter);
         if oLooter == dude_obj then
-          temp := FLOAT_MSG_BLUE;
+          temp = FLOAT_MSG_BLUE;
         else
-          temp := FLOAT_MSG_YELLOW;
+          temp = FLOAT_MSG_YELLOW;
         if(cant_carry_all == 1)then
           float_msg(oLooter, m_str((10 + co_LOOT_CORPSES) * 100 + 15), temp);
         else if(cant_carry_all == 2)then
           float_msg(oLooter, m_str((10 + co_LOOT_CORPSES) * 100 + random(20, 24)), temp);
-        oLooter := 0;
+        oLooter = 0;
         set_sfall_global(SGVAR_LOOTER, 0);
-        cant_carry_all := 0;
+        cant_carry_all = 0;
       end else if((looting_stage == ls_SEEK) and (tLooting_time <= game_time))then begin
         looting_stage += 1;
-        tLooting_time := game_time; // + 1 * ONE_GAME_SECOND; // time to begin to run to a corpse
+        tLooting_time = game_time; // + 1 * ONE_GAME_SECOND; // time to begin to run to a corpse
       end else if((looting_stage == ls_MOVE) and (tLooting_time <= game_time))then begin
 
         // Remove looter from party, to remove distance bounds
@@ -355,13 +355,13 @@ end
           reg_anim_obj_run_to_obj(oLooter, oCorpse, -1);
         reg_anim_end();
 
-        tLooting_time := game_time; // + 2 * ONE_GAME_SECOND; // time between run checks
+        tLooting_time = game_time; // + 2 * ONE_GAME_SECOND; // time between run checks
 
         if(tile_distance_objs(oLooter, oCorpse) <= 1)then begin
           looting_stage += 1;
-          tLooting_time := game_time; // time to begin to loot the corpse
+          tLooting_time = game_time; // time to begin to loot the corpse
         end
-        tLooting_time := game_time; // time to begin to look for the next corpse
+        tLooting_time = game_time; // time to begin to look for the next corpse
       end else if((looting_stage == ls_LOOT) and (tLooting_time <= game_time))then begin
 
         if(inven_count(oCorpse) > 0)then begin
@@ -373,16 +373,16 @@ end
           // Inventory checks and item grabbing stuff here //
           if((loot_items) and (inven_free_amt(oLooter) < carry_amount(oCorpse)))then begin
             obj_drop_everything(oCorpse);
-            cant_carry_all := 1;
+            cant_carry_all = 1;
           end else begin
-            if (cant_carry_all == 0) then cant_carry_all := 2;
+            if (cant_carry_all == 0) then cant_carry_all = 2;
             move_obj_inven_to_obj(oCorpse, oLooter);
           end
         end
 
-        tLooting_time := game_time; // + 1 * ONE_GAME_SECOND; // time to grab nearby items
+        tLooting_time = game_time; // + 1 * ONE_GAME_SECOND; // time to grab nearby items
 
-        oGItem := get_ground_item_near_critter(oLooter, oCorpse); // checks nearby items on the ground
+        oGItem = get_ground_item_near_critter(oLooter, oCorpse); // checks nearby items on the ground
         looting_stage += 1;
       end else if((looting_stage == ls_PICKUP) and (tLooting_time <= game_time))then begin
         if oGItem then begin
@@ -390,26 +390,26 @@ end
           pickup_obj(oGItem);
           looting_stage -= 1; // come back one step and check for more items to pick up
         end else begin
-          oCorpse := find_next_corpse;
+          oCorpse = find_next_corpse;
         end
-        tLooting_time := game_time + 1 * ONE_GAME_SECOND; // time to begin to look for the next corpse
+        tLooting_time = game_time + 1 * ONE_GAME_SECOND; // time to begin to look for the next corpse
       end
     end // end Loot System
     // Dude picking stuff up -->
     if(dude_picking_up == 1) and (dude_pickup_delay <= game_time) then begin
-      temp := get_ground_item_near_critter(dude_obj, dude_obj);
+      temp = get_ground_item_near_critter(dude_obj, dude_obj);
       if temp then begin
         set_self(dude_obj);
         pickup_obj(temp);
-        dude_pickup_delay := game_time + 1 * ONE_GAME_SECOND;
+        dude_pickup_delay = game_time + 1 * ONE_GAME_SECOND;
       end else begin
-        dude_picking_up := 0;
+        dude_picking_up = 0;
       end
     end
   end else begin	// if combat mode then cancel looting (if active)
     if(oLooter)then call cancel_looting;
     //cancels dude picking stuff up
-    if dude_picking_up then dude_picking_up := 0;
+    if dude_picking_up then dude_picking_up = 0;
   end
 end
 
@@ -433,8 +433,8 @@ end
 
 procedure keypress_hook begin
   variable iParty_members,
-           pressed := get_sfall_arg,
-           key := get_sfall_arg;
+           pressed = get_sfall_arg,
+           key = get_sfall_arg;
 
   if invalid_game_mode then return;
 
@@ -449,14 +449,14 @@ procedure keypress_hook begin
   end
 
    if (pressed) then begin
-      iParty_members := metarule(16, 0) -1;
+      iParty_members = metarule(16, 0) -1;
      if (isHotkeyPressed(holster_key)) then begin	// H: Holster weapons
        if (tWaiting_time <= game_time) then begin
          if (iParty_members) then begin
            if (not combat_is_initialized) then begin
-             current_order := co_HOLSTER_WEAPON;
+             current_order = co_HOLSTER_WEAPON;
              call check_party_orders;
-             tWaiting_time := game_time + 1 * ONE_GAME_SECOND;
+             tWaiting_time = game_time + 1 * ONE_GAME_SECOND;
            end
          end
        end
@@ -464,11 +464,11 @@ procedure keypress_hook begin
        if (tWaiting_time <= game_time) then begin
          if (iParty_members) then begin
            if (not combat_is_initialized) then begin
-             tWaiting_time := game_time + 3 * ONE_GAME_SECOND;
+             tWaiting_time = game_time + 3 * ONE_GAME_SECOND;
            end else begin
-             tWaiting_time := game_time + 1 * ONE_GAME_SECOND;
+             tWaiting_time = game_time + 1 * ONE_GAME_SECOND;
            end
-           current_order := co_HEAL_YOURSELF;
+           current_order = co_HEAL_YOURSELF;
            call check_party_orders;
          end
        end
@@ -477,9 +477,9 @@ procedure keypress_hook begin
         if(tWaiting_time <= game_time)then begin
           if(iParty_members)then begin
             if(not combat_is_initialized)then begin
-              current_order := co_LOOT_CORPSES;
+              current_order = co_LOOT_CORPSES;
               call check_party_orders;
-              tWaiting_time := game_time + 3 * ONE_GAME_SECOND;
+              tWaiting_time = game_time + 3 * ONE_GAME_SECOND;
             end
           end
         end
@@ -490,9 +490,9 @@ procedure keypress_hook begin
        if (tWaiting_time <= game_time) then begin
          if (iParty_members) then begin
            if (not combat_is_initialized) then begin
-             current_order := co_REGROUP;
+             current_order = co_REGROUP;
              call check_party_orders;
-             tWaiting_time := game_time + 3 * ONE_GAME_SECOND;
+             tWaiting_time = game_time + 3 * ONE_GAME_SECOND;
            end
          end
        end
@@ -500,9 +500,9 @@ procedure keypress_hook begin
        if (tWaiting_time <= game_time) then begin
          if (iParty_members) then begin
            if (not combat_is_initialized) then begin
-             current_order := co_SPREAD;
+             current_order = co_SPREAD;
              call check_party_orders;
-             tWaiting_time := game_time + 2 * ONE_GAME_SECOND;
+             tWaiting_time = game_time + 2 * ONE_GAME_SECOND;
            end
          end
        end
@@ -515,21 +515,21 @@ procedure keypress_hook begin
           call loot_nearby_corpses(dude_obj);
           call loot_nearby_containers(dude_obj);
         end else begin
-          dude_picking_up := 1;
-          dude_pickup_delay := game_time;
+          dude_picking_up = 1;
+          dude_pickup_delay = game_time;
         end
       end
      end else if(isHotkeyPressed(ammotype_key)) then begin	// A: Switch ammo types
        if (tWaiting_time <= game_time) then begin
          if (iParty_members) then begin
            if(not combat_is_initialized) then begin
-             tWaiting_time := game_time + 3 * ONE_GAME_SECOND;
-             current_order := co_AMMO_TYPE;
+             tWaiting_time = game_time + 3 * ONE_GAME_SECOND;
+             current_order = co_AMMO_TYPE;
              if (cur_ammo_type == AMMO_TYPE_JHP) then
                set_sfall_global(SGVAR_AMMO_TYPE, AMMO_TYPE_AP);
              else
                set_sfall_global(SGVAR_AMMO_TYPE, AMMO_TYPE_JHP);
-             ap_ammo_list := temp_array_from_ini(sec_AMMO_AP);
+             ap_ammo_list = temp_array_from_ini(sec_AMMO_AP);
              call check_party_orders;
            end
          end
@@ -547,7 +547,7 @@ procedure keypress_hook begin
 end
 
 
-#define _setWhoName	sWho_name := obj_name(who);
+#define _setWhoName	sWho_name = obj_name(who);
 
 procedure check_party_orders begin
 variable begin
@@ -555,18 +555,18 @@ variable begin
   oAux; iAux;
   string, who;
 end
-  string := "";
-  iNum_npcs := 0;
-  oWho := 0;
-  sWho_name := "";
-  oAux := 0;
-  iAux := -1;
-  i := 0;
-  npc_pid := 0;
+  string = "";
+  iNum_npcs = 0;
+  oWho = 0;
+  sWho_name = "";
+  oAux = 0;
+  iAux = -1;
+  i = 0;
+  npc_pid = 0;
 
   foreach who in party_member_list_critters begin
     if who == dude_obj then continue;
-    npc_pid := obj_pid(who);
+    npc_pid = obj_pid(who);
     if current_order == co_HOLSTER_WEAPON then begin
       if is_armed(who) then begin
         _setWhoName
@@ -583,8 +583,8 @@ end
     end else if current_order == co_LOOT_CORPSES then begin
       //check who has the most carry capacity
       if inven_free_amt(who) > iAux and can_loot(who) then begin
-        iAux := inven_free_amt(who);
-        oAux := who;
+        iAux = inven_free_amt(who);
+        oAux = who;
         _setWhoName
       end
     end else if current_order == co_REGROUP then begin
@@ -615,39 +615,39 @@ end
 
   // Dude Order floats
   if (iNum_npcs) or (cant_carry_all) then begin
-    i := (10 + current_order) * 100;
+    i = (10 + current_order) * 100;
     if (current_order == co_AMMO_TYPE and cur_ammo_type == AMMO_TYPE_AP) then i += 10;
     if(iNum_npcs > 1)then begin
-      string := m_str(i + 1);
+      string = m_str(i + 1);
     end else begin
-      string := m_str(i) + " " + sWho_name; // + obj_name(oWho);
-      if current_order == co_REGROUP then string := string + "!";
+      string = m_str(i) + " " + sWho_name; // + obj_name(oWho);
+      if current_order == co_REGROUP then string = string + "!";
       if not cant_carry_all then begin
         acknowledge_order(oWho)
       end
     end
     float_msg(dude_obj, string, FLOAT_MSG_BLUE);
   end
-  current_order := co_NONE;
+  current_order = co_NONE;
 end
 
 procedure put_away_weapon(variable oC) begin
   inven_unwield(oC);	// unwields without animation
   reg_anim_clear(oC);
   iNum_npcs += 1;
-  oWho := oC;
+  oWho = oC;
 end
 
 procedure npc_use_best_weapon(variable oC) begin
 variable begin
-  weapon := 0;
-  bestdam := 0;
+  weapon = 0;
+  bestdam = 0;
   list; item;
 end
   inven_unwield(oC);	// unwields without animation
   reg_anim_clear(oC);
   // search for suitable weapon
-  list := inven_as_array(oC);
+  list = inven_as_array(oC);
   foreach item in list begin
     if (item) then if (is_weapon(item)) then begin
       if (weapon == 0 or get_proto_data(obj_pid(item), PRODATA_IT_WP_DMG_MIN) > bestdam) then begin
@@ -655,8 +655,8 @@ end
         wield_obj_critter(oC, item);
         display_msg(obj_name(oC) + " try to use " + obj_name(item) + " " + (critter_inven_obj(oC, 1) != weapon));
         if (critter_inven_obj(oC, 1) != weapon) then begin
-          bestdam := get_proto_data(obj_pid(item), PRODATA_IT_WP_DMG_MIN);
-          weapon := item;
+          bestdam = get_proto_data(obj_pid(item), PRODATA_IT_WP_DMG_MIN);
+          weapon = item;
         end
       end
     end
@@ -665,7 +665,7 @@ end
 
   end
   iNum_npcs += 1;
-  oWho := oC;
+  oWho = oC;
 end
 
 procedure npc_heal_yourself(variable oC) begin
@@ -680,19 +680,19 @@ end
   reg_anim_begin();
 
   if((injured_how_much(oC) >= 60)and(obj_is_carrying_obj_pid(oC, 144)))then begin
-    oHealing_item := obj_carrying_pid_obj(oC, 144);
+    oHealing_item = obj_carrying_pid_obj(oC, 144);
     rm_obj_from_inven(oC, oHealing_item);
     destroy_object(oHealing_item);
-    amount_healed := 75;
+    amount_healed = 75;
     critter_heal(oC, amount_healed);
     critter_dmg(oC, 9, (DMG_normal_dam BWOR DMG_BYPASS_ARMOR BWOR DMG_NOANIMATE));
     reg_anim_animate (oC, ANIM_magic_hands_middle, -1);
     display_msg(obj_name(oC) + " " + m_str((10 + current_order) * 100 + 10));
   end else if((current_hp_per(oC) <= 75) and (not combat_is_initialized))then begin
-    roll_result := random(0, 100) + medic_skill(oC);
-    roll_check := random(0, 100);
+    roll_result = random(0, 100) + medic_skill(oC);
+    roll_check = random(0, 100);
     if (roll_result >= roll_check) then begin
-      amount_healed := floor(20 * roll_result / 100);
+      amount_healed = floor(20 * roll_result / 100);
       critter_heal(oC, amount_healed);
       display_msg(obj_name(oC) + " " + m_str((10 + current_order) * 100 + 12)
         + " " + amount_healed + " " + m_str((10 + current_order) * 100 + 13));
@@ -701,10 +701,10 @@ end
     end
     reg_anim_animate (oC, ANIM_magic_hands_middle, -1);
   end else if(obj_is_carrying_obj_pid(oC, 40))then begin
-    oHealing_item := obj_carrying_pid_obj(oC, 40);
+    oHealing_item = obj_carrying_pid_obj(oC, 40);
     rm_obj_from_inven(oC, oHealing_item);
     destroy_object(oHealing_item);
-    amount_healed := random(10, 20);
+    amount_healed = random(10, 20);
     critter_heal(oC, amount_healed);
     reg_anim_animate (oC, ANIM_magic_hands_middle, -1);
     display_msg(obj_name(oC) + " " + m_str((10 + current_order) * 100 + 11));
@@ -714,7 +714,7 @@ end
   reg_anim_end();
 
   iNum_npcs += 1;
-  oWho := oC;
+  oWho = oC;
 end
 
 procedure run_to_tile(variable who, variable tile) begin
@@ -731,12 +731,12 @@ procedure loot_container(variable who, variable cont, variable good_tile) begin
 end
 
 procedure loot_nearby_containers(variable looter) begin
-  variable good_tile, i, items := list_as_array(LIST_GROUNDITEMS);
+  variable good_tile, i, items = list_as_array(LIST_GROUNDITEMS);
   ndebug("looting containers");
   foreach i in items begin
     ndebug("item is " + obj_name(i) + ", pid " + obj_pid(i) + ", is_container is " + is_container(i)
       + " is_empty is " + is_empty(i) + ", can_reach is " + can_reach(looter, i) + ", looter is " + obj_name(looter));
-    good_tile := can_reach(looter, i);
+    good_tile = can_reach(looter, i);
     if is_container(i)
       and not is_empty(i)
       and good_tile
@@ -748,23 +748,23 @@ procedure loot_nearby_containers(variable looter) begin
 end
 
 procedure loot_nearby_corpses(variable oC) begin
-  oLooter := oC;
-  L_list := list_begin(LIST_CRITTERS);
+  oLooter = oC;
+  L_list = list_begin(LIST_CRITTERS);
   while(L_list != 0) do begin
-    oCorpse := list_next(L_list);
+    oCorpse = list_next(L_list);
     if oCorpse then begin
       if is_critter_dead(oCorpse) then begin
         if is_lootable(oCorpse) or is_in_array(obj_pid(oCorpse), loot_force_list) then begin
           if can_reach(dude_obj, oCorpse) then begin
-            oGItem := get_ground_item_near_critter(oC, oCorpse);
+            oGItem = get_ground_item_near_critter(oC, oCorpse);
             if oGItem or LOOT_COND2(oCorpse) then begin
               set_sfall_global(SGVAR_LOOTER, oLooter);
               set_sfall_global(SGVAR_CORPSE, oCorpse);
               iNum_npcs += 1;
-              oWho := oC;
-              looting_stage := ls_SEEK;
+              oWho = oC;
+              looting_stage = ls_SEEK;
               list_end(L_list);
-              L_list := 0;
+              L_list = 0;
               return;
             end
           end
@@ -772,9 +772,9 @@ procedure loot_nearby_corpses(variable oC) begin
       end
     end else begin
       set_sfall_global(SGVAR_CORPSE, 0);
-      looting_stage := ls_STOP;
+      looting_stage = ls_STOP;
       list_end(L_list);
-      L_list := 0;
+      L_list = 0;
       return;
     end
   end // end while
@@ -784,29 +784,29 @@ procedure npc_regroup(variable oC) begin
 variable begin
   tile1;
 end
-  tile1 := tile_num_in_direction(tile_num(dude_obj), (random(0, 5)), (2 + random(0, 1)));
+  tile1 = tile_num_in_direction(tile_num(dude_obj), (random(0, 5)), (2 + random(0, 1)));
   reg_anim_clear(oC);
   reg_anim_begin();
     reg_anim_obj_run_to_tile(oC, tile1, -1);
   reg_anim_end();
 
   iNum_npcs += 1;
-  oWho := oC;
+  oWho = oC;
 end
 
 procedure npc_spread(variable oC) begin
 variable begin
   tile1; dir1;
 end
-  dir1 := rotation_to_tile(tile_num(dude_obj), tile_num(oC));
-  tile1 := tile_num_in_direction(tile_num(oC), dir1, random(4, 6));
+  dir1 = rotation_to_tile(tile_num(dude_obj), tile_num(oC));
+  tile1 = tile_num_in_direction(tile_num(oC), dir1, random(4, 6));
   reg_anim_clear(oC);
   reg_anim_begin();
     reg_anim_obj_run_to_tile(oC, tile1, -1);
   reg_anim_end();
 
   iNum_npcs += 1;
-  oWho := oC;
+  oWho = oC;
 end
 
 // ----------------------------
@@ -819,32 +819,32 @@ end
 procedure npc_switch_ammo(variable oC, variable ammo_type) begin
 variable begin
   i;
-  weapon := 0;
-  ammopid := 0;
+  weapon = 0;
+  ammopid = 0;
   list;
   item;
   bestammo;
   caliber;
   magsize;
 end
-  i := 1;
+  i = 1;
     while (i <= 2) do begin
-    weapon := critter_inven_obj(oC, i);
+    weapon = critter_inven_obj(oC, i);
     if (weapon and obj_item_subtype(weapon) == item_type_weapon) then begin
-      caliber := get_proto_data(obj_pid(weapon), PRODATA_IT_WP_CALIBER);
-      magsize := get_proto_data(obj_pid(weapon), PRODATA_IT_WP_MAG_SIZE);
-      ammopid := get_weapon_ammo_pid(weapon);
+      caliber = get_proto_data(obj_pid(weapon), PRODATA_IT_WP_CALIBER);
+      magsize = get_proto_data(obj_pid(weapon), PRODATA_IT_WP_MAG_SIZE);
+      ammopid = get_weapon_ammo_pid(weapon);
       ndebug("found weapon with caliber " + caliber + ", ammo pid " + ammopid);
       // switch only if not already suited ammo type
       if (caliber and magsize > 0) then if not(is_ammo_type(ammopid, ammo_type)) then begin
         // try to find better ammo for this weapon
         ndebug("search best ammo...");
-        bestammo := 0;
-        list := inven_as_array(oC);
+        bestammo = 0;
+        list = inven_as_array(oC);
         foreach item in list begin
           if (item) then if (is_ammo(item)) then
             if (get_proto_data(obj_pid(item), PRODATA_IT_AM_CALIBER) == caliber and is_ammo_type(obj_pid(item), ammo_type)) then
-              bestammo := item;
+              bestammo = item;
         end
         if (bestammo) then begin
           ndebug("found best ammo type " + obj_pid(bestammo));
@@ -852,7 +852,7 @@ end
           call inc_ammo_count(oC, ammopid, get_weapon_ammo_count(weapon));
           // then, load new ammo
           set_weapon_ammo_pid(weapon, obj_pid(bestammo));
-          if (actual_ammo_count(oC, bestammo) < magsize) then magsize := actual_ammo_count(oC, bestammo);
+          if (actual_ammo_count(oC, bestammo) < magsize) then magsize = actual_ammo_count(oC, bestammo);
           set_weapon_ammo_count(weapon, magsize);
           call inc_ammo_count(oC, obj_pid(bestammo), - magsize);
           reg_anim_clear(oC);
@@ -864,7 +864,7 @@ end
     i++;
     end
     iNum_npcs += 1;
-  oWho := oC;
+  oWho = oC;
 end
 
 // -----------------------
@@ -873,19 +873,19 @@ end
 
 procedure find_next_corpse begin
 variable c;
-  L_list := list_begin(LIST_CRITTERS);
+  L_list = list_begin(LIST_CRITTERS);
   while(L_list != 0) do begin
-    c := list_next(L_list);
+    c = list_next(L_list);
     if(c)then begin
       if((is_critter_dead(c)))then begin
         if is_lootable(c) or is_in_array(obj_pid(c), loot_force_list) then begin
           if(LOOT_COND1_1(oLooter, c))then begin
-            oGItem := get_ground_item_near_critter(oLooter, c);
+            oGItem = get_ground_item_near_critter(oLooter, c);
             if((oGItem) or (LOOT_COND2(c)))then begin
               set_sfall_global(SGVAR_CORPSE, c);
-              looting_stage := ls_SEEK;
+              looting_stage = ls_SEEK;
               list_end(L_list);
-              L_list := 0;
+              L_list = 0;
               return (c);
             end
           end
@@ -893,9 +893,9 @@ variable c;
       end
     end else begin
       set_sfall_global(SGVAR_CORPSE, 0);
-      looting_stage := ls_STOP;
+      looting_stage = ls_STOP;
       list_end(L_list);
-      L_list := 0;
+      L_list = 0;
       return (0);
     end
   end // end while
@@ -904,19 +904,19 @@ procedure cancel_looting begin
   if(oLooter)then begin
     reg_anim_clear(oLooter);
     if(not_party_member(oLooter))then party_add(oLooter);
-    looting_stage := ls_STOP;
+    looting_stage = ls_STOP;
     if((iNum_npcs) and (oLooter != dude_obj))then begin
       float_msg(dude_obj, m_str((10 + co_LOOT_CORPSES) * 100 + 10) + " " + sWho_name, FLOAT_MSG_BLUE);
       float_msg(oLooter, m_str(random(100, 105)), FLOAT_MSG_YELLOW);
     end
-    oLooter := 0;
-    oCorpse := 0;
+    oLooter = 0;
+    oCorpse = 0;
     set_sfall_global(SGVAR_LOOTER, 0);
     set_sfall_global(SGVAR_CORPSE, 0);
   end
   if(L_list)then begin
     list_end(L_list);
-    L_list := 0;
+    L_list = 0;
   end
 end
 procedure get_ground_item_near_critter(variable oL, variable oC) begin
@@ -926,9 +926,9 @@ variable begin
   iItem_weight;
 end
   if(loot_items)then begin
-    l_gitems := list_begin(LIST_GROUNDITEMS);
+    l_gitems = list_begin(LIST_GROUNDITEMS);
     while(l_gitems != 0) do begin
-      gitem := list_next(l_gitems);
+      gitem = list_next(l_gitems);
       if gitem then begin
         if (LOOT_COND3(gitem)
           and LOOT_COND4(oC, gitem)
@@ -936,30 +936,30 @@ end
           )
         then begin
           if not can_reach(oL, gitem) then continue;
-          iItem_weight := proto_data(obj_pid(gitem), it_weight);
+          iItem_weight = proto_data(obj_pid(gitem), it_weight);
           if is_weapon(gitem) then begin
-            iAmmo_count := get_weapon_ammo_count(gitem);
+            iAmmo_count = get_weapon_ammo_count(gitem);
             if(iAmmo_count > 0)then begin
-              iAmmo_weight := proto_data(get_weapon_ammo_pid(gitem), it_weight);
-              iClip_size := get_proto_data(get_weapon_ammo_pid(gitem), 40);
-              num_clips := floor(iAmmo_count / iClip_size);
+              iAmmo_weight = proto_data(get_weapon_ammo_pid(gitem), it_weight);
+              iClip_size = get_proto_data(get_weapon_ammo_pid(gitem), 40);
+              num_clips = floor(iAmmo_count / iClip_size);
               if(iAmmo_count % iClip_size != 0) then num_clips += 1;
-              iItem_weight := iItem_weight + (iAmmo_weight * num_clips);
+              iItem_weight = iItem_weight + (iAmmo_weight * num_clips);
             end
           end
           if(inven_free_amt(oL) >= iItem_weight)then begin
             list_end(l_gitems);
-            l_gitems := 0;
+            l_gitems = 0;
             set_sfall_global(SGVAR_GITEM0, gitem);
-            if (cant_carry_all == 0) then cant_carry_all := 2;
+            if (cant_carry_all == 0) then cant_carry_all = 2;
             return gitem;
           end else begin
-            cant_carry_all := 1;
+            cant_carry_all = 1;
           end
         end
       end else begin
         list_end(l_gitems);
-        l_gitems := 0;
+        l_gitems = 0;
         set_sfall_global(SGVAR_GITEM0, 0);
         return 0;
       end
