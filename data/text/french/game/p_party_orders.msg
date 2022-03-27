@@ -39,4 +39,4 @@
 {2001}{}{Tirer au coup par coup !}
 {2002}{}{Ordres pour l'équipe : rafales autorisées !}
 {2003}{}{Ordres pour l'équipe : rafales interdites !}
-{3000}{}{Everybody, wait here.}
+{3000}{}{Tout le monde attend ici.}
