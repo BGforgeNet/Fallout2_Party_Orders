@@ -147,6 +147,12 @@ procedure gamemode_hook_handler;
 procedure toggle_burst;
 procedure set_burst;
 
+// party wait
+procedure get_npc_lvar_wait_num(variable who);
+procedure set_lvar(variable who, variable lvar_num, variable value);
+procedure party_wait_start(variable who);
+
+
 procedure set_burst begin
   variable who;
   variable burst_disable;
@@ -424,7 +430,7 @@ procedure party_wait begin
 
   foreach who in party_members begin
     if (who != dude_obj) and (is_critter(who)) then begin // skip car trunk
-      party_remove(who);
+      call party_wait_start(who);
       ndebug("dropped " + obj_name(who) + " from party");
     end
   end
@@ -967,4 +973,51 @@ end
   end else begin
     return 0;
   end
+end
+
+procedure get_npc_lvar_wait_num(variable who) begin
+  variable pid, lvar_map, lvar_num;
+  pid = obj_pid(who);
+  // LVAR_WAITING number in script
+  lvar_map = {
+    // PID_BESS: 3,
+    PID_BRAINBOT: 8,
+    PID_CAT_JULES: 7,
+    PID_CYBERDOG: 9,
+    PID_DAVIN: 7,
+    PID_DEX: 7,
+    PID_DOGMEAT: 9,
+    PID_GORIS: 9,
+    PID_JOHN_MACRAE: 7,
+    PID_KITSUNE: 7,
+    PID_K9: 5,
+    // PID_LADDIE: 5,
+    PID_LENNY: 10,
+    PID_MARCUS: 8,
+    PID_MIRIA: 9,
+    PID_MYRON: 5,
+    PID_ROBOBRAIN_ABNORMAL: 8,
+    PID_ROBOBRAIN_CHIMP: 8,
+    PID_ROBOBRAIN_HUMAN: 8,
+    PID_SULIK: 11,
+    PID_VIC: 6
+  };
+  lvar_num = lvar_map[pid]; // missing key returns 0
+  return lvar_num;
+end
+
+procedure set_lvar(variable who, variable lvar_num, variable value) begin
+  set_self(who);
+  set_local_var(lvar_num, value);
+  // set_self(0);
+end
+
+procedure party_wait_start(variable who) begin
+  variable lvar_wait_num;
+
+  lvar_wait_num = get_npc_lvar_wait_num(who);
+  if lvar_wait_num == 0 then return;
+
+  call set_lvar(who, lvar_wait_num, game_time);
+  party_remove(who);
 end
