@@ -227,7 +227,6 @@ procedure can_loot(variable who) begin
     case KILL_TYPE_children_kills: i_can = true;
     case KILL_TYPE_ghoul_kills: i_can = true;
     case KILL_TYPE_men_kills: i_can = true;
-    case KILL_TYPE_robot_kills: i_can = true; // Robobrain does store weapons and ammo somewhere, right?
     case KILL_TYPE_super_mutant_kills: i_can = true;
     case KILL_TYPE_women_kills: i_can = true;
     default: i_can = false;
