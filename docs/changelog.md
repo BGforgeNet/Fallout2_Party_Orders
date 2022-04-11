@@ -1,8 +1,11 @@
 ## Changelog
 
+### v1.12
+- Updated sfall to 4.3.4.
+
 ### v1.11
 - Updated sfall to 4.3.3.1.
-- Updated Protuguese translation.
+- Updated Portuguese translation.
 
 ### v1.10
 - Updated sfall to 4.3.0.2.
