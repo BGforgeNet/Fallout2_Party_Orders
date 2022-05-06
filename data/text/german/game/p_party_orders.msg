@@ -1,6 +1,6 @@
-{0}{}{** Automatisch plündern: AUS **}
-{1}{}{** Automatisch plündern: AN **}
-{100}{}{Wie du wünscht.}
+{0}{}{** Automatisch plÃ¼ndern: AUS **}
+{1}{}{** Automatisch plÃ¼ndern: AN **}
+{100}{}{Wie du wÃ¼nscht.}
 {101}{}{Sofort.}
 {102}{}{Klaro.}
 {103}{}{Auf deinen Befehl.}
@@ -18,15 +18,15 @@
 {1213}{}{Trefferpunkte.}
 {1214}{}{scheitert sich zu heilen.}
 {1215}{}{hat keine Heilmittel mehr.}
-{1400}{}{Plünder die Überreste, }
-{1410}{}{Das reicht, komm zurück, }
-{1415}{}{Ich habe nicht genug Platz für das ganze Zeug.}
+{1400}{}{PlÃ¼nder die Ãœberreste, }
+{1410}{}{Das reicht, komm zurÃ¼ck, }
+{1415}{}{Ich habe nicht genug Platz fÃ¼r das ganze Zeug.}
 {1420}{}{Fertig.}
 {1421}{}{Ich bin fertig.}
 {1422}{}{Fix und fertig.}
 {1423}{}{Das war alles.}
-{1424}{}{Nichts mehr zu plündern.}
-{1499}{}{Alle Gruppenmitglieder sind überladen und können nicht mehr plündern.}
+{1424}{}{Nichts mehr zu plÃ¼ndern.}
+{1499}{}{Alle Gruppenmitglieder sind Ã¼berladen und kÃ¶nnen nicht mehr plÃ¼ndern.}
 {1500}{}{Komm her,}
 {1501}{}{Alles neu gruppieren!}
 {1600}{}{Mach mir Platz,}
@@ -35,7 +35,7 @@
 {1901}{}{Wechselt alle zu normaler Munition!}
 {1910}{}{Wechsel zu panzerbrechender Munition,}
 {1911}{}{Wechselt alle zu panzerbrechender Munition!}
-{2000}{}{Feuert was das Zeug hält!}
+{2000}{}{Feuert was das Zeug hÃ¤lt!}
 {2001}{}{Munition sparen Leute!}
 {2002}{}{Gruppe: Salvenmodus erlaubt.}
 {2003}{}{Gruppe: Salvenmodus verboten.}

@@ -1,10 +1,10 @@
-{0}{}{** Pillage auto. désactivé **}
-{1}{}{** Pillage auto. activé **}
+{0}{}{** Pillage auto. dÃ©sactivÃ© **}
+{1}{}{** Pillage auto. activÃ© **}
 {100}{}{Comme tu veux.}
 {101}{}{De suite.}
 {102}{}{Okay.}
 {103}{}{A tes ordres.}
-{104}{}{Bien reçu.}
+{104}{}{Bien reÃ§u.}
 {105}{}{Tout de suite.}
 {110}{}{Wouaf !}
 {111}{}{Wouaf ! Wouaf !}
@@ -16,27 +16,27 @@
 {1211}{}{utilise un stimpak.}
 {1212}{}{se soigne}
 {1213}{}{points d'impact.}
-{1214}{}{ne parvient pas à se soigner.}
-{1215}{}{est à court de médicaments.}
+{1214}{}{ne parvient pas Ã  se soigner.}
+{1215}{}{est Ã  court de mÃ©dicaments.}
 {1400}{}{Va piller les restes, }
 {1410}{}{Ca suffit. Reviens, }
 {1415}{}{Je n'ai plus assez de place.}
-{1420}{}{C'est terminé !}
-{1421}{}{J'ai terminé.}
-{1422}{}{Fait et terminé.}
+{1420}{}{C'est terminÃ© !}
+{1421}{}{J'ai terminÃ©.}
+{1422}{}{Fait et terminÃ©.}
 {1423}{}{C'est tout, il n'y a plus rien.}
-{1424}{}{Il n'y a plus rien à piller.}
-{1499}{}{Tous les membres du groupe sont surchargés.}
+{1424}{}{Il n'y a plus rien Ã  piller.}
+{1499}{}{Tous les membres du groupe sont surchargÃ©s.}
 {1500}{}{Viens par ici,}
 {1501}{}{On se regroupe !}
 {1600}{}{Laisse-moi un peu de place,}
-{1601}{}{On se déploie !}
+{1601}{}{On se dÃ©ploie !}
 {1900}{}{Passe aux balles normales,}
 {1901}{}{Tout le monde passe aux balles normales !}
 {1910}{}{Passe aux balles perforantes,}
 {1911}{}{Tout le monde passe aux balles perforantes !}
-{2000}{}{Feu à volonté !}
+{2000}{}{Feu Ã  volontÃ© !}
 {2001}{}{Tirer au coup par coup !}
-{2002}{}{Ordres pour l'équipe : rafales autorisées !}
-{2003}{}{Ordres pour l'équipe : rafales interdites !}
+{2002}{}{Ordres pour l'Ã©quipe : rafales autorisÃ©es !}
+{2003}{}{Ordres pour l'Ã©quipe : rafales interdites !}
 {3000}{}{Tout le monde attend ici.}
