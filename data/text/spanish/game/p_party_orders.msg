@@ -39,4 +39,4 @@
 {2001}{}{No utilizar ráfagas!}
 {2002}{}{Órdenes grupales: ráfaga permitida.}
 {2003}{}{Órdenes grupales: ráfaga prohibida.}
-{3000}{}{Everybody, wait here.}
+{3000}{}{Todos, esperen aquí.}
