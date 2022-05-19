@@ -1,14 +1,19 @@
 ## Party Orders addon for Fallout 2
 
-[![Translation status](https://tra.bgforge.net/widgets/fallout/-/party-orders/svg-badge.svg)](https://tra.bgforge.net/projects/fallout/party-orders/)
 [![Build status](https://github.com/BGforgeNet/Fallout2_Party_Orders/workflows/build/badge.svg)](https://github.com/BGforgeNet/Fallout2_Party_Orders/actions?query=workflow%3Abuild)
-[![Discord chat](https://img.shields.io/discord/420268540700917760?logo=discord)](https://discord.gg/4Yqfggm)
+[![Translation status](https://hive.bgforge.net/widgets/fallout/-/party-orders/svg-badge.svg)](https://hive.bgforge.net/projects/fallout/party-orders/)
+[![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![Patreon](https://img.shields.io/badge/Patreon-donate-FF424D?logo=Patreon&labelColor=141518)](https://www.patreon.com/BGforge)
+
+[![Telegram](https://img.shields.io/badge/telegram-join%20%20%20%20%E2%9D%B1%E2%9D%B1%E2%9D%B1-darkorange?logo=telegram)](https://t.me/bgforge)
+[![Discord](https://img.shields.io/discord/420268540700917760?logo=discord&label=discord&color=blue&logoColor=FEE75C)](https://discord.gg/4Yqfggm)
+[![IRC](https://img.shields.io/badge/%23IRC-join%20%20%20%20%E2%9D%B1%E2%9D%B1%E2%9D%B1-darkorange)](https://bgforge.net/irc)
 
 [__Download__](https://github.com/BGforgeNet/Fallout2_Party_Orders/releases/latest)
  | [__Install__](#installation)
  | [__Use__](#usage)
  | [__Report issues__](https://github.com/BGforgeNet/Fallout2_Party_Orders/issues)
- | [__Translate__](https://tra.bgforge.net/projects/fallout/party-orders/)
+ | [__Translate__](https://hive.bgforge.net/projects/fallout/party-orders/)
 
 This mod allows to give orders to the companions using hotkeys.
 It was originally written by [pelicano](http://www.nma-fallout.com/members/pelicano.55013/),
