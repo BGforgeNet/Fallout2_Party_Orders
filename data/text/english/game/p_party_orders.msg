@@ -65,6 +65,3 @@
 # Burst, display
 {2002}{}{Party orders: burst allowed.}
 {2003}{}{Party orders: burst forbidden.}
-
-# Party wait
-{3000}{}{Everybody, wait here.}

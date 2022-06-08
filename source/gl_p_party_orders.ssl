@@ -89,7 +89,6 @@ procedure start;
 #define msg_noburst_float 2001
 #define msg_burst_display 2002
 #define msg_noburst_display 2003
-#define msg_party_wait_float 3000
 
 #define acknowledge_order(who) \
   if critter_kill_type(who) == KILL_TYPE_dog_kills then \
@@ -99,7 +98,7 @@ procedure start;
 
 variable begin
   down;
-  holster_key; healing_key; looting_key; regroup_key; spread_key; pickup_key; switch_key; ammotype_key, party_wait_key;
+  holster_key; healing_key; looting_key; regroup_key; spread_key; pickup_key; switch_key; ammotype_key;
   loot_items;
   current_order;
   tWaiting_time;
@@ -134,7 +133,6 @@ procedure npc_use_best_weapon(variable oC);
 procedure can_reach(variable source, variable target);
 procedure can_loot(variable who);
 procedure party_has_looters;
-procedure party_wait;
 // aux procedures
 procedure find_next_corpse;
 procedure cancel_looting;
@@ -146,11 +144,6 @@ procedure loot_n_drop(variable oL, variable oC);
 procedure gamemode_hook_handler;
 procedure toggle_burst;
 procedure set_burst;
-
-// party wait
-procedure get_npc_lvar_wait_num(variable who);
-procedure set_lvar(variable who, variable lvar_num, variable value);
-procedure party_wait_start(variable who);
 
 
 procedure set_burst begin
@@ -294,7 +287,6 @@ end
     pickup_key = parse_hotkey(get_ini_string(sec_SETTINGS + "PickUpKey"));
     switch_key = parse_hotkey(get_ini_string(sec_SETTINGS + "SwitchKey"));
     ammotype_key = parse_hotkey(get_ini_string(sec_SETTINGS + "AmmoTypeOrderKey"));
-    party_wait_key = parse_hotkey(get_ini_string(sec_SETTINGS + "PartyWaitKey"));
     loot_items = parse_hotkey(get_ini_string(sec_SETTINGS + "PLootNearbyItems"));
     loot_force_list = get_ini_section_int(ini_filename, sec_LOOT_FORCE);
     fix_array(loot_force_list);
@@ -420,33 +412,12 @@ end
 
 #define isHotkeyPressed(x)	(hotkey_pressed_now(x, key))
 
-procedure party_wait begin
-  variable who, party_members, msg_float;
-  party_members = party_member_list_critters;
-
-  msg_float = m_str(msg_party_wait_float);
-  float_msg(dude_obj, msg_float, FLOAT_MSG_BLUE);
-
-  foreach who in party_members begin
-    if (who != dude_obj) and (is_critter(who)) then begin // skip car trunk
-      call party_wait_start(who);
-      ndebug("dropped " + obj_name(who) + " from party");
-    end
-  end
-
-end
-
 procedure keypress_hook begin
   variable iParty_members,
            pressed = get_sfall_arg,
            key = get_sfall_arg;
 
   if invalid_game_mode then return;
-
-  if pressed and hotkey_pressed_now(party_wait_key, key) then begin
-    call party_wait;
-    return;
-  end
 
   if pressed and hotkey_pressed_now(burst_key, key) then begin
     call toggle_burst;
@@ -972,51 +943,4 @@ end
   end else begin
     return 0;
   end
-end
-
-procedure get_npc_lvar_wait_num(variable who) begin
-  variable pid, lvar_map, lvar_num;
-  pid = obj_pid(who);
-  // LVAR_WAITING number in script
-  lvar_map = {
-    // PID_BESS: 3,
-    PID_BRAINBOT: 8,
-    PID_CAT_JULES: 7,
-    PID_CYBERDOG: 9,
-    PID_DAVIN: 7,
-    PID_DEX: 7,
-    PID_DOGMEAT: 9,
-    PID_GORIS: 9,
-    PID_JOHN_MACRAE: 7,
-    PID_KITSUNE: 7,
-    PID_K9: 5,
-    // PID_LADDIE: 5,
-    PID_LENNY: 10,
-    PID_MARCUS: 8,
-    PID_MIRIA: 9,
-    PID_MYRON: 5,
-    PID_ROBOBRAIN_ABNORMAL: 8,
-    PID_ROBOBRAIN_CHIMP: 8,
-    PID_ROBOBRAIN_HUMAN: 8,
-    PID_SULIK: 11,
-    PID_VIC: 6
-  };
-  lvar_num = lvar_map[pid]; // missing key returns 0
-  return lvar_num;
-end
-
-procedure set_lvar(variable who, variable lvar_num, variable value) begin
-  set_self(who);
-  set_local_var(lvar_num, value);
-  // set_self(0);
-end
-
-procedure party_wait_start(variable who) begin
-  variable lvar_wait_num;
-
-  lvar_wait_num = get_npc_lvar_wait_num(who);
-  if lvar_wait_num == 0 then return;
-
-  call set_lvar(who, lvar_wait_num, game_time);
-  party_remove(who);
 end
