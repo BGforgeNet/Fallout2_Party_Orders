@@ -39,4 +39,3 @@
 {2001}{}{Nie strzelajcie seriami!}
 {2002}{}{Rozkazy dla drużyny: strzelanie seriami zezwolone.}
 {2003}{}{Rozkazy dla drużyny: strzelanie seriami zabronione.}
-{3000}{}{Everybody, wait here.}

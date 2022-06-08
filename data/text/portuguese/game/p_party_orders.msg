@@ -39,4 +39,3 @@
 {2001}{}{Não usem explosivos!}
 {2002}{}{Ordens do grupo: explosivos permitidos.}
 {2003}{}{Ordens do grupo: proibido explosivos.}
-{3000}{}{Everybody, wait here.}
