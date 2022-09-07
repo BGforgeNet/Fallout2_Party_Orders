@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-08-23:10+0000\n"
-"PO-Revision-Date: 2022-09-07 14:30+0000\n"
+"PO-Revision-Date: 2022-09-07 16:30+0000\n"
 "Last-Translator: tygyh <jonis9898@hotmail.com>\n"
 "Language-Team: none\n"
 "Language: sv\n"
@@ -16,11 +16,11 @@ msgstr ""
 
 #: game/p_party_orders.msg:0
 msgid "** PC auto-loot OFF **"
-msgstr ""
+msgstr "** PC auto-plundring AV **"
 
 #: game/p_party_orders.msg:1
 msgid "** PC auto-loot ON **"
-msgstr ""
+msgstr "** PC auto-plundring ON **"
 
 #: game/p_party_orders.msg:100
 msgid "As you wish."
@@ -148,32 +148,32 @@ msgstr "Sprid ut er, allihop!"
 
 #: game/p_party_orders.msg:1900
 msgid "Switch to normal bullets,"
-msgstr ""
+msgstr "Byt till normala kulor,"
 
 #: game/p_party_orders.msg:1901
 msgid "Everyone switch to normal bullets!"
-msgstr ""
+msgstr "Allihop, byt till normala kulor!"
 
 #: game/p_party_orders.msg:1910
 msgid "Switch to armor piercing bullets,"
-msgstr ""
+msgstr "Byt till pansargenomträngande kulor,"
 
 #: game/p_party_orders.msg:1911
 msgid "Everyone switch to armor piercing bullets!"
-msgstr ""
+msgstr "Allihop, byt till pansargenomträngande kulor!"
 
 #: game/p_party_orders.msg:2000
 msgid "Burst at will!"
-msgstr ""
+msgstr "Skjut skurar när som!"
 
 #: game/p_party_orders.msg:2001
 msgid "Don't use bursts!"
-msgstr ""
+msgstr "Skjut inte skurar!"
 
 #: game/p_party_orders.msg:2002
 msgid "Party orders: burst allowed."
-msgstr ""
+msgstr "Grupporder: skurar tillåtet."
 
 #: game/p_party_orders.msg:2003
 msgid "Party orders: burst forbidden."
-msgstr ""
+msgstr "Grupporder: skurar förbjudet."
