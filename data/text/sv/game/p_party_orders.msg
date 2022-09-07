@@ -1,5 +1,5 @@
-{0}{}{** PC auto-loot OFF **}
-{1}{}{** PC auto-loot ON **}
+{0}{}{** PC auto-plundring AV **}
+{1}{}{** PC auto-plundring ON **}
 {100}{}{Som du vill.}
 {101}{}{På en gång.}
 {102}{}{Okej.}
@@ -31,11 +31,11 @@
 {1501}{}{Allihop, omgruppera er!}
 {1600}{}{Ge mig lite utrymme,}
 {1601}{}{Sprid ut er, allihop!}
-{1900}{}{Switch to normal bullets,}
-{1901}{}{Everyone switch to normal bullets!}
-{1910}{}{Switch to armor piercing bullets,}
-{1911}{}{Everyone switch to armor piercing bullets!}
-{2000}{}{Burst at will!}
-{2001}{}{Don't use bursts!}
-{2002}{}{Party orders: burst allowed.}
-{2003}{}{Party orders: burst forbidden.}
+{1900}{}{Byt till normala kulor,}
+{1901}{}{Allihop, byt till normala kulor!}
+{1910}{}{Byt till pansargenomträngande kulor,}
+{1911}{}{Allihop, byt till pansargenomträngande kulor!}
+{2000}{}{Skjut skurar när som!}
+{2001}{}{Skjut inte skurar!}
+{2002}{}{Grupporder: skurar tillåtet.}
+{2003}{}{Grupporder: skurar förbjudet.}
