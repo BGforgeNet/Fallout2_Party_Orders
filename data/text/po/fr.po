@@ -4,15 +4,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-08-23:10+0000\n"
-"PO-Revision-Date: 2022-03-27 08:34+0000\n"
-"Last-Translator: DocteurKain <jeanpeuplus@free.fr>\n"
-"Language-Team: French <https://tra.bgforge.net/projects/fallout/party-orders/fr/>\n"
+"PO-Revision-Date: 2022-09-15 14:30+0000\n"
+"Last-Translator: tygyh <jonis9898@hotmail.com>\n"
+"Language-Team: French <https://tra.bgforge.net/projects/fallout/party-orders/"
+"fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.1.1\n"
+"X-Generator: Weblate 4.12.2\n"
 
 #: game/p_party_orders.msg:0
 msgid "** PC auto-loot OFF **"
@@ -108,7 +109,7 @@ msgstr "Je n'ai plus assez de place."
 
 #: game/p_party_orders.msg:1420
 msgid "Done."
-msgstr "C'est terminé !"
+msgstr "C'est terminé."
 
 #: game/p_party_orders.msg:1421
 msgid "I've finished."
@@ -172,11 +173,11 @@ msgstr "Tirer au coup par coup !"
 
 #: game/p_party_orders.msg:2002
 msgid "Party orders: burst allowed."
-msgstr "Ordres pour l'équipe : rafales autorisées !"
+msgstr "Ordres pour l'équipe : rafales autorisées."
 
 #: game/p_party_orders.msg:2003
 msgid "Party orders: burst forbidden."
-msgstr "Ordres pour l'équipe : rafales interdites !"
+msgstr "Ordres pour l'équipe : rafales interdites."
 
 #~ msgid "Everybody, wait here."
 #~ msgstr "Tout le monde attend ici."
