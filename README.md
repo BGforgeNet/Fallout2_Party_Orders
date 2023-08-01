@@ -38,6 +38,6 @@ Hotkeys are configured in `mods/party_orders.ini`. Default keys:
 * T: (Dude) Pick up items or auto-loot bodies
 * 0: Switch behavior of T key between pick up items and loot bodies
 * Ctrl-B: Switch ammo type (AP/JHP)
-* D: Allow/forbid party members to use burst attacks. Forbidden by default.
+* D: Allow/forbid party members to use burst attacks.
   - When allowed, it doesn't mean that they will always use burst, only that they *may*.
   - However, if equipped with a weapon which has only burst mode, such as a minigun, this order will be ignored by this particular party member.

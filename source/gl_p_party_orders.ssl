@@ -84,6 +84,8 @@ procedure start;
 #define SGVAR_AMMO_TYPE	"p_ammtyp"
 #define SGVAR_OPTI01 "p_opti01"
 #define SGVAR_BURST "p_burst8"
+#define BURST_ALLOWED 0
+#define BURST_FORBIDDEN 1
 
 #define msg_burst_float 2000
 #define msg_noburst_float 2001
@@ -148,34 +150,26 @@ procedure set_burst;
 
 procedure set_burst begin
   variable who;
-  variable burst_disable;
   burst_mode = get_sfall_global_int(SGVAR_BURST);
-
-    if burst_mode == 1 then begin
-      burst_disable = 0;
-    end else begin
-      burst_disable = 1;
-    end
-
-    foreach who in party_member_list_critters begin
-      if who == dude_obj then continue;
-      set_critter_burst_disable(who, burst_disable);
-      ndebug("set burst mode to " + burst_mode + " for " + obj_name(who));
-    end
+  foreach who in party_member_list_critters begin
+    if who == dude_obj then continue;
+    set_critter_burst_disable(who, burst_mode);
+    ndebug("set burst mode to " + burst_mode + " for " + obj_name(who));
+  end
 end
 
 procedure toggle_burst begin
   variable msg_float, msg_display;
   burst_mode = get_sfall_global_int(SGVAR_BURST);
   ndebug("old burst mode is " + burst_mode);
-  if burst_mode == 0 then begin
-    msg_float = m_str(msg_burst_float);
-    msg_display = m_str(msg_burst_display);
-    burst_mode = 1;
-  end else begin
+  if burst_mode == BURST_ALLOWED then begin
     msg_float = m_str(msg_noburst_float);
     msg_display = m_str(msg_noburst_display);
-    burst_mode = 0;
+    burst_mode = BURST_FORBIDDEN;
+  end else begin
+    msg_float = m_str(msg_burst_float);
+    msg_display = m_str(msg_burst_display);
+    burst_mode = BURST_ALLOWED;
   end
   float_msg(dude_obj, msg_float, FLOAT_MSG_BLUE);
   display_msg(msg_display);
