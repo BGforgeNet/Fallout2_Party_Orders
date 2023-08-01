@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-08-23:10+0000\n"
+"POT-Creation-Date: 2023-08-02-04:46+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: BGforge/msg2po v.1.1.5\n"
+"X-Generator: BGforge/msg2po v.1.1.13\n"
 
 #: game/p_party_orders.msg:0
 msgid "** PC auto-loot OFF **"
@@ -169,9 +169,9 @@ msgid "Don't use bursts!"
 msgstr ""
 
 #: game/p_party_orders.msg:2002
-msgid "Party orders: burst allowed."
+msgid "Party Orders: burst allowed."
 msgstr ""
 
 #: game/p_party_orders.msg:2003
-msgid "Party orders: burst forbidden."
+msgid "Party Orders: burst forbidden."
 msgstr ""

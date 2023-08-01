@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-08-23:10+0000\n"
+"POT-Creation-Date: 2023-08-02-04:46+0000\n"
 "PO-Revision-Date: 2022-09-07 16:30+0000\n"
 "Last-Translator: tygyh <jonis9898@hotmail.com>\n"
 "Language-Team: none\n"
@@ -171,9 +171,9 @@ msgid "Don't use bursts!"
 msgstr "Skjut inte skurar!"
 
 #: game/p_party_orders.msg:2002
-msgid "Party orders: burst allowed."
+msgid "Party Orders: burst allowed."
 msgstr "Grupporder: skurar tillåtet."
 
 #: game/p_party_orders.msg:2003
-msgid "Party orders: burst forbidden."
+msgid "Party Orders: burst forbidden."
 msgstr "Grupporder: skurar förbjudet."
