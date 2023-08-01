@@ -1,5 +1,9 @@
 ## Changelog
 
+### v1.13
+- Burst is allowed by default.
+- Updated sfall to 4.3.8.
+
 ### v1.12
 - Updated sfall to 4.3.4.
 
