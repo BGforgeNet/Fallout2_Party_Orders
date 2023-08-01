@@ -63,5 +63,5 @@
 {2000}{}{Burst at will!}
 {2001}{}{Don't use bursts!}
 # Burst, display
-{2002}{}{Party orders: burst allowed.}
-{2003}{}{Party orders: burst forbidden.}
+{2002}{}{Party Orders: burst allowed.}
+{2003}{}{Party Orders: burst forbidden.}
