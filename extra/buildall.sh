@@ -18,7 +18,7 @@ if [[ -d rp ]]; then
   git pull
   cd ..
 else
-  git clone https://github.com/BGforgeNet/Fallout2_Restoration_Project.git rp
+  git-clone-dir https://github.com/BGforgeNet/Fallout2_Restoration_Project.git rp scripts_src/headers
 fi
 
 if [[ -d fo2tweaks ]]; then
@@ -26,7 +26,7 @@ if [[ -d fo2tweaks ]]; then
   git pull
   cd ..
 else
-  git clone https://github.com/BGforgeNet/FO2tweaks.git fo2tweaks
+  git-clone-dir https://github.com/BGforgeNet/FO2tweaks.git fo2tweaks source/headers
 fi
 
 if [[ -d sfall ]]; then
@@ -34,7 +34,7 @@ if [[ -d sfall ]]; then
   git pull
   cd ..
 else
-  git clone https://github.com/phobos2077/sfall.git sfall
+  git-clone-dir https://github.com/sfall-team/sfall.git sfall artifacts/scripting/headers
 fi
 
 cd ..
