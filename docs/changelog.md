@@ -1,5 +1,10 @@
 ## Changelog
 
+### v1.14
+
+- Sfall updated to 4.4.0.1.
+- Minor spelling changes.
+
 ### v1.13
 
 - Burst is allowed by default.
