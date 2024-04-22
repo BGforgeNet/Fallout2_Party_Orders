@@ -1,5 +1,9 @@
 ## Changelog
 
+### v1.15
+
+Sfall updated to 4.4.3.1.
+
 ### v1.14
 
 - Sfall updated to 4.4.0.1.
