@@ -3,7 +3,7 @@
 set -xeu -o pipefail
 
 extra_dir="${extra_dir:-extra}"
-extra_dir="$(realpath $extra_dir)"
+extra_dir="$(realpath "$extra_dir")"
 bin_dir="$extra_dir/bin"
 compile="$bin_dir/compile.exe"
 dst="data/scripts"
@@ -14,35 +14,36 @@ mkdir -p external
 cd external
 
 if [[ -d rp ]]; then
-  cd rp
-  git pull
-  cd ..
+    cd rp
+    git pull
+    cd ..
 else
-  git-clone-dir https://github.com/BGforgeNet/Fallout2_Restoration_Project.git rp scripts_src/headers
+    git-clone-dir https://github.com/BGforgeNet/Fallout2_Restoration_Project.git rp scripts_src/headers
 fi
 
 if [[ -d fo2tweaks ]]; then
-  cd fo2tweaks
-  git pull
-  cd ..
+    cd fo2tweaks
+    git pull
+    cd ..
 else
-  git-clone-dir https://github.com/BGforgeNet/FO2tweaks.git fo2tweaks source/headers
+    git-clone-dir https://github.com/BGforgeNet/FO2tweaks.git fo2tweaks source/headers
 fi
 
 if [[ -d sfall ]]; then
-  cd sfall
-  git pull
-  cd ..
+    cd sfall
+    git pull
+    cd ..
 else
-  git-clone-dir https://github.com/sfall-team/sfall.git sfall artifacts/scripting/headers
+    git-clone-dir https://github.com/sfall-team/sfall.git sfall artifacts/scripting/headers
 fi
 
 cd ..
 
-files=$(cat $extra_dir/build.list)
-mkdir -p $dst
+files=$(cat "$extra_dir"/build.list)
+mkdir -p "$dst"
 cd source
 for f in $files; do
-  int_name="$(echo $f | sed 's|\.ssl$|.int|')"
-  wine $compile -l -O2 -p -s -q -n "$f" -o "$dst/$int_name"
+    # shellcheck disable=SC2001  # sed is more readable
+    int_name="$(echo "$f" | sed 's|\.ssl$|.int|')"
+    wine "$compile" -l -O2 -p -s -q -n "$f" -o "$dst/$int_name"
 done
