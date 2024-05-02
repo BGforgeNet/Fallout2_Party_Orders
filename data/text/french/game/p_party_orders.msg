@@ -23,7 +23,7 @@
 {1415}{}{Je n'ai plus assez de place.}
 {1420}{}{C'est terminé.}
 {1421}{}{J'ai terminé.}
-{1422}{}{Fait et terminé.}
+{1422}{}{Fait et refait.}
 {1423}{}{C'est tout, il n'y a plus rien.}
 {1424}{}{Il n'y a plus rien à piller.}
 {1499}{}{Tous les membres du groupe sont surchargés.}
