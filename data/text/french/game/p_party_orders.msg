@@ -37,5 +37,5 @@
 {1911}{}{Tout le monde passe aux balles perforantes !}
 {2000}{}{Feu à volonté !}
 {2001}{}{Tirer au coup par coup !}
-{2002}{}{Ordres pour l'équipe : rafales autorisées !}
-{2003}{}{Ordres pour l'équipe : rafales interdites !}
+{2002}{}{Ordres pour l'équipe : rafales autorisées.}
+{2003}{}{Ordres pour l'équipe : rafales interdites.}
