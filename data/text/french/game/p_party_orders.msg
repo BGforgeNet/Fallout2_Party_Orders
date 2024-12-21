@@ -23,7 +23,7 @@
 {1415}{}{Je n'ai plus assez de place.}
 {1420}{}{C'est terminé.}
 {1421}{}{J'ai terminé.}
-{1422}{}{Fait et refait.}
+{1422}{}{Fait et terminé.}
 {1423}{}{C'est tout, il n'y a plus rien.}
 {1424}{}{Il n'y a plus rien à piller.}
 {1499}{}{Tous les membres du groupe sont surchargés.}
@@ -37,5 +37,5 @@
 {1911}{}{Tout le monde passe aux balles perforantes !}
 {2000}{}{Feu à volonté !}
 {2001}{}{Tirer au coup par coup !}
-{2002}{}{Ordres pour l'équipe : rafales autorisées.}
-{2003}{}{Ordres pour l'équipe : rafales interdites.}
+{2002}{}{Ordres pour l'équipe : rafales autorisées !}
+{2003}{}{Ordres pour l'équipe : rafales interdites !}
