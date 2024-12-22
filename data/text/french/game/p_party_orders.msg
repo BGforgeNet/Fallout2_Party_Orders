@@ -21,7 +21,7 @@
 {1400}{}{Va piller les restes, }
 {1410}{}{Ca suffit. Reviens, }
 {1415}{}{Je n'ai plus assez de place.}
-{1420}{}{C'est terminé.}
+{1420}{}{Terminé.}
 {1421}{}{J'ai terminé.}
 {1422}{}{Fait et terminé.}
 {1423}{}{C'est tout, il n'y a plus rien.}
