@@ -4,15 +4,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-02-04:46+0000\n"
-"PO-Revision-Date: 2022-05-09 09:20+0000\n"
-"Last-Translator: Magus <magus@bgforge.net>\n"
-"Language-Team: Spanish <https://tra.bgforge.net/projects/fallout/party-orders/es/>\n"
+"PO-Revision-Date: 2025-01-28 02:40+0000\n"
+"Last-Translator: Genzek Spanish <alejzuzu@gmail.com>\n"
+"Language-Team: Spanish <https://tra.bgforge.net/projects/fallout/"
+"party-orders/es/>\n"
 "Language: spanish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.12.2\n"
 
 #: game/p_party_orders.msg:0
 msgid "** PC auto-loot OFF **"
@@ -72,7 +73,7 @@ msgstr "Todos ustedes deberían curarse a si mismos ahora."
 
 #: game/p_party_orders.msg:1210
 msgid "uses a super stimpak."
-msgstr "utiliza un súper estimulante."
+msgstr "utiliza un superestimulante."
 
 #: game/p_party_orders.msg:1211
 msgid "uses a stimpak."
@@ -136,7 +137,7 @@ msgstr "Ven aquí,"
 
 #: game/p_party_orders.msg:1501
 msgid "Everyone regroup!"
-msgstr "Todos a reagruparse!"
+msgstr "¡Todos, reagrúpense!"
 
 #: game/p_party_orders.msg:1600
 msgid "Give me some room,"
@@ -144,7 +145,7 @@ msgstr "Dame un poco de espacio,"
 
 #: game/p_party_orders.msg:1601
 msgid "Everyone spread!"
-msgstr "Todos a dispersarse!"
+msgstr "¡Todos, a dispersarse!"
 
 #: game/p_party_orders.msg:1900
 msgid "Switch to normal bullets,"
@@ -152,31 +153,31 @@ msgstr "Cambia a balas normales,"
 
 #: game/p_party_orders.msg:1901
 msgid "Everyone switch to normal bullets!"
-msgstr "Todos cambiando a balas normales!"
+msgstr "¡Todos, cambien a balas normales!"
 
 #: game/p_party_orders.msg:1910
 msgid "Switch to armor piercing bullets,"
-msgstr "Cambia a municiones perforadoras,"
+msgstr "Cambia a balas perforantes,"
 
 #: game/p_party_orders.msg:1911
 msgid "Everyone switch to armor piercing bullets!"
-msgstr "Todos cambiando a municiones perforadoras!"
+msgstr "¡Todos, cambien a balas perforantes!"
 
 #: game/p_party_orders.msg:2000
 msgid "Burst at will!"
-msgstr "Ráfaga a voluntad!"
+msgstr "¡Ráfaga a voluntad!"
 
 #: game/p_party_orders.msg:2001
 msgid "Don't use bursts!"
-msgstr "No utilizar ráfagas!"
+msgstr "¡No utilicen ráfagas!"
 
 #: game/p_party_orders.msg:2002
 msgid "Party Orders: burst allowed."
-msgstr "Órdenes grupales: ráfaga permitida."
+msgstr "Órdenes del grupo: ráfaga permitida."
 
 #: game/p_party_orders.msg:2003
 msgid "Party Orders: burst forbidden."
-msgstr "Órdenes grupales: ráfaga prohibida."
+msgstr "Órdenes del grupo: ráfaga prohibida."
 
 #~ msgid "Everybody, wait here."
 #~ msgstr "Todos, esperen aquí."
