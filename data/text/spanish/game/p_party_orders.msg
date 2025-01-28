@@ -12,7 +12,7 @@
 {1101}{}{Guarden sus armas, chicos.}
 {1200}{}{Deberías curarte, }
 {1201}{}{Todos ustedes deberían curarse a si mismos ahora.}
-{1210}{}{utiliza un súper estimulante.}
+{1210}{}{utiliza un superestimulante.}
 {1211}{}{utiliza un estimulante.}
 {1212}{}{cura}
 {1213}{}{puntos de vida.}
@@ -28,14 +28,14 @@
 {1424}{}{No hay más para saquear.}
 {1499}{}{Todos los miembros del grupo están sobrecargados y no pueden saquear.}
 {1500}{}{Ven aquí,}
-{1501}{}{Todos a reagruparse!}
+{1501}{}{¡Todos, reagrúpense!}
 {1600}{}{Dame un poco de espacio,}
-{1601}{}{Todos a dispersarse!}
+{1601}{}{¡Todos, a dispersarse!}
 {1900}{}{Cambia a balas normales,}
-{1901}{}{Todos cambiando a balas normales!}
-{1910}{}{Cambia a municiones perforadoras,}
-{1911}{}{Todos cambiando a municiones perforadoras!}
-{2000}{}{Ráfaga a voluntad!}
-{2001}{}{No utilizar ráfagas!}
-{2002}{}{Órdenes grupales: ráfaga permitida.}
-{2003}{}{Órdenes grupales: ráfaga prohibida.}
+{1901}{}{¡Todos, cambien a balas normales!}
+{1910}{}{Cambia a balas perforantes,}
+{1911}{}{¡Todos, cambien a balas perforantes!}
+{2000}{}{¡Ráfaga a voluntad!}
+{2001}{}{¡No utilicen ráfagas!}
+{2002}{}{Órdenes del grupo: ráfaga permitida.}
+{2003}{}{Órdenes del grupo: ráfaga prohibida.}
