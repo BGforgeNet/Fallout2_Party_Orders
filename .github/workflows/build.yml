@@ -41,6 +41,7 @@ jobs:
         with:
           name: party_orders.zip
           path: party_orders*.zip
+          if-no-files-found: error
 
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -48,5 +49,6 @@ jobs:
         with:
           files: |
             party_orders*.zip
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
