@@ -5,8 +5,8 @@ on:
   pull_request:
 
 env:
-  sfall_version: 4.4.6.1
-  mpack_version: 4.4.6
+  sfall_version: 4.4.7
+  mpack_version: 4.4.7
 
 jobs:
   build:
@@ -22,9 +22,7 @@ jobs:
         uses: devopsx/gha-ubuntu-i386-fix@master
 
       - name: Install packages
-        run: |
-          sudo DEBIAN_FRONTEND=noninteractive eatmydata apt-get install -o=Dpkg::Use-Pty=0 -y crudini dos2unix gcc p7zip
-          WINEARCH=win32 eatmydata wineboot
+        run: sudo DEBIAN_FRONTEND=noninteractive eatmydata apt-get install -o=Dpkg::Use-Pty=0 -y crudini dos2unix gcc p7zip
 
       - name: Build and package
         run: |
