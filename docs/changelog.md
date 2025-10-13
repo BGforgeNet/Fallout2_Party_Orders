@@ -1,5 +1,9 @@
 ## Changelog
 
+### v1.18
+
+- Sfall updated to 4.4.8.
+
 ### v1.17
 
 - Translation updates.
