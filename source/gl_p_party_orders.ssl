@@ -291,7 +291,7 @@ end
     register_hook_proc(HOOK_GAMEMODECHANGE, gamemode_hook_handler);
     burst_mode = get_sfall_global_int(SGVAR_BURST);
 
-    #define _check_key(key, default)	if (key < 0) then key = default
+    #define _check_key(key, default_key)	if (key < 0) then key = default_key
     _check_key(holster_key, DIK_H);
     _check_key(healing_key, DIK_F);
     _check_key(looting_key, DIK_G);
