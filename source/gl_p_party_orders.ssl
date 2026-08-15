@@ -127,7 +127,6 @@ procedure check_party_orders;
 procedure put_away_weapon(variable oC);
 procedure npc_heal_yourself(variable oC);
 procedure loot_nearby_corpses(variable oC);
-procedure loot_nearby_containers(variable oC);
 procedure npc_regroup(variable oC);
 procedure npc_spread(variable oC);
 procedure npc_switch_ammo(variable oC, variable ammo_type);
@@ -483,7 +482,6 @@ procedure keypress_hook begin
         end else if (get_sfall_global_int(SGVAR_OPTI01) == 1) then begin
           if (oLooter) then call cancel_looting;
           call loot_nearby_corpses(dude_obj);
-          call loot_nearby_containers(dude_obj);
         end else begin
           dude_picking_up = 1;
           dude_pickup_delay = game_time;
@@ -577,7 +575,6 @@ end
     if oAux then begin
       if oLooter == dude_obj then call cancel_looting;
       call loot_nearby_corpses(oAux);
-      call loot_nearby_containers(oAux);
     end else begin
       if party_has_looters then display_msg(m_str((10 + current_order) * 100 + 99));
     end
@@ -685,36 +682,6 @@ end
 
   iNum_npcs += 1;
   oWho = oC;
-end
-
-procedure run_to_tile(variable who, variable tile) begin
-  ndebug("running to container");
-end
-
-procedure loot_container(variable who, variable cont, variable good_tile) begin
-  ndebug("looting a container");
-  reg_anim_clear(who);
-  reg_anim_begin();
-    reg_anim_obj_run_to_tile(who, good_tile, -1);
-    reg_anim_animate(who, ANIM_magic_hands_middle, -1);
-  reg_anim_end();
-end
-
-procedure loot_nearby_containers(variable looter) begin
-  variable good_tile, i, items = list_as_array(LIST_GROUNDITEMS);
-  ndebug("looting containers");
-  foreach i in items begin
-    ndebug("item is " + obj_name(i) + ", pid " + obj_pid(i) + ", is_container is " + is_container(i)
-      + " is_empty is " + is_empty(i) + ", can_reach is " + can_reach(looter, i) + ", looter is " + obj_name(looter));
-    good_tile = can_reach(looter, i);
-    if is_container(i)
-      and not is_empty(i)
-      and good_tile
-    then begin
-      ndebug("trying to loot " + obj_name(i));
-      call loot_container(looter, i, good_tile);
-    end
-  end
 end
 
 procedure loot_nearby_corpses(variable oC) begin
