@@ -4,9 +4,6 @@ on:
   push:
   pull_request:
 
-env:
-  sfall_version: 4.5
-
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -3,7 +3,7 @@
 set -xeu -o pipefail
 
 # shellcheck disable=SC2154  # from env.sh
-mkdir -p "$bin_dir"
+mkdir -p "$BIN_DIR"
 
 # sslc compiler
 # shellcheck disable=SC2154  # from env.sh
