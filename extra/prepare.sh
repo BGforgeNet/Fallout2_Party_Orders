@@ -2,22 +2,19 @@
 
 set -xeu -o pipefail
 
-extra_dir=${extra_dir:-extra}
-mpack_version=${mpack_version:-4.5}
+# shellcheck disable=SC2154  # from env.sh
+mkdir -p "$bin_dir"
 
-mpack_file="modderspack_$mpack_version.7z"
-mpack_url="https://sourceforge.net/projects/sfall/files/Modders%20pack/$mpack_file/download"
-compile_exe="compile.exe"
-mpack_compile="ScriptEditor/resources/$compile_exe"
+# sslc compiler
+# shellcheck disable=SC2154  # from env.sh
+if [[ ! -f "$COMPILE" ]]; then
+    wget -q "$SSLC_URL" -O "$COMPILE"
+    chmod +x "$COMPILE"
+fi
 
-# directories
-cache_dir="$HOME/.cache/build"
-bin_dir="$(realpath extra/bin)"
-mkdir -p "$cache_dir" "$bin_dir"
-
-# compile.exe, check cache
-wget -q "$mpack_url" -O mpack.7z
-7zr e mpack.7z "$mpack_compile"
-mv -f "$compile_exe" "$cache_dir/"
-# copy
-cp -f "$cache_dir/$compile_exe" "$bin_dir/"
+# dat3 packer
+# shellcheck disable=SC2154  # from env.sh
+if [[ ! -f "$DAT3" ]]; then
+    wget -q "$DAT3_URL" -O "$DAT3"
+    chmod +x "$DAT3"
+fi

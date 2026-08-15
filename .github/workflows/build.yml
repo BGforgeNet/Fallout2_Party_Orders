@@ -6,7 +6,6 @@ on:
 
 env:
   sfall_version: 4.5
-  mpack_version: 4.5
 
 jobs:
   build:
@@ -17,9 +16,6 @@ jobs:
 
       - name: ShellCheck
         uses: ludeeus/action-shellcheck@master
-
-      - name: Install wine
-        uses: devopsx/gha-ubuntu-i386-fix@master
 
       - name: Install packages
         run: sudo DEBIAN_FRONTEND=noninteractive eatmydata apt-get install -o=Dpkg::Use-Pty=0 -y crudini dos2unix gcc p7zip

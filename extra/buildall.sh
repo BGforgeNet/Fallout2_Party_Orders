@@ -2,10 +2,8 @@
 
 set -xeu -o pipefail
 
-extra_dir="${extra_dir:-extra}"
-extra_dir="$(realpath "$extra_dir")"
-bin_dir="$extra_dir/bin"
-compile="$bin_dir/compile.exe"
+src="$(realpath source)"
+headers_dir="$src/headers"
 dst="data/scripts"
 mkdir -p "$dst"
 dst="$(realpath $dst)"
@@ -39,11 +37,14 @@ fi
 
 cd ..
 
-files=$(cat "$extra_dir"/build.list)
-mkdir -p "$dst"
-cd source
-for f in $files; do
-    # shellcheck disable=SC2001  # sed is more readable
-    int_name="$(echo "$f" | sed 's|\.ssl$|.int|')"
-    wine "$compile" -l -O2 -p -s -q -n "$f" -o "$dst/$int_name"
-done
+# The dependency headers include each other by relative path ("../sfall/sfall.h"), which POSIX resolves
+# through a symlink into the clone tree instead of lexically. So these have to be real sibling
+# directories - symlinks only ever worked because wine normalized ".." the Windows way.
+rm -rf "$headers_dir/rp" "$headers_dir/sfall" "$headers_dir/fo2tweaks"
+cp -r external/rp/scripts_src/headers "$headers_dir/rp"
+cp -r external/sfall/artifacts/scripting/headers "$headers_dir/sfall"
+cp -r external/fo2tweaks/source/headers/fo2tweaks "$headers_dir/fo2tweaks"
+
+cd "$src"
+# shellcheck disable=SC2154  # from env.sh
+"$COMPILE" -l -O2 -p -s -q -n gl_p_party_orders.ssl -o "$dst/gl_p_party_orders.int"

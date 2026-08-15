@@ -3,8 +3,11 @@
 *.int
 external
 extra/bin/*
-!extra/bin/dat2.exe
 *.rar
 *.7z
 data/*
 !data/text
+# fetched by buildall.sh
+source/headers/rp
+source/headers/sfall
+source/headers/fo2tweaks
