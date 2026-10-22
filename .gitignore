@@ -3,6 +3,7 @@
 *.int
 external
 extra/bin/*
+extra/downloads
 *.rar
 *.7z
 data/*

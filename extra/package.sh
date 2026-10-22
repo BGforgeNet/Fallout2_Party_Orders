@@ -22,10 +22,9 @@ mkdir -p "$MODS_DIR"
 
 rm -rf data/text/po # gettext translations
 # shellcheck disable=SC2154  # from env.sh
-"$DAT3" a -c 9 -C data "$MODS_DIR/$dat" '*'
+"$DAT3" a -c "$DAT3_LEVEL" -C data "$MODS_DIR/$dat" '*'
 
 # sfall
 # shellcheck disable=SC2154  # from env.sh
-wget -q "$SFALL_URL" -O sfall.7z
-7zr e sfall.7z ddraw.dll
-zip -r "${MOD_NAME}_${version}.zip" ddraw.dll "$MODS_DIR/" # our package
+7zr e "$SFALL_7Z" ddraw.dll
+zip -r -n .dat "${MOD_NAME}_${version}.zip" ddraw.dll "$MODS_DIR/" # our package

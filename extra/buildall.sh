@@ -11,29 +11,10 @@ dst="$(realpath $dst)"
 mkdir -p external
 cd external
 
-if [[ -d rp ]]; then
-    cd rp
-    git pull
-    cd ..
-else
-    git-clone-dir https://github.com/BGforgeNet/Fallout2_Restoration_Project.git rp scripts_src/headers
-fi
-
-if [[ -d fo2tweaks ]]; then
-    cd fo2tweaks
-    git pull
-    cd ..
-else
-    git-clone-dir https://github.com/BGforgeNet/FO2tweaks.git fo2tweaks source/headers
-fi
-
-if [[ -d sfall ]]; then
-    cd sfall
-    git pull
-    cd ..
-else
-    git-clone-dir https://github.com/sfall-team/sfall.git sfall artifacts/scripting/headers
-fi
+# shellcheck disable=SC2154  # refs from env.sh
+git-clone-dir https://github.com/BGforgeNet/Fallout2_Restoration_Project.git rp scripts_src/headers "$RP_HEADERS_REF"
+git-clone-dir https://github.com/BGforgeNet/FO2tweaks.git fo2tweaks source/headers "$FO2TWEAKS_HEADERS_REF"
+git-clone-dir https://github.com/sfall-team/sfall.git sfall artifacts/scripting/headers "$SFALL_HEADERS_REF"
 
 cd ..
 
