@@ -1,9 +1,9 @@
 ## Changelog
 
-### Unreleased
+### v1.17
 
 - Disabled cosmetic [container looting](https://github.com/BGforgeNet/Fallout2_Party_Orders/issues/8), never worked anyway.
-- Sfall updated to 4.5.
+- Sfall updated to 4.5.1.
 - Translation updates.
 
 ### v1.16
