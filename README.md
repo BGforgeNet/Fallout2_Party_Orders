@@ -1,6 +1,6 @@
-## Party Orders addon for Fallout 2
+# Party Orders addon for Fallout 2
 
-[![Build status](https://github.com/BGforgeNet/Fallout2_Party_Orders/workflows/build/badge.svg)](https://github.com/BGforgeNet/Fallout2_Party_Orders/actions?query=workflow%3Abuild)
+[![Build status](https://github.com/BGforgeNet/Fallout2_Party_Orders/actions/workflows/build.yml/badge.svg)](https://github.com/BGforgeNet/Fallout2_Party_Orders/actions/workflows/build.yml)
 [![Translation status](https://hive.bgforge.net/widgets/fallout/-/party-orders/svg-badge.svg)](https://hive.bgforge.net/projects/fallout/party-orders/)
 
 [![Telegram](https://img.shields.io/badge/telegram-join%20%20%20%20%E2%9D%B1%E2%9D%B1%E2%9D%B1-darkorange?logo=telegram)](https://t.me/bgforge)
@@ -8,17 +8,16 @@
 [![IRC](https://img.shields.io/badge/%23IRC-join%20%20%20%20%E2%9D%B1%E2%9D%B1%E2%9D%B1-darkorange)](https://bgforge.net/irc)
 
 [**Download**](https://github.com/BGforgeNet/Fallout2_Party_Orders/releases/latest)
-| [**Install**](#installation)
-| [**Use**](#usage)
-| [**Report issues**](https://github.com/BGforgeNet/Fallout2_Party_Orders/issues)
-| [**Translate**](https://hive.bgforge.net/projects/fallout/party-orders/)
+| [**Installation**](#installation)
+| [**Usage**](#usage)
+| [**Bug reports**](#bug-reports-feature-requests)
 
 This mod allows to give orders to the companions using hotkeys.
-It was originally written by [pelicano](http://www.nma-fallout.com/members/pelicano.55013/),
+It was originally written by [pelicano](https://www.nma-fallout.com/members/pelicano.55013/),
 then expanded by [phobos2077](https://github.com/phobos2077/),
 finally this version includes some [further fixes](docs/changelog.md).
 
-Also see [mod thread](http://www.nma-fallout.com/threads/party-orders-add-on-and-npcs-loot-bodies-mod.190599/) on NMA
+Also see [mod thread](https://www.nma-fallout.com/threads/party-orders-add-on-and-npcs-loot-bodies-mod.190599/) on NMA
 and its [wiki page](https://falloutmods.fandom.com/wiki/Party_Orders_add-on).
 Notes for modders are [here](docs/modder_notes.md).
 
@@ -42,3 +41,11 @@ Hotkeys are configured in `mods/party_orders.ini`. Default keys:
 - D: Allow/forbid party members to use burst attacks.
   - When allowed, it doesn't mean that they will always use burst, only that they _may_.
   - However, if equipped with a weapon which has only burst mode, such as a minigun, this order will be ignored by this particular party member.
+
+## Bug reports, feature requests
+
+Go to [github issues](https://github.com/BGforgeNet/Fallout2_Party_Orders/issues) or [forums](https://forums.bgforge.net/viewforum.php?f=34).
+
+## Additional info
+
+[**Changelog**](docs/changelog.md)
