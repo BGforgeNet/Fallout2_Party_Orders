@@ -10,7 +10,7 @@
 [**Download**](https://github.com/BGforgeNet/Fallout2_Party_Orders/releases/latest)
 | [**Installation**](#installation)
 | [**Usage**](#usage)
-| [**Bug reports**](#bug-reports-feature-requests)
+| [**Report issues**](#bug-reports-feature-requests)
 
 This mod allows to give orders to the companions using hotkeys.
 It was originally written by [pelicano](https://www.nma-fallout.com/members/pelicano.55013/),
